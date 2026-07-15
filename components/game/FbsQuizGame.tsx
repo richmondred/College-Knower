@@ -1,6 +1,7 @@
 "use client";
 
-import { Clipboard, Flag, Lightbulb, Play, RotateCcw, Trophy } from "lucide-react";
+import { CheckCircle, Clipboard, Flag, Home, Lightbulb, Play, RotateCcw, Trophy } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { fbs2026Dataset } from "@/data/fbs/fbs-2026.1";
@@ -74,6 +75,8 @@ export function FbsQuizGame() {
   const [profileCountry, setProfileCountry] = useState("US");
   const [showCity, setShowCity] = useState(true);
   const [submissionMessage, setSubmissionMessage] = useState("");
+  const [submissionComplete, setSubmissionComplete] = useState(false);
+  const [submittingResult, setSubmittingResult] = useState(false);
   const [shareMessage, setShareMessage] = useState("");
   const [history, setHistory] = useState<StoredHistoryEntry[]>([]);
   const [correctFlash, setCorrectFlash] = useState(false);
@@ -216,6 +219,8 @@ export function FbsQuizGame() {
     setFinishedAt(null);
     setFinishStatus("ended");
     setSubmissionMessage("");
+    setSubmissionComplete(false);
+    setSubmittingResult(false);
     setShareMessage("");
     setFeedback("");
     setLastAccepted("");
@@ -422,12 +427,14 @@ export function FbsQuizGame() {
 
   async function submitProfile() {
     if (!attempt || !summary || finishedAt === null) return;
+    if (submittingResult || submissionComplete) return;
     const nameError = validateDisplayName(profileName);
     const cityError = validateCity(profileCity);
     if (nameError || cityError) {
       setSubmissionMessage(nameError ?? cityError ?? "Check your profile details.");
       return;
     }
+    setSubmittingResult(true);
 
     const entry: LeaderboardEntry = {
       id: randomId("entry"),
@@ -477,6 +484,8 @@ export function FbsQuizGame() {
       const payload = (await response.json()) as { message?: string; publicLeaderboardAvailable?: boolean };
       if (response.ok && payload.publicLeaderboardAvailable) {
         setSubmissionMessage(payload.message ?? "Result submitted.");
+        setSubmissionComplete(true);
+        setSubmittingResult(false);
         return;
       }
     } catch {
@@ -489,6 +498,8 @@ export function FbsQuizGame() {
     setSubmissionMessage(
       `Saved on this device. Public leaderboard is unavailable until Supabase is configured. Local rank: ${rank}.`
     );
+    setSubmissionComplete(true);
+    setSubmittingResult(false);
   }
 
   async function shareResult() {
@@ -767,46 +778,77 @@ export function FbsQuizGame() {
 
           <section className="mt-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
             <h2 className="text-xl font-black uppercase">Leaderboard profile</h2>
-            <p className="mt-2 text-sm text-[var(--color-muted)]">
-              Your display name, city and country may appear publicly on leaderboards. Do not enter
-              your full legal name unless you deliberately want it public.
-            </p>
-            <div className="mt-4 grid gap-3 md:grid-cols-4">
-              <label className="grid gap-1">
-                <span className="text-sm font-bold">Display name</span>
-                <input className="answer-input !min-h-11 !text-base" value={profileName} maxLength={32} onChange={(event) => setProfileName(event.target.value)} />
-              </label>
-              <label className="grid gap-1">
-                <span className="text-sm font-bold">City</span>
-                <input className="answer-input !min-h-11 !text-base" value={profileCity} maxLength={40} onChange={(event) => setProfileCity(event.target.value)} />
-              </label>
-              <label className="grid gap-1">
-                <span className="text-sm font-bold">Country</span>
-                <select className="answer-input !min-h-11 !text-base" value={profileCountry} onChange={(event) => setProfileCountry(event.target.value)}>
-                  <option value="US">United States</option>
-                  <option value="GB">United Kingdom</option>
-                  <option value="CA">Canada</option>
-                  <option value="AU">Australia</option>
-                  <option value="IE">Ireland</option>
-                  <option value="NZ">New Zealand</option>
-                </select>
-              </label>
-              <label className="flex min-h-11 items-center gap-2 pt-6">
-                <input type="checkbox" checked={showCity} onChange={(event) => setShowCity(event.target.checked)} />
-                <span>Show city</span>
-              </label>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <button className="button primary" type="button" onClick={submitProfile}>
-                <Flag size={17} aria-hidden="true" />
-                Save Result
-              </button>
-              <button className="button" type="button" onClick={shareResult}>
-                <Clipboard size={17} aria-hidden="true" />
-                Share Result
-              </button>
-            </div>
-            <p className="mt-3 text-sm text-[var(--color-muted)]">{submissionMessage || shareMessage}</p>
+            {submissionComplete ? (
+              <div className="mt-4 rounded-md border border-[rgba(113,228,138,0.42)] bg-[rgba(113,228,138,0.08)] p-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="mt-1 text-[var(--color-success)]" size={22} aria-hidden="true" />
+                  <div>
+                    <strong className="block text-lg">Thank you, your result was saved.</strong>
+                    <p className="mt-1 text-sm text-[var(--color-muted)]">
+                      {submissionMessage || "Your leaderboard submission is complete."}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <Link className="button primary" href="/">
+                    <Home size={17} aria-hidden="true" />
+                    Back to Home
+                  </Link>
+                  <Link className="button" href="/games/college-football/fbs-teams/leaderboard">
+                    <Trophy size={17} aria-hidden="true" />
+                    View Leaderboard
+                  </Link>
+                  <button className="button ghost" type="button" onClick={shareResult}>
+                    <Clipboard size={17} aria-hidden="true" />
+                    Share Result
+                  </button>
+                </div>
+                {shareMessage ? <p className="mt-3 text-sm text-[var(--color-muted)]">{shareMessage}</p> : null}
+              </div>
+            ) : (
+              <>
+                <p className="mt-2 text-sm text-[var(--color-muted)]">
+                  Your display name, city and country may appear publicly on leaderboards. Do not enter
+                  your full legal name unless you deliberately want it public.
+                </p>
+                <div className="mt-4 grid gap-3 md:grid-cols-4">
+                  <label className="grid gap-1">
+                    <span className="text-sm font-bold">Display name</span>
+                    <input className="answer-input !min-h-11 !text-base" value={profileName} maxLength={32} onChange={(event) => setProfileName(event.target.value)} />
+                  </label>
+                  <label className="grid gap-1">
+                    <span className="text-sm font-bold">City</span>
+                    <input className="answer-input !min-h-11 !text-base" value={profileCity} maxLength={40} onChange={(event) => setProfileCity(event.target.value)} />
+                  </label>
+                  <label className="grid gap-1">
+                    <span className="text-sm font-bold">Country</span>
+                    <select className="answer-input !min-h-11 !text-base" value={profileCountry} onChange={(event) => setProfileCountry(event.target.value)}>
+                      <option value="US">United States</option>
+                      <option value="GB">United Kingdom</option>
+                      <option value="CA">Canada</option>
+                      <option value="AU">Australia</option>
+                      <option value="IE">Ireland</option>
+                      <option value="NZ">New Zealand</option>
+                    </select>
+                  </label>
+                  <label className="flex min-h-11 items-center gap-2 pt-6">
+                    <input type="checkbox" checked={showCity} onChange={(event) => setShowCity(event.target.checked)} />
+                    <span>Show city</span>
+                  </label>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <button className="button primary" type="button" onClick={submitProfile} disabled={submittingResult}>
+                    <Flag size={17} aria-hidden="true" />
+                    {submittingResult ? "Saving..." : "Save Result"}
+                  </button>
+                  <button className="button" type="button" onClick={shareResult}>
+                    <Clipboard size={17} aria-hidden="true" />
+                    Share Result
+                  </button>
+                </div>
+                <p className="mt-3 text-sm text-[var(--color-muted)]">{submissionMessage || shareMessage}</p>
+              </>
+            )}
           </section>
 
           <div className="mt-6 flex flex-wrap gap-3">
