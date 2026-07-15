@@ -1,0 +1,1084 @@
+
+
+--- PAGE 1 ---
+Optimising and Fact-checking the 2026 FBS Quiz
+Game Concept
+Executive summary
+Your core idea is strong, but the dataset and rules need a few important 2026 corrections before you
+hand this to Codex. The biggest factual fix is that Louisiana Tech should not be in Conference USA for
+the corrected 2026 quiz dataset: Louisiana Tech’s own athletics site says its 2026 football schedule
+includes eight Sun Belt games and explicitly frames the season as a return to the Sun Belt
+Conference. The Mountain West’s 2026 official standings already include UTEP , North Dakota State
+and Northern Illinois, and the MAC’s 2026 official standings include Sacramento State and 
+Massachusetts. Texas State’s move to the rebuilt Pac-12 was officially completed in mid-2025 and
+recent reliable reporting describes it as the Pac-12’s eighth football-playing member for the 2026
+launch, while the Pac-12 site’s member listing reflects the new league structure. In other words: your
+prompt should be written against a versioned 2026 dataset, not against a hard-coded list typed from
+memory. 
+On implementation, the biggest quality gain will come from treating answer matching as a 
+deterministic quiz engine, not a simple text box. Use a curated alias map, Unicode normalisation,
+allowlist-style matching, token-boundary checks, and an explicit collision strategy for schools such as 
+Texas / Texas A&M / Texas State / Texas Tech / North Texas and Miami / Miami (FL) / Miami (OH).
+The feature you originally described as “duplicates” is better described as overlapping or cascading
+auto-submit: in easy mode, one input may intentionally satisfy multiple answers if your rules allow it; in
+medium and hard, it should not. For robust UX, ignore matches while IME composition is in progress,
+persist quiz state with a versioned save object, recompute remaining time from an absolute deadline
+rather than trusting interval ticks, and use visible focus, live-region announcements, and reduced-
+motion variants by default. 
+For leaderboard architecture, the simplest serious choice is usually Supabase + Postgres + serverless
+validation. It gives you SQL structure, sane pricing for a first release, and built-in real-time options,
+while still letting you keep the anti-cheat logic server-side. Firebase is still the fastest way to ship if you
+want a highly managed client-friendly backend; Hasura is best if you want a GraphQL-first architecture
+and do not mind the extra platform complexity. A client-only leaderboard is acceptable only for
+prototype/demo use because time, score and difficulty can be tampered with trivially in the browser . If
+you collect display name, city, country, IP-derived signals, or any online identifier , you should design the
+feature as a UK GDPR / EU-style personal-data flow with data minimisation, short retention, a privacy
+notice, and pseudonymisation of abuse signals. 
+Assumptions used in this report: there is no fixed budget ceiling, no stated traffic limit, the first
+release is one game only, modern evergreen browsers are acceptable, the site is in English, and you
+want a minimal but premium UI rather than a novelty design.
+1
+2
+3
+1
+
+--- PAGE 2 ---
+Verified FBS alignment and dataset corrections
+The safest way to fact-check your quiz is not to retype “all FBS teams” manually, but to treat the dataset
+as fbs-2026.x and verify the realignment-sensitive conferences against current official pages.
+Current official standings confirm the following 2026 conference sizes and memberships directly: ACC
+17, American 14, Big 12 16, MAC 13, and Mountain West 10. Those five pages are the clearest
+authoritative anchors for your game data because they are already published as current-season
+conference standings. 
+For your prompt and JSON, the must-fix entries are these. First, Louisiana Tech: do not leave it in
+CUSA for the corrected 2026 build. Louisiana Tech’s official March 2026 football release says the
+Bulldogs’ 2026 schedule includes eight Sun Belt Conference matchups and says fans should “be there
+as we return to the Sun Belt Conference.” Second, UTEP belongs in the Mountain West in 2026; the
+official Mountain West standings already list UTEP . Third, North Dakota State and Northern Illinois
+are also listed in the Mountain West’s 2026 football standings, so your quiz needs to treat them as
+current FBS/MW answers for this version. Fourth, Sacramento State appears in the MAC’s 2026
+football standings, so it should be included in your 2026 data if you are building the game against the
+current season. Fifth, Massachusetts is in the MAC’s 2026 standings, so do not treat UMass as a 2026
+independent in this build. 
+For the Pac-12 / Sun Belt side of the ledger , the current correction is that Texas State has moved to
+the Pac-12, and the Pac-12’s rebuilt structure includes the holdovers and the inbound western
+additions, with Texas State reported as the eighth football-playing member for the 2026 launch. The
+Pac-12 site’s member list reflects the new-member era, including the overall non-football addition of
+Gonzaga. Operationally, that means your Sun Belt bucket should replace Texas State with Louisiana
+Tech for the corrected 2026 football quiz. 
+The official American standings page confirms the 2026 football membership you should use there: 
+Army, Charlotte, East Carolina, Florida Atlantic, Memphis, Navy, North Texas, Rice, South Florida,
+Temple, Tulane, Tulsa, UAB and UTSA. The official Big 12 page confirms the 2026 membership there: 
+Arizona, Arizona State, Baylor, BYU, Cincinnati, Colorado, Houston, Iowa State, Kansas, Kansas
+State, Oklahoma State, TCU, Texas Tech, UCF, Utah and West Virginia. Because these are already
+current official standings pages, you should prefer them over any cached article or manually
+maintained note. 
+The MAC page confirms the 2026 football field of Akron, Ball State, Bowling Green, Buffalo, Central
+Michigan, Eastern Michigan, Kent State, Massachusetts, Miami, Ohio, Sacramento State, Toledo
+and Western Michigan. The Mountain West page likewise confirms Air Force, Hawai‘i, NDSU,
+Nevada, New Mexico, NIU, San José State, UNLV, UTEP and Wyoming. These two pages are
+particularly important because they capture the two most unusual affiliation outcomes in your dataset: 
+Sacramento State to MAC and the NDSU/NIU/UTEP 2026 Mountain West alignment. 
+The Conference USA point is worth making explicitly because stale lists are likely to keep circulating.
+The official CUSA standings page still shows the 2025 membership that included Louisiana Tech and 
+UTEP, while Louisiana Tech’s official 2026 schedule and the Mountain West’s official 2026 standings
+show that both are no longer correct for the 2026 quiz version. So your Codex prompt should instruct
+the build to use a dataset file with explicit season/version metadata and never to infer current
+conference from an old table header alone. 
+4
+5
+6
+7
+8
+9
+2
+
+--- PAGE 3 ---
+A practical way to encode the result is:
+Keep your attached master list, but correct the conference fields for Texas State, Louisiana
+Tech, UTEP , North Dakota State, Northern Illinois, Sacramento State and UMass.
+Add a datasetVersion such as fbs-2026.1.
+Add an admin-only import / override screen so conference moves can be patched without
+rewriting the UI.
+Store conference key, canonical school name, display school name, answer aliases, and 
+season applicability separately.
+Quiz engine implementation patterns
+What you originally called the “duplicates” feature is more precisely overlapping or cascading auto-
+submit. True duplicate handling just means preventing the same team from scoring twice. Your easy-
+mode rule is something different: one entered string may intentionally satisfy more than one unseen
+answer. A good internal name is overlapMode or cascadeMatches. For example, with overlap
+mode enabled, typing Texas A&M may solve both Texas A&M and Texas if your rules explicitly permit
+overlap. In medium and hard, the matcher should use single-resolution exact alias rules so that 
+Texas A&M does not accidentally award Texas. That makes the design easy to reason about and test.
+This recommendation follows directly from the need to enforce allowlist-style validation, Unicode
+normalisation and deterministic downstream processing rather than fuzzy ad hoc matching. 
+The browser-side implementation should listen to the input event, because it fires whenever the
+user changes the entered value, but your code should not perform matching while text composition is
+active. MDN exposes InputEvent.isComposing specifically for the period between 
+compositionstart and compositionend, which matters if the user types with an IME. In practice:
+if isComposing === true, update the visible input but defer match evaluation until composition
+ends. Otherwise you risk incorrect auto-submits for East Asian text entry and some mobile keyboards. 
+Normalisation should be explicit, versioned and testable. At minimum, use Unicode normalisation first,
+then lowercase, collapse whitespace, harmonise punctuation variants, and run matching against a 
+curated alias table. MDN shows why Unicode-equivalent strings can compare differently until
+normalised, and also notes that compatibility normalisation can be useful for search-style matching.
+Use this carefully: for answer checking, I would normalise to NFKC or NFC, then apply your own
+punctuation rules, because you want consistency without destroying meaningful distinctions. Use 
+Intl.Collator only for display sorting or locale-aware comparison helpers, not as the sole answer
+validator . 
+The key implementation choice is prefix-collision handling. Do not allow naïve substring checks.
+Instead, build a matcher that knows the difference between: a canonical name, an alias, a prefix of
+another alias, and a token-boundary-contained alias. For medium and hard, the safest rule is: submit
+only on exact alias equality after normalisation. For easy overlap mode, you may emit all unseen
+matches that occur at valid token boundaries, but still resolve them longest-first so that texas a&m
+marks Texas A&M before it considers whether Texas should also be awarded. That prevents weirdness
+like florida atlantic awarding florida unless you explicitly want that. This is where an allowlist
+strategy matters: decide in data which overlaps are permitted, instead of hoping the code guesses well. 
+A robust matching pipeline looks like this:
+• 
+• 
+• 
+• 
+10
+11
+12
+13
+3
+
+--- PAGE 4 ---
+Timers should be driven from an absolute deadline, not from setInterval counts. Browsers throttle
+timers and pause animation callbacks in hidden tabs, so a countdown that depends on “one second
+ticked 900 times” will drift. Persist startedAt, deadlineAt, difficulty, solvedIds, 
+datasetVersion and updatedAt, then recompute 
+remainingMs = deadlineAt - Date.now() whenever the page restores or changes visibility. The
+Page Visibility API is the correct hook for recalculating when the tab becomes visible again. This is one
+of the biggest correctness wins you can make. 
+For persistence and resume, localStorage is fine for a single-player quiz save because it survives
+browser restarts, but remember that Web Storage is synchronous and origin-scoped. Keep the save
+blob small. A good pattern is one small JSON object per active quiz mode. If you want to prevent multi-
+tab confusion, use BroadcastChannel so one tab can notify the others that a timed session is already
+active. With that, opening a second tab can show a non-destructive “Resume current quiz?” banner
+rather than silently forking the timer . 
+Accessibility should be built into the engine rather than added later . WCAG requires a visible keyboard
+focus indicator , and WAI guidance stresses predictable focus movement and not losing focus during
+DOM updates. Your main input can reasonably auto-focus because the page has one dominant task, but
+you should not steal focus toward the grid when a team is solved. Keep focus in the input, announce
+the solve in a polite live region, and reserve role="alert" / assertive messaging for errors and
+urgent timer warnings like “30 seconds remaining.” Respect prefers-reduced-motion by disabling
+bounce, scale and sweep animations when the user requests less movement. 
+Minimal but striking UX and UI patterns
+The best way to beat Sporcle aesthetically is not to add more chrome; it is to make the page feel 
+cleaner, faster and more intentional. Keep the structure extremely simple: a hero-top strip with game
+title, difficulty selector , progress summary and input; below that, a responsive conference grid of cards;
+within each card, a compact roster table of empty slots that fill as answers are found. Make the visual
+system do the work through typography, spacing, contrast and motion restraint, not through
+skeuomorphic sports graphics. That is also friendlier to keyboard and mobile users. The accessibility
+case for strong focus indicators and restrained motion is not at odds with premium design; it is part of
+it. 
+For layout, use semantic tables or lists inside conference cards because your content is
+fundamentally structured roster data. On desktop, a CSS grid works well: four columns at very wide
+widths, three on laptop, two on tablet, one accordion column on mobile. The accordion pattern is
+especially appropriate on small screens because WAI’s APG explicitly frames it as a way to reduce the
+need to scroll through multiple sections. On mobile, I would allow only one expanded conference at a
+time; on desktop, keep all cards visible. 
+Typographically, a good minimal sports feel usually comes from one strong display face for headings
+and numbers plus one calmer UI sans for labels and body copy. The title, timer and progress figures
+can use a condensed or semi-condensed display style to suggest scoreboard energy; the grids and
+Yes
+No
+ Easyoverlap
+MediumorHard
+Raw
+keystrokes
+IME
+composing?
+Update
+field
+only
+Unicode
+normalise
+Lowercase
+and
+collapse
+whitespace
+Map
+punctuation
+and
+alias
+variants
+Difficulty
+Find
+all
+eligible
+unseen
+aliases
+at
+token
+boundaries
+Find
+longest
+exact
+unseen
+alias
+only
+Resolve
+collisions
+longest-first
+Mark
+solved
+team
+ids
+Persist
+state
+with
+datasetVersion
+Announce
+result
+in
+aria-live
+region
+Reset
+input
+14
+15
+16
+17
+18
+4
+
+--- PAGE 5 ---
+controls should stay highly readable. Use large numeric hierarchy for Solved / Total and the timer ,
+because quiz pages are performance interfaces. Your visual emphasis should be on “what have I
+completed?” and “how much time is left?”, not on decorative conference branding.
+A restrained token system tends to work better than literal conference-colour chaos. One good
+direction is: near-black or off-white canvas, one vivid accent colour for interactive states, one success
+colour for solved slots, and one muted border colour for empty slots. If you want conference identity
+without clutter , use only subtle conference accent bars or muted initials chips in each card header
+rather than full conference palettes everywhere. This keeps the page minimal while still feeling “sport”.
+For filled answers, prefer opacity / border / background transition and a short upward reveal instead
+of flashy flips. When prefers-reduced-motion is active, switch all transforms to simple opacity or
+colour changes. 
+A conference card should not look like a plain table dump. Each card can carry: conference name, a local
+progress chip such as 9 / 14, and then a list of answer slots with a consistent baseline height. Empty
+rows should look intentional, like roster placeholders. Filled rows should reveal as a clean “nameplate”
+with no layout shift. A subtle approach is better than dramatic reveal animation; quiz users care more
+about speed and legibility than flourish. If you want one “striking” effect, put it into the top progress
+strip and timer bar, not into every slot.
+The progress bar should work at two levels: global progress at the top and per-conference progress in
+each card header . This gives the user both a macro target and a way to scan where gaps remain. For
+timed modes, I would add a time pressure band that changes state visually at 25%, 10% and 5%
+remaining. Make it calm, not panic-inducing. The best cue is often a colour/state shift plus optional
+assertive announcement near the end, not aggressive motion. Use native progress semantics or a
+properly labelled progressbar with screen-reader text.
+A practical design specification for Codex would be:
+constdesignTokens= {
+radius: { sm: 8, md: 14, lg: 20},
+space: { xs: 6, sm: 10, md: 16, lg: 24, xl: 32},
+shadow: {
+card: "0 10px 30px rgba(0,0,0,.10)",
+focus: "0 0 0 3px rgba(255,255,255,.9), 0 0 0 6px rgba(0,120,255,.45)"
+},
+motion: {
+fast: 120,
+base: 180,
+slow: 260,
+easing: "cubic-bezier(.2,.8,.2,1)"
+},
+colour: {
+bg: "#0B0D10",
+surface: "#12161B",
+surfaceAlt: "#171C22",
+text: "#F5F7FA",
+muted: "#A7B0BA",
+border: "#26303A",
+accent: "#5BC0FF",
+19
+5
+
+--- PAGE 6 ---
+success: "#7CE38B",
+warning: "#FFB84D",
+danger: "#FF6B6B"
+}
+}
+Leaderboards, privacy and security
+A leaderboard changes the engineering class of the project. If the goal is just “show my score on this
+device”, client-only storage is enough. If the goal is “public top scores by difficulty, live updates, abuse
+resistance, and persistence across devices”, you need a server-backed validation flow. The clearest
+dividing line is trust: if the browser is allowed to declare its own finish time and score without server
+verification, it can be forged trivially. That makes a client-only board fine for a hobby prototype, but not
+for anything competitive. 
+For real-time updates, choose the simplest mechanism that fits the feature. SSE is excellent for one-way
+“new leaderboard entries” feeds because the server pushes events to the browser whenever data
+changes. WebSockets make sense when you want bidirectional real-time messaging or richer live state,
+but they also add more operational complexity. If the leaderboard only refreshes every few seconds and
+traffic is modest, polling is entirely acceptable for v1. Supabase exposes real-time patterns oriented
+around Broadcast, Presence and Postgres Changes; Firebase offers real-time databases and
+application-backed updates; Hasura offers GraphQL subscriptions. 
+The most important privacy point is that leaderboard data is not “harmless” just because it looks game-
+like. The ICO’s UK GDPR guidance defines personal data broadly enough to include names, location data
+and online identifiers, and it is explicit that pseudonymised data remains personal data if it can still
+be linked back with additional information. So if you collect display name, city, country, IP-derived
+identifiers, or a persistent anon ID, assume you are operating a personal-data feature. The safest
+baseline is: make location optional, store only what you need, publish only what the user expects to be
+public, pseudonymise anti-abuse signals, set short retention for raw security logs, and document all of
+it in a privacy notice. 
+Leaderboard backend comparison
+option pros cons cost
+estimate
+realtime
+support
+ease of
+integration
+privacy
+control
+Client-
+only
+Fastest to
+build; zero
+backend;
+perfect for
+offline/local
+resume
+Trivially
+cheatable;
+no shared
+board; no
+trustworthy
+timed
+ranking
+~£0
+beyond
+static
+hosting
+None Very easy
+High local
+control, but
+no
+meaningful
+abuse
+controls
+20
+21
+22
+6
+
+--- PAGE 7 ---
+option pros cons cost
+estimate
+realtime
+support
+ease of
+integration
+privacy
+control
+Firebase
+Very fast full-
+stack path;
+generous no-
+cost tier;
+realtime DB
+model is
+mature;
+Cloud
+Functions
+available
+Vendor-
+specific
+data model;
+server
+validation
+still needed
+for serious
+anti-cheat
+Spark free;
+Blaze pay-
+as-you-go;
+Firestore
+no-cost
+quotas
+include 1
+GiB
+storage
+and daily
+reads/
+writes
+thresholds
+Strong Easy
+Good, but
+you must
+still design
+minimisation
+and
+retention
+Supabase
+Postgres
+schema, SQL
+flexibility,
+built-in auth/
+RLS, realtime
+Broadcast/
+Presence/
+Postgres
+Changes
+Slightly
+more
+backend
+design than
+Firebase;
+serious
+anti-cheat
+still needs
+edge/server
+rules
+Free tier
+available;
+Pro starts
+at $25/
+month 
+Strong Easy to
+moderate
+Strong,
+especially if
+you keep
+sensitive
+signals
+server-only
+Postgres
++ Hasura
+Strong
+GraphQL
+workflow;
+subscriptions;
+flexible
+admin APIs
+More
+moving
+parts;
+usually
+overkill for
+a first quiz
+game;
+database/
+provider
+choices still
+yours
+Hasura
+DDN Base
+starts at
+$5 per
+active
+model/
+month,
+plus
+database
+and
+connector/
+hosting
+costs 
+Good via
+subscriptionsModerate
+Strong if you
+control DB
+and API
+boundaries
+well
+Serverless
+API +
+managed
+Postgres
+Best trust
+model for
+anti-cheat;
+easiest place
+to validate
+signed
+sessions and
+rate limits
+More
+engineering
+effort;
+pricing and
+ops vary by
+provider
+Variable;
+usually
+low tens
+per month
+upward,
+depending
+on
+provider
+mix
+SSE,
+WebSockets
+or polling
+depending
+on stack
+Moderate
+Best,
+because you
+can isolate
+public vs
+private data
+cleanly
+23
+24
+25
+26
+27
+7
+
+--- PAGE 8 ---
+The official documentation behind the table is straightforward: Firebase exposes a no-cost Spark plan
+and pay-as-you-go Blaze pricing, Supabase offers Free and Pro ($25/month) plans, Hasura’s DDN
+pricing starts at $5 per active model/month for Base, Supabase documents its real-time features
+directly, and MDN differentiates clearly between WebSockets and server-sent events. 
+My recommendation with your current requirements is:
+Prototype / private alpha: static frontend + local saves only.
+Public beta: Supabase Postgres + serverless submit validation + optional realtime “recent
+finishes”.
+If you want the least backend design work: Firebase is the fastest managed alternative.
+If you already prefer GraphQL-heavy infra: Hasura becomes more attractive.
+A secure submit flow should never trust the browser’s declared time. Instead, the server should mint a
+session object at quiz start containing quizId, difficulty, datasetVersion, startedAt, 
+deadlineAt, and a signature or server-side row. On submit, the server recomputes score validity,
+checks that the deadline is plausible, verifies one active attempt per user/anon ID, and only then writes
+the leaderboard entry. This is also where you can add anti-cheat signals such as submission velocity,
+duplicate solve patterns, and impossible timings. OWASP’s anti-automation guidance is directly relevant
+here: apply rate limits at more than one key, use layered controls, and do not expose overly specific
+failure messages that help attackers tune their tooling. 
+A sensible public leaderboard schema is:
+typeLeaderboardEntry= {
+id: string
+quizId: "fbs-schools-2026"
+datasetVersion: "fbs-2026.1"
+difficulty: "easy"| "medium"| "hard"
+displayName: string
+city?: string| null
+country?: string| null
+score: number
+total: number
+completionMs: number| null
+completed: boolean
+createdAt: string
+submittedAt: string
+verified: boolean
+moderationState: "visible"| "hidden"| "flagged"
+anonId: string // public-safe pseudonymous ID
+serverAttemptId: string// private/internal
+}
+For abuse prevention, I would not store raw IP addresses on the leaderboard row itself. If you need
+abuse signals, keep them in a separate private log with short retention, or derive a rotating HMAC /
+pseudonymous bucket identifier server-side. Because pseudonymised data is still personal data, your
+privacy notice should still explain the purpose, retention and user-visible/public parts of the feature. 
+28
+• 
+• 
+• 
+• 
+29
+22
+8
+
+--- PAGE 9 ---
+A simple architecture could look like this:
+Testing, roadmap and critical pitfalls
+The testing strategy should mirror the risk areas of the product. Unit-test the normalisation and
+answer-resolution engine very heavily, because that is where most hidden bugs live. Use fake timers
+for timer math so the tests do not actually wait, and use browser-level end-to-end tests for keyboard
+navigation, input persistence, responsive layout, and leaderboard submit flows. Playwright is a strong
+fit here because it auto-waits for actionable elements and reduces flaky timing issues, while Vitest’s fake
+timers make countdown logic straightforward to exercise. 
+For accessibility regression testing, add an automated scan step in E2E. Playwright’s accessibility testing
+guidance shows an @axe-core/playwright pattern and also notes an important limitation:
+automated tooling does not catch all WCAG issues. So the right model is: automated scans for broad
+regressions, plus manual passes for focus order , screen-reader announcements, reduced motion, and
+mobile keyboard experience. 
+Sample unit tests
+import{ describe, it, expect} from"vitest"
+import{ normalise, resolveAnswers} from"./matcher"
+describe("normalise", ()=>{
+it("normalises punctuation and spacing", ()=>{
+expect(normalise("  Texas  A&M ")).toBe("texas a and m")
+Browser
+quiz
+client
+Start
+attempt
+API
+Attempts
+table
+Signed
+attempt
+metadata
+Submit
+result
+API
+Validate
+deadline,
+score
+and
+datasetVersion
+Rate
+limit
+and
+anti-abuse
+checks
+Leaderboard
+table
+SSE
+or
+WebSocket
+feed
+Private
+security
+log
+30
+31
+9
+
+--- PAGE 10 ---
+})
+it("normalises Unicode equivalents", ()=>{
+expect(normalise("Hawaiʻi")).toBe(normalise("Hawaii"))
+})
+})
+describe("resolveAnswers", ()=>{
+constsolved= newSet<string>()
+it("hard mode does not cascade Texas from Texas A&M", ()=>{
+constout= resolveAnswers("Texas A&M", {
+difficulty: "hard",
+overlapMode: false,
+solved
+})
+expect(out).toEqual(["texas-a-and-m"])
+})
+it("easy mode can cascade permitted overlaps", ()=>{
+constout= resolveAnswers("Texas A&M", {
+difficulty: "easy",
+overlapMode: true,
+solved
+})
+expect(out).toEqual(["texas-a-and-m", "texas"])
+})
+it("prefers longest exact match on collisions", ()=>{
+constout= resolveAnswers("North Texas", {
+difficulty: "medium",
+overlapMode: false,
+solved
+})
+expect(out).toEqual(["north-texas"])
+})
+})
+Sample timer tests
+import{ describe, it, expect, vi} from"vitest"
+import{ computeRemainingMs} from"./timer"
+describe("timer persistence", ()=>{
+it("recomputes remaining time from absolute deadline", ()=>{
+vi.useFakeTimers()
+vi.setSystemTime(newDate("2026-09-01T12:00:00Z"))
+constdeadlineAt= Date.parse("2026-09-01T12:15:00Z")
+expect(computeRemainingMs(deadlineAt)).toBe(15* 60* 1000)
+10
+
+--- PAGE 11 ---
+vi.advanceTimersByTime(30_000)
+expect(computeRemainingMs(deadlineAt)).toBe(14* 60* 1000+ 30_000)
+})
+})
+Sample end-to-end tests
+import{ test, expect} from"@playwright/test"
+test("keeps focus in the input after solving a team", async({page})=>{
+awaitpage.goto("/quiz/fbs-schools")
+constinput= page.getByRole("textbox", { name: /enter school/i})
+awaitinput.fill("Texas A&M")
+awaitexpect(input).toBeFocused()
+awaitexpect(page.getByText("Texas A&M")).toBeVisible()
+})
+test("persists timed state across reload", async({page})=>{
+awaitpage.goto("/quiz/fbs-schools?difficulty=medium")
+awaitpage.getByRole("button", { name: /start/i}).click()
+awaitpage.getByRole("textbox", { name: /enter school/i}).fill("Army")
+awaitpage.reload()
+awaitexpect(page.getByText("Army")).toBeVisible()
+awaitexpect(page.getByRole("timer")).toBeVisible()
+})
+Prioritised roadmap
+Must-have for v1: corrected 2026 dataset, difficulty modes, deterministic alias engine, timer
+persistence, local resume, accessible focus/live regions, responsive conference layout, and a versioned
+results model. These are the foundations of correctness and replayability. 
+Nice-to-have soon after: public leaderboard by difficulty, recent finishes ticker , streak animations that
+honour reduced-motion, shareable result cards, “give up / reveal remaining teams”, and an admin
+dataset editor . These improve retention and maintainability without changing the core game loop. 
+Later: daily challenge mode, map mode, logos mode, nickname mode, conference-only micro quizzes,
+authenticated profiles, anti-cheat scoring calibration, and seasonal archive datasets such as 
+fbs-2024, fbs-2025, fbs-2026. The archive idea is especially valuable because conference
+membership changes make old quizzes interesting in their own right.
+Critical implementation pitfalls and mitigations
+Stale conference data — Mitigation: versioned dataset file plus admin override tool.
+32
+33
+• 
+11
+
+--- PAGE 12 ---
+Naïve substring matching — Mitigation: longest-first allowlist alias resolution with token-
+boundary checks. 
+Wrong matches during IME composition — Mitigation: do not resolve while isComposing is
+true. 
+Timer drift after tab switch — Mitigation: absolute deadlineAt plus visibilitychange
+recompute. 
+Lost keyboard focus after DOM update — Mitigation: keep focus in main input; do not move
+focus to solved slots. 
+Invisible focus ring because of custom styling — Mitigation: use :focus-visible and
+preserve a strong contrast outline. 
+Overanimated UI causing discomfort — Mitigation: prefers-reduced-motion variants for
+all non-essential motion. 
+Untrusted leaderboard submissions — Mitigation: server-side validation, layered rate limits, no
+client-authoritative times. 
+Recommended Codex prompt and implementation assets
+Concise recommended Codex prompt
+Build a polished, accessible, mobile-first sports quiz web app for a single 
+game: “Name every current 2026 FBS college football team”.
+Requirements:
+- Use a versioned dataset file, e.g. `fbs-2026.1.json`, not hard-coded team 
+arrays in components.
+- Render one card/table per conference. Each card has:
+  - conference name
+  - local progress count
+  - empty answer slots that fill when solved
+- Page top has:
+  - title
+  - difficulty selector: Easy / Medium / Hard
+  - global progress
+  - timer
+  - primary answer input
+- Make the design minimal but striking: premium dark theme, clean typography, 
+subtle motion, strong spacing, better than Sporcle.
+- Responsive layout:
+  - desktop: multi-column conference grid
+  - mobile: single-column accordion/cards
+- Accessibility:
+  - visible keyboard focus with `:focus-visible`
+  - screen-reader labels
+  - polite live region for solved answers
+  - assertive warning for urgent timer states
+  - reduced-motion support
+  - input focus stays in the main textbox after solves
+Game logic:
+- Easy:
+• 
+34
+• 
+35
+• 
+36
+• 
+37
+• 
+38
+• 
+39
+• 
+29
+12
+
+--- PAGE 13 ---
+  - no time limit
+  - enable overlapping/cascading auto-submit (`overlapMode`)
+  - example: if overlap rules allow it, entering “Texas A&M” can also satisfy 
+“Texas”
+- Medium:
+  - 15 minute timer
+  - no overlap/cascade behaviour
+- Hard:
+  - 7 minutes 30 seconds
+  - no overlap/cascade behaviour
+- Prevent scoring the same school twice in all modes.
+- Save and restore state locally with `localStorage`, keyed by `quizId + 
+difficulty + datasetVersion`.
+- Persist timed modes using absolute `deadlineAt`, not interval tick counts.
+- Ignore answer resolution while IME composition is active.
+Matching engine:
+- Implement deterministic alias-based matching with:
+  - Unicode normalisation
+  - lowercasing
+  - whitespace collapse
+  - punctuation harmonisation
+  - curated aliases per school
+  - longest-first collision resolution
+  - token-boundary checks
+- Do not use fuzzy matching that can create false positives.
+- Keep aliases in the dataset, not in components.
+Data corrections for 2026:
+- Texas State -> Pac-12
+- Louisiana Tech -> Sun Belt
+- UTEP -> Mountain West
+- North Dakota State -> Mountain West
+- Northern Illinois -> Mountain West
+- Sacramento State -> MAC
+- UMass -> MAC
+- Use official/current conference alignments for all other schools in the 
+dataset
+Leaderboard:
+- Add optional public leaderboard with fields:
+  - displayName
+  - city (optional)
+  - country (optional)
+  - score
+  - total
+  - difficulty
+  - completionMs
+  - timestamp
+  - datasetVersion
+- Architect so it can run:
+13
+
+--- PAGE 14 ---
+  - client-only in dev
+  - server-backed in production
+- For production, validate submissions server-side and do not trust client-
+reported time blindly.
+- Add anti-cheat basics:
+  - signed/server-issued attempt metadata
+  - rate limiting
+  - duplicate submission prevention
+  - moderation flag
+- Include privacy notice hooks and avoid storing raw IP in public tables.
+Admin / maintainability:
+- Add dataset import/export
+- add admin edit UI for aliases and conference membership
+- add dataset version switch
+- add reveal-all / reset / clear-save utilities
+- structure code cleanly with TypeScript types, tests, and reusable 
+components
+Testing:
+- Unit tests for normalisation, alias matching, overlap mode, prefix 
+collisions, and timer restore logic
+- E2E tests for keyboard flow, mobile layout, timer persistence, and 
+accessibility smoke checks
+Tech:
+- TypeScript
+- modern React stack
+- clean component architecture
+- no unnecessary dependencies
+- high-quality CSS with tokens for spacing, radius, colour, and motion
+Sample team schema
+exporttypeConferenceKey=
+| "acc"
+| "american"
+| "big12"
+| "bigten"
+| "cusa"
+| "mac"
+| "mountainwest"
+| "pac12"
+| "sec"
+| "sunbelt"
+| "independent"
+exporttypeTeam= {
+id: string
+school: string
+14
+
+--- PAGE 15 ---
+displaySchool: string
+nickname?: string
+conference: ConferenceKey
+city?: string
+state?: string
+isFbs: true
+season: 2026
+aliasGroup: string[]
+overlapAliases?: string[] // only used when overlapMode = true
+acceptedAbbreviations?: string[]
+sourceNote?: string
+}
+exporttypeQuizDataset= {
+quizId: "fbs-schools-2026"
+datasetVersion: "fbs-2026.1"
+season: 2026
+generatedAt: string
+conferences: Record<ConferenceKey, { label: string; sortOrder: number}>
+teams: Team[]
+}
+Sample leaderboard schema
+exporttypeLeaderboardSubmission= {
+quizId: string
+datasetVersion: string
+difficulty: "easy"| "medium"| "hard"
+displayName: string
+city?: string| null
+country?: string| null
+score: number
+total: number
+completionMs: number| null
+completed: boolean
+clientFinishedAt: string
+attemptToken: string
+}
+exporttypeLeaderboardEntry= {
+id: string
+quizId: string
+datasetVersion: string
+difficulty: "easy"| "medium"| "hard"
+displayName: string
+city?: string| null
+country?: string| null
+score: number
+total: number
+completionMs: number| null
+15
+
+--- PAGE 16 ---
+completed: boolean
+verified: boolean
+createdAt: string
+submittedAt: string
+anonId: string
+moderationState: "visible"| "hidden"| "flagged"
+}
+Example normalisation and alias rules
+constnormalise= (raw: string) =>
+raw
+.normalize("NFKC")
+.toLowerCase()
+.replace(/[’ʻ']/g, "'")
+.replace(/&/g, " and ")
+.replace(/[().,:/-]/g, " ")
+.replace(/\s+/g, " ")
+.trim()
+constaliasExamples= {
+"texas-a-and-m": [
+"texas a&m",
+"texas a and m",
+"texas am"
+],
+"miami-fl": [
+"miami fl",
+"miami florida",
+"miami (fl)"
+],
+"miami-oh": [
+"miami oh",
+"miami ohio",
+"miami (oh)"
+],
+"hawaii": [
+"hawaii",
+"hawai'i",
+"hawaiʻi"
+],
+"umass": [
+"umass",
+"massachusetts"
+],
+"north-dakota-state": [
+"north dakota state",
+"ndsu"
+],
+"northern-illinois": [
+16
+
+--- PAGE 17 ---
+"northern illinois",
+"niu"
+]
+}
+Final product recommendation
+If you want the strongest first implementation, build the quiz itself first-class, and treat the
+leaderboard as a second layer with server validation. The order of operations should be: correct
+dataset -> deterministic matcher -> timed persistence -> accessible responsive UI -> leaderboard -
+> admin tools. That sequence will produce a site that already feels materially better than Sporcle before
+you add any “extra” features, and it will also make the Codex prompt far less likely to generate brittle or
+stale code. 
+https://latechsports.com/news/2026/3/13/bulldogs-announce-2026-football-schedule-
+featuring-eight-sun-belt-games
+https://latechsports.com/news/2026/3/13/bulldogs-announce-2026-football-schedule-featuring-eight-sun-belt-games
+https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
+https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
+https://supabase.com/pricing
+https://supabase.com/pricing
+https://theacc.com/standings.aspx?path=football
+https://theacc.com/standings.aspx?path=football
+https://www.houstonchronicle.com/sports/college/article/texas-state-officially-joins-pac-12-
+league-20401520.php
+https://www.houstonchronicle.com/sports/college/article/texas-state-officially-joins-pac-12-league-20401520.php
+https://theamerican.org/standings.aspx?path=football
+https://theamerican.org/standings.aspx?path=football
+https://getsomemaction.com/standings.aspx?path=football
+https://getsomemaction.com/standings.aspx?path=football
+https://conferenceusa.com/standings.aspx?path=football
+https://conferenceusa.com/standings.aspx?path=football
+https://developer .mozilla.org/en-US/docs/Web/API/Element/input_event
+https://developer .mozilla.org/en-US/docs/Web/API/Element/input_event
+https://developer .mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/
+normalize
+https://developer .mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+https://developer .mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+https://developer .mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+https://developer .mozilla.org/en-US/docs/Web/API/Web_Storage_API
+https://developer .mozilla.org/en-US/docs/Web/API/Web_Storage_API
+https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/
+https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/
+40
+1 5 40
+2 10 13 34
+3 24
+4
+6
+7
+8
+9
+11 35
+12
+14 36
+15 32
+16 37
+17
+
+--- PAGE 18 ---
+https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
+https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
+https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
+https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
+https://developer .mozilla.org/en-US/docs/Web/CSS/%40media/prefers-reduced-motion
+https://developer .mozilla.org/en-US/docs/Web/CSS/%40media/prefers-reduced-motion
+https://cheatsheetseries.owasp.org/cheatsheets/Bot_Management_and_Anti-
+Automation_Cheat_Sheet.html
+https://cheatsheetseries.owasp.org/cheatsheets/Bot_Management_and_Anti-Automation_Cheat_Sheet.html
+https://developer .mozilla.org/en-US/docs/Web/API/Server-sent_events
+https://developer .mozilla.org/en-US/docs/Web/API/Server-sent_events
+https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/personal-information-what-is-
+it/what-is-personal-data/what-is-personal-data/
+https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/personal-information-what-is-it/what-is-personal-data/
+what-is-personal-data/
+https://firebase.google.com/pricing
+https://firebase.google.com/pricing
+https://supabase.com/docs/guides/realtime
+https://supabase.com/docs/guides/realtime
+https://hasura.io/pricing
+https://hasura.io/pricing
+https://hasura.io/docs/3.0/graphql-api/subscriptions/
+https://hasura.io/docs/3.0/graphql-api/subscriptions/
+https://vitest.dev/guide/mocking/timers
+https://vitest.dev/guide/mocking/timers
+https://playwright.dev/docs/accessibility-testing
+https://playwright.dev/docs/accessibility-testing
+https://developer .mozilla.org/en-US/docs/Web/CSS/%3Afocus-visible
+https://developer .mozilla.org/en-US/docs/Web/CSS/%3Afocus-visible
+17
+18
+19 39
+20 29
+21
+22
+23 28
+25 33
+26
+27
+30
+31
+38
+18
