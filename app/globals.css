@@ -291,6 +291,10 @@ button:disabled {
   padding: 8px var(--space-page) 24px;
 }
 
+.game-sticky-stack {
+  display: contents;
+}
+
 .pregame-panel,
 .results-panel,
 .profile-panel,
@@ -679,13 +683,61 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 
-  .game-header {
+  .game-shell {
+    padding-top: 0;
+  }
+
+  .game-sticky-stack {
+    position: sticky;
     top: 92px;
+    z-index: 35;
+    display: grid;
+    gap: 6px;
+    padding: 6px 0 8px;
+    background: linear-gradient(180deg, rgba(8, 8, 9, 0.97), rgba(8, 8, 9, 0.9));
+    backdrop-filter: blur(14px);
+  }
+
+  .game-header {
+    position: static;
+    top: auto;
+    z-index: auto;
     grid-template-columns: 1fr;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .answer-rack {
-    top: 246px;
+    position: static;
+    top: auto;
+    z-index: auto;
+    margin-bottom: 0;
+    border-radius: var(--radius-md);
+  }
+
+  .answer-input {
+    min-height: 46px;
+    font-size: 1.18rem;
+  }
+
+  .answer-meta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    justify-content: initial;
+  }
+
+  .answer-meta span {
+    min-width: 0;
+  }
+
+  .answer-meta span:nth-child(2),
+  .answer-meta .connection-dot {
+    display: none;
+  }
+
+  .answer-rack .button {
+    min-height: 34px;
   }
 
   .conference-body {
@@ -694,5 +746,15 @@ button:disabled {
 
   .conference-card[data-open="true"] .conference-body {
     display: grid;
+  }
+}
+
+@media (max-width: 390px) {
+  .answer-meta {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .answer-meta span:first-child {
+    display: none;
   }
 }
