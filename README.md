@@ -7,7 +7,7 @@ Production-ready first version of a scalable sports-games site. The first live g
 - Next.js App Router, React, TypeScript and Tailwind CSS.
 - Versioned FBS dataset with validator and curated aliases.
 - Reusable quiz engine for normalisation, alias matching, cascading recognition, timers, results and leaderboard ranking.
-- Easy, Medium and Hard modes.
+- Casual, Fan and Ball Knower modes.
 - Responsive conference grid with accessible mobile accordion behavior.
 - Local fallback for attempts, history, profile drafts and local result storage.
 - Supabase route handlers and migration for profiles, attempts, answer events, leaderboard entries, moderation flags and security events.
