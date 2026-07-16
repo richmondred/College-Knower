@@ -612,71 +612,73 @@ export function FbsQuizGame() {
       <main className="game-shell">
         <div className="sr-only" aria-live="polite">{liveMessage}</div>
         <div className="sr-only" role="alert">{assertiveMessage}</div>
-        <section className="game-header" aria-label="Game status">
-          <button className="button ghost" type="button" onClick={() => setPhase("intro")}>
-            Back
-          </button>
-          <div className="score-strip">
-            <Stat label="Difficulty" value={difficulty.label} compact />
-            <Stat label="Score" value={`${attempt.solvedTeamIds.length} / ${dataset.teams.length}`} compact />
-            <Stat label="Remaining" value={`${dataset.teams.length - attempt.solvedTeamIds.length}`} compact />
-            <Stat label={difficulty.durationMs === null ? "Elapsed" : "Timer"} value={difficulty.durationMs === null ? formatElapsed(elapsedMs) : formatClock(remainingMs)} compact />
-          </div>
-          <button className="button" type="button" onClick={() => setShowEndDialog(true)}>
-            End Game
-          </button>
-        </section>
+        <div className="game-sticky-stack">
+          <section className="game-header" aria-label="Game status">
+            <button className="button ghost" type="button" onClick={() => setPhase("intro")}>
+              Back
+            </button>
+            <div className="score-strip">
+              <Stat label="Difficulty" value={difficulty.label} compact />
+              <Stat label="Score" value={`${attempt.solvedTeamIds.length} / ${dataset.teams.length}`} compact />
+              <Stat label="Remaining" value={`${dataset.teams.length - attempt.solvedTeamIds.length}`} compact />
+              <Stat label={difficulty.durationMs === null ? "Elapsed" : "Timer"} value={difficulty.durationMs === null ? formatElapsed(elapsedMs) : formatClock(remainingMs)} compact />
+            </div>
+            <button className="button" type="button" onClick={() => setShowEndDialog(true)}>
+              End Game
+            </button>
+          </section>
 
-        <section className="answer-rack" aria-label="Answer entry" data-correct={correctFlash}>
-          <label className="sr-only" htmlFor="answer-input">Type a school</label>
-          <input
-            ref={inputRef}
-            id="answer-input"
-            className="answer-input"
-            value={inputValue}
-            placeholder="Type a school..."
-            autoComplete="off"
-            autoCapitalize="none"
-            spellCheck={false}
-            onCompositionStart={() => {
-              composingRef.current = true;
-            }}
-            onCompositionEnd={(event) => {
-              composingRef.current = false;
-              handleInputChange(event.currentTarget.value, false);
-            }}
-            onChange={(event) =>
-              handleInputChange(
-                event.currentTarget.value,
-                "isComposing" in event.nativeEvent && Boolean(event.nativeEvent.isComposing)
-              )
-            }
-            onKeyDown={(event) => {
-              if (event.key === "Enter" && difficulty.id === "hard") {
-                event.preventDefault();
-                evaluateAnswer(inputValue, true);
+          <section className="answer-rack" aria-label="Answer entry" data-correct={correctFlash}>
+            <label className="sr-only" htmlFor="answer-input">Type a school</label>
+            <input
+              ref={inputRef}
+              id="answer-input"
+              className="answer-input"
+              value={inputValue}
+              placeholder="Type a school..."
+              autoComplete="off"
+              autoCapitalize="none"
+              spellCheck={false}
+              onCompositionStart={() => {
+                composingRef.current = true;
+              }}
+              onCompositionEnd={(event) => {
+                composingRef.current = false;
+                handleInputChange(event.currentTarget.value, false);
+              }}
+              onChange={(event) =>
+                handleInputChange(
+                  event.currentTarget.value,
+                  "isComposing" in event.nativeEvent && Boolean(event.nativeEvent.isComposing)
+                )
               }
-            }}
-          />
-          <div className="answer-meta">
-            <span>{feedback || (difficulty.id === "hard" ? "Enter submits one team." : "Recognition runs while you type.")}</span>
-            <span>{lastAccepted ? `Last: ${lastAccepted}` : "No answers yet"}</span>
-            <span>
-              {difficulty.hintsAllowed
-                ? `Clues: ${cluesRemaining} / ${difficulty.clueLimit}`
-                : "No clues"}
-            </span>
-            <span className="connection-dot" data-online={serverBacked}>
-              {serverBacked ? "Verified attempt" : "Local fallback"}
-            </span>
-            {difficulty.hintsAllowed ? (
-              <button className="button ghost" type="button" onClick={revealHint} disabled={!canRevealHint}>
-                <Lightbulb size={16} aria-hidden="true" />
-                Reveal hint
-              </button>
-            ) : null}
-          </div>
-        </section>
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && difficulty.id === "hard") {
+                  event.preventDefault();
+                  evaluateAnswer(inputValue, true);
+                }
+              }}
+            />
+            <div className="answer-meta">
+              <span>{feedback || (difficulty.id === "hard" ? "Enter submits one team." : "Recognition runs while you type.")}</span>
+              <span>{lastAccepted ? `Last: ${lastAccepted}` : "No answers yet"}</span>
+              <span>
+                {difficulty.hintsAllowed
+                  ? `Clues: ${cluesRemaining} / ${difficulty.clueLimit}`
+                  : "No clues"}
+              </span>
+              <span className="connection-dot" data-online={serverBacked}>
+                {serverBacked ? "Verified attempt" : "Local fallback"}
+              </span>
+              {difficulty.hintsAllowed ? (
+                <button className="button ghost" type="button" onClick={revealHint} disabled={!canRevealHint}>
+                  <Lightbulb size={16} aria-hidden="true" />
+                  Reveal hint
+                </button>
+              ) : null}
+            </div>
+          </section>
+        </div>
 
         <ConferenceGrid
           dataset={dataset}
