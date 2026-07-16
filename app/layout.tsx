@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { CursorBackdrop } from "@/components/CursorBackdrop";
 import "./globals.css";
 
 const BRAND = {
-  name: "collegeknower"
+  name: "ball knowers"
 } as const;
 
 export const metadata: Metadata = {
@@ -14,11 +15,11 @@ export const metadata: Metadata = {
     template: `%s | ${BRAND.name}`
   },
   description:
-    "collegeknower is a premium college football quiz platform.",
+    "ball knowers is a sports quiz platform for people who know ball.",
   openGraph: {
     title: BRAND.name,
     description:
-      "collegeknower is a premium college football quiz platform.",
+      "ball knowers is a sports quiz platform for people who know ball.",
     type: "website"
   },
   twitter: {
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <CursorBackdrop />
         <div className="shell">
           <header className="site-header">
             <Link className="brand-mark" href="/">
@@ -49,8 +51,11 @@ export default function RootLayout({
               <span>{BRAND.name}</span>
             </Link>
             <nav className="site-nav" aria-label="Primary">
-              <Link href="/games">Games</Link>
-              <Link href="/games/college-football/fbs-teams">FBS 138</Link>
+              <Link href="/games/college-football">College football knowers</Link>
+              <Link href="/games/nfl">NFL knowers</Link>
+              <Link href="/games/english-football">English football knowers</Link>
+              <Link href="/games/european-football">European football knowers</Link>
+              <Link href="/games/world-football">World football knowers</Link>
               <Link href="/games/college-football/fbs-teams/leaderboard">Leaderboard</Link>
               <Link href="/profile">Profile</Link>
             </nav>

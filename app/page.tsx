@@ -1,22 +1,23 @@
-import { Trophy, Zap } from "lucide-react";
+import { ArrowRight, Trophy, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <main className="page">
-      <p className="eyebrow">collegeknower</p>
-      <h1 className="display-title">Know the board.</h1>
+      <p className="eyebrow">ball knowers</p>
+      <h1 className="display-title">Know ball, prove it.</h1>
       <p className="lead">
-        A fast college football quiz platform built around the 2026 FBS alignment.
+        Pick your sport, pick your quiz, and put your memory under the lights.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link className="button primary" href="/games/college-football/fbs-teams">
+        <Link className="button primary" href="/games/college-football">
           <Zap size={18} aria-hidden="true" />
-          Play FBS 138
+          College football knowers
         </Link>
         <Link className="button" href="/games">
           <Trophy size={18} aria-hidden="true" />
-          Browse games
+          Browse all knowers
+          <ArrowRight size={18} aria-hidden="true" />
         </Link>
       </div>
     </main>

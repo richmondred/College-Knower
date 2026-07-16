@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LeaderboardView } from "@/components/game/LeaderboardView";
 
 export const metadata: Metadata = {
-  title: "FBS 138 Leaderboard",
+  title: "All Teams Quiz Leaderboard",
   description: "Global, country, city and weekly rankings for the 2026 FBS teams quiz."
 };
 

@@ -1,6 +1,6 @@
-# collegeknower
+# ball knowers
 
-Production-ready first version of a scalable sports-games site. The first game is **Name Every Current FBS College Football Team**, using dataset `fbs-2026.1` with exactly 138 teams.
+Production-ready first version of a scalable sports-games site. The first live game is **College Football Knowers: All Teams Quiz**, using dataset `fbs-2026.1` with exactly 138 teams.
 
 ## Built
 

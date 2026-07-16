@@ -900,7 +900,7 @@ function buildShareText(summary: AttemptSummary, difficulty: DifficultyId, elaps
     return "🟥";
   });
   return [
-    "FBS 138",
+    "ball knowers: all teams quiz",
     `${labels[difficulty]} · 2026 Alignment`,
     "",
     `${summary.score}/${summary.total}`,

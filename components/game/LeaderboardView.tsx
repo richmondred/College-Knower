@@ -131,7 +131,7 @@ export function LeaderboardView() {
   return (
     <section className="leaderboard-panel">
       <p className="eyebrow">Leaderboard</p>
-      <h1 className="display-title">FBS 138 rankings.</h1>
+      <h1 className="display-title">All teams rankings.</h1>
       <div className="mb-5 grid gap-3 md:grid-cols-5">
         <label className="grid gap-1">
           <span className="text-sm font-bold">Leaderboard</span>
