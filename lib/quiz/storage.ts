@@ -33,7 +33,7 @@ export function historyStorageKey(quizId: string, datasetVersion: string): strin
   return key(["history", quizId, datasetVersion]);
 }
 
-export function leaderboardStorageKey(quizId: string, datasetVersion: string, difficulty: DifficultyId): string {
+export function leaderboardStorageKey(quizId: string, datasetVersion: string, difficulty: string): string {
   return key(["leaderboard", quizId, datasetVersion, difficulty]);
 }
 

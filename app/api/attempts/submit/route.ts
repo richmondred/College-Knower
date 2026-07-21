@@ -1,10 +1,7 @@
 import { randomUUID } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { fbs2026Dataset } from "@/data/fbs/fbs-2026.1";
-import { fbsGameConfig } from "@/data/fbs/game-config";
-import type { DifficultyId } from "@/data/fbs/types";
-import { isLeaderboardEligible } from "@/lib/quiz/results";
 import { sanitisePublicText, validateCity, validateDisplayName } from "@/lib/quiz/profile";
+import { getRegisteredQuiz } from "@/lib/quiz/quiz-registry";
 import { checkRateLimit } from "@/lib/server/rate-limit";
 import { getServiceSupabase, isSupabaseConfigured } from "@/lib/server/supabase";
 
@@ -19,7 +16,7 @@ type SubmitBody = {
     id?: string;
     quizId?: string;
     datasetVersion?: string;
-    difficulty?: DifficultyId;
+    difficulty?: string;
     solvedTeamIds?: string[];
     hintCount?: number;
     resumed?: boolean;
@@ -39,10 +36,19 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid submission." }, { status: 400 });
   }
   if (
-    body.attempt.quizId !== fbsGameConfig.id ||
-    body.attempt.datasetVersion !== fbsGameConfig.datasetVersion ||
-    !body.attempt.difficulty
+      !body.attempt.quizId ||
+      !body.attempt.datasetVersion ||
+      !body.attempt.difficulty
   ) {
+    return NextResponse.json({ error: "Wrong quiz or dataset version." }, { status: 400 });
+  }
+
+  const registeredQuiz = getRegisteredQuiz(
+    body.attempt.quizId,
+    body.attempt.datasetVersion,
+    body.attempt.difficulty
+  );
+  if (!registeredQuiz) {
     return NextResponse.json({ error: "Wrong quiz or dataset version." }, { status: 400 });
   }
 
@@ -55,7 +61,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: nameError ?? cityError ?? "Invalid country." }, { status: 400 });
   }
 
-  const knownTeamIds = new Set(fbs2026Dataset.teams.map((team) => team.id));
+  const knownTeamIds = new Set(registeredQuiz.mode.answerIds);
   const solvedTeamIds = body.attempt.solvedTeamIds ?? [];
   const uniqueSolved = new Set(solvedTeamIds);
   if (uniqueSolved.size !== solvedTeamIds.length) {
@@ -79,6 +85,9 @@ export async function POST(request: NextRequest) {
     .from("quiz_attempts")
     .select("*")
     .eq("id", body.attempt.id)
+    .eq("quiz_id", registeredQuiz.id)
+    .eq("dataset_version", registeredQuiz.datasetVersion)
+    .eq("difficulty", registeredQuiz.mode.id)
     .single();
   if (attemptError || !attemptRow) {
     return NextResponse.json({ error: "Attempt was not issued by the server." }, { status: 400 });
@@ -90,19 +99,12 @@ export async function POST(request: NextRequest) {
   const startedAt = new Date(attemptRow.started_at).getTime();
   const finishedAt = body.attempt.finishedAt ?? Date.now();
   const completionMs = Math.max(0, finishedAt - startedAt);
-  const completed = uniqueSolved.size === fbsGameConfig.totalAnswers;
+  const total = Number(attemptRow.total ?? registeredQuiz.mode.total);
+  const completed = uniqueSolved.size === total;
   const expired =
     attemptRow.deadline_at !== null && finishedAt > new Date(attemptRow.deadline_at).getTime() + 2_000;
   const impossibleVelocity = completed && completionMs < 8_000;
-  const eligible =
-    !impossibleVelocity &&
-    isLeaderboardEligible({
-      difficulty: body.attempt.difficulty,
-      hintCount: body.attempt.hintCount ?? 0,
-      resumed: Boolean(body.attempt.resumed),
-      serverIssued: true,
-      status: expired ? "expired" : completed ? "completed" : "ended"
-    });
+  const eligible = !impossibleVelocity;
 
   const profileId = randomUUID();
   const { error: profileError } = await supabase.from("profiles").insert({
@@ -146,20 +148,23 @@ export async function POST(request: NextRequest) {
   }
 
   if (eligible) {
-    await supabase.from("leaderboard_entries").insert({
+    const { error: leaderboardError } = await supabase.from("leaderboard_entries").insert({
       id: randomUUID(),
       attempt_id: body.attempt.id,
       profile_id: profileId,
-      quiz_id: fbsGameConfig.id,
-      dataset_version: fbsGameConfig.datasetVersion,
+      quiz_id: registeredQuiz.id,
+      dataset_version: registeredQuiz.datasetVersion,
       difficulty: body.attempt.difficulty,
       score: uniqueSolved.size,
-      total: fbsGameConfig.totalAnswers,
+      total,
       completion_ms: completionMs,
       completed,
       verified: true,
       moderation_state: impossibleVelocity ? "flagged" : "visible"
     });
+    if (leaderboardError) {
+      return NextResponse.json({ error: "Could not store leaderboard entry." }, { status: 500 });
+    }
   }
 
   return NextResponse.json({

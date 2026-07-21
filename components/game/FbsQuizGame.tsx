@@ -91,6 +91,7 @@ export function FbsQuizGame() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const composingRef = useRef(false);
   const finishedRef = useRef(false);
+  const pendingScrollTeamIdRef = useRef<string | null>(null);
 
   const activeStorageKey = attemptStorageKey(gameConfig.id, gameConfig.datasetVersion, difficultyId);
   const localHistoryKey = historyStorageKey(gameConfig.id, gameConfig.datasetVersion);
@@ -153,6 +154,16 @@ export function FbsQuizGame() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (phase !== "active" || !pendingScrollTeamIdRef.current) return;
+    const targetId = pendingScrollTeamIdRef.current;
+    if (!recentTeamIds.has(targetId)) return;
+    pendingScrollTeamIdRef.current = null;
+    window.requestAnimationFrame(() => {
+      scrollElementIntoViewIfNeeded(`[data-team-id="${targetId}"]`);
+    });
+  }, [phase, recentTeamIds]);
 
   useEffect(() => {
     if (phase !== "active" || !attempt) return;
@@ -255,7 +266,8 @@ export function FbsQuizGame() {
         body: JSON.stringify({
           quizId: gameConfig.id,
           datasetVersion: gameConfig.datasetVersion,
-          difficulty: difficulty.id
+          difficulty: difficulty.id,
+          timeLimitMs: selectedTimeLimitMs
         })
       });
       if (response.ok) {
@@ -315,6 +327,7 @@ export function FbsQuizGame() {
 
     if (acceptedNames.length) {
       triggerCorrectFeedback();
+      pendingScrollTeamIdRef.current = newIds[0];
       setRecentTeamIds(new Set(newIds));
       window.setTimeout(() => setRecentTeamIds(new Set()), 850);
       const firstTeam = findTeam(dataset, newIds[0]);
@@ -618,7 +631,7 @@ export function FbsQuizGame() {
                 Resume saved run
               </button>
             ) : null}
-            <a className="button ghost" href="/games/college-football/fbs-teams/leaderboard">
+            <a className="button ghost" href={`/leaderboard?quiz=${encodeURIComponent(gameConfig.id)}`}>
               <Trophy size={18} aria-hidden="true" />
               Leaderboard
             </a>
@@ -817,7 +830,7 @@ export function FbsQuizGame() {
                     <Home size={17} aria-hidden="true" />
                     Back to Home
                   </Link>
-                  <Link className="button" href="/games/college-football/fbs-teams/leaderboard">
+                  <Link className="button" href={`/leaderboard?quiz=${encodeURIComponent(gameConfig.id)}&mode=${encodeURIComponent(attempt.difficulty)}`}>
                     <Trophy size={17} aria-hidden="true" />
                     View Leaderboard
                   </Link>
@@ -882,7 +895,7 @@ export function FbsQuizGame() {
             <button className="button" type="button" onClick={() => setPhase("intro")}>
               Change Difficulty
             </button>
-            <a className="button ghost" href="/games/college-football/fbs-teams/leaderboard">
+            <a className="button ghost" href={`/leaderboard?quiz=${encodeURIComponent(gameConfig.id)}&mode=${encodeURIComponent(attempt.difficulty)}`}>
               View Leaderboard
             </a>
           </div>
@@ -908,6 +921,17 @@ function ResultLine({ label, value }: { label: string; value: string }) {
       <strong className="mt-1 block text-lg">{value}</strong>
     </div>
   );
+}
+
+function scrollElementIntoViewIfNeeded(selector: string) {
+  const element = document.querySelector<HTMLElement>(selector);
+  if (!element) return;
+  const rect = element.getBoundingClientRect();
+  const stickyTop = window.matchMedia("(max-width: 720px)").matches ? 118 : 158;
+  const lowerEdge = window.innerHeight - 24;
+  if (rect.top < stickyTop || rect.bottom > lowerEdge) {
+    element.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+  }
 }
 
 function buildShareText(summary: AttemptSummary, difficulty: DifficultyId, elapsedMs: number): string {

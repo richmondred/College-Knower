@@ -195,7 +195,7 @@ export function LeaderboardView() {
               <tr key={entry.id} className="border-t border-[var(--color-border)]">
                 <td className="p-3 metric">{index + 1}</td>
                 <td className="p-3 font-bold">{entry.displayName}</td>
-                <td className="p-3">{difficultyLabels[entry.difficulty]}</td>
+                <td className="p-3">{difficultyLabels[entry.difficulty as DifficultyId] ?? entry.difficulty}</td>
                 <td className="p-3 text-[var(--color-muted)]">
                   {countryFlag(entry.countryCode)} {entry.showCity && entry.city ? `${entry.city}, ` : ""}
                   {entry.countryCode}

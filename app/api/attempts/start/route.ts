@@ -1,10 +1,22 @@
 import { randomUUID } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { fbsGameConfig } from "@/data/fbs/game-config";
-import type { DifficultyId } from "@/data/fbs/types";
-import { difficultyById } from "@/lib/quiz/matcher";
+import { getRegisteredQuiz } from "@/lib/quiz/quiz-registry";
 import { checkRateLimit } from "@/lib/server/rate-limit";
 import { getServiceSupabase, isSupabaseConfigured } from "@/lib/server/supabase";
+
+type StartBody = {
+  quizId?: string;
+  datasetVersion?: string;
+  difficulty?: string;
+  timeLimitMs?: number | null;
+};
+
+function resolveDeadline(startedAt: number, timeLimitMs: number | null | undefined) {
+  if (timeLimitMs === null) return null;
+  if (typeof timeLimitMs !== "number" || !Number.isFinite(timeLimitMs)) return null;
+  const bounded = Math.max(1_000, Math.min(timeLimitMs, 7 * 24 * 60 * 60 * 1000));
+  return startedAt + bounded;
+}
 
 export async function POST(request: NextRequest) {
   const ipKey = request.headers.get("x-forwarded-for")?.split(",")[0] ?? "local";
@@ -12,27 +24,24 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Too many attempt starts." }, { status: 429 });
   }
 
-  const body = (await request.json().catch(() => null)) as
-    | { quizId?: string; datasetVersion?: string; difficulty?: DifficultyId }
-    | null;
-  if (
-    !body ||
-    body.quizId !== fbsGameConfig.id ||
-    body.datasetVersion !== fbsGameConfig.datasetVersion ||
-    !body.difficulty
-  ) {
+  const body = (await request.json().catch(() => null)) as StartBody | null;
+  if (!body?.quizId || !body.datasetVersion || !body.difficulty) {
     return NextResponse.json({ error: "Invalid attempt request." }, { status: 400 });
   }
 
-  const difficulty = difficultyById(fbsGameConfig.difficulties, body.difficulty);
+  const registeredQuiz = getRegisteredQuiz(body.quizId, body.datasetVersion, body.difficulty);
+  if (!registeredQuiz) {
+    return NextResponse.json({ error: "Invalid attempt request." }, { status: 400 });
+  }
+
   const now = Date.now();
   const attempt = {
     attemptId: randomUUID(),
-    quizId: fbsGameConfig.id,
-    datasetVersion: fbsGameConfig.datasetVersion,
-    difficulty: difficulty.id,
+    quizId: registeredQuiz.id,
+    datasetVersion: registeredQuiz.datasetVersion,
+    difficulty: registeredQuiz.mode.id,
     startedAt: now,
-    deadlineAt: difficulty.durationMs === null ? null : now + difficulty.durationMs,
+    deadlineAt: resolveDeadline(now, body.timeLimitMs),
     solvedTeamIds: [],
     hintTeamIds: [],
     hintCount: 0,
@@ -61,7 +70,7 @@ export async function POST(request: NextRequest) {
     deadline_at: attempt.deadlineAt ? new Date(attempt.deadlineAt).toISOString() : null,
     finished_at: null,
     score: 0,
-    total: fbsGameConfig.totalAnswers,
+    total: registeredQuiz.mode.total,
     completed: false,
     hint_count: 0,
     resumed: false,

@@ -56,7 +56,7 @@ export default function RootLayout({
               <Link href="/games/english-football">English Football Knowers</Link>
               <Link href="/games/european-football">European Football Knowers</Link>
               <Link href="/games/world-football">World Football Knowers</Link>
-              <Link href="/games/college-football/fbs-teams/leaderboard">Leaderboard</Link>
+              <Link href="/leaderboard">Leaderboard</Link>
               <Link href="/profile">Profile</Link>
             </nav>
           </header>

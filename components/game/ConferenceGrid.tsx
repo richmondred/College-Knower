@@ -68,6 +68,7 @@ export function ConferenceGrid({
                 return (
                   <li
                     className="team-slot"
+                    data-team-id={team.id}
                     data-revealed={revealed}
                     data-hinted={hinted}
                     data-recent={recent}

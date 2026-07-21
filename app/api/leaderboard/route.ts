@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fbsGameConfig } from "@/data/fbs/game-config";
-import type { DifficultyId } from "@/data/fbs/types";
 import { getServiceSupabase, isSupabaseConfigured } from "@/lib/server/supabase";
 
 export async function GET(request: NextRequest) {
@@ -12,11 +11,9 @@ export async function GET(request: NextRequest) {
   }
 
   const search = request.nextUrl.searchParams;
-  const difficultyParam = search.get("difficulty") ?? "medium";
-  const difficulty =
-    difficultyParam === "easy" || difficultyParam === "medium" || difficultyParam === "hard"
-      ? (difficultyParam as DifficultyId)
-      : null;
+  const quizId = search.get("quizId") ?? fbsGameConfig.id;
+  const datasetVersion = search.get("datasetVersion") ?? fbsGameConfig.datasetVersion;
+  const difficultyParam = search.get("difficulty") ?? "overall";
   const scope = search.get("scope") ?? "global";
   const country = search.get("country");
   const city = search.get("city");
@@ -25,8 +22,8 @@ export async function GET(request: NextRequest) {
   let query = supabase
     .from("public_leaderboard")
     .select("*")
-    .eq("quiz_id", fbsGameConfig.id)
-    .eq("dataset_version", fbsGameConfig.datasetVersion)
+    .eq("quiz_id", quizId)
+    .eq("dataset_version", datasetVersion)
     .eq("moderation_state", "visible")
     .order("completed", { ascending: false })
     .order("score", { ascending: false })
@@ -34,7 +31,7 @@ export async function GET(request: NextRequest) {
     .order("created_at", { ascending: true })
     .limit(100);
 
-  if (difficulty) query = query.eq("difficulty", difficulty);
+  if (difficultyParam !== "overall") query = query.eq("difficulty", difficultyParam);
   if (scope === "country" && country) query = query.eq("country_code", country);
   if (scope === "city" && city) query = query.ilike("city", city);
   if (scope === "week") {

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { LeaderboardView } from "@/components/game/LeaderboardView";
+import { LeaderboardHub } from "@/components/game/LeaderboardHub";
+import { fbsGameConfig } from "@/data/fbs/game-config";
+import { getLeaderboardQuizOptions } from "@/data/leaderboard-options";
 
 export const metadata: Metadata = {
   title: "All Teams Quiz Leaderboard",
@@ -7,9 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function LeaderboardPage() {
-  return (
-    <main className="game-shell">
-      <LeaderboardView />
-    </main>
-  );
+  return <LeaderboardHub options={getLeaderboardQuizOptions()} initialQuizId={fbsGameConfig.id} />;
 }

@@ -1,12 +1,10 @@
-import type { DifficultyId } from "@/data/fbs/types";
-
 export type LeaderboardEntry = {
   id: string;
   attemptId: string;
   profileId: string;
   quizId: string;
   datasetVersion: string;
-  difficulty: DifficultyId;
+  difficulty: string;
   displayName: string;
   city: string | null;
   showCity: boolean;
