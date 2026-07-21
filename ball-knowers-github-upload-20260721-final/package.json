@@ -1,0 +1,54 @@
+{
+  "name": "sports-quiz-platform",
+  "version": "1.0.0",
+  "description": "Production-ready first version of a scalable sports quiz platform.",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "PLAYWRIGHT_BROWSERS_PATH=.ms-playwright playwright test",
+    "test:a11y": "PLAYWRIGHT_BROWSERS_PATH=.ms-playwright playwright test tests/e2e/accessibility.spec.ts",
+    "validate:data": "node --import tsx scripts/validate-fbs-dataset.ts",
+    "data:export": "node --import tsx scripts/export-fbs-dataset.ts",
+    "data:inspect": "node --import tsx scripts/inspect-fbs-dataset.ts",
+    "verify": "pnpm validate:data && pnpm typecheck && pnpm lint && pnpm test && pnpm build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.7.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.2",
+    "lucide-react": "^1.24.0",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.61.1",
+    "@tailwindcss/postcss": "^4.3.2",
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.2.10",
+    "playwright": "^1.61.1",
+    "tailwindcss": "^4.3.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
+  }
+}
