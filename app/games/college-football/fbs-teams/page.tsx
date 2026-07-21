@@ -5,7 +5,7 @@ import { fbsGameConfig } from "@/data/fbs/game-config";
 export const metadata: Metadata = {
   title: "Name Every FBS College Football Team",
   description:
-    "Can you name all 138 FBS college football teams in the 2026 alignment? Choose Easy, Medium or Hard and compare your score on the leaderboard.",
+    "Can you name all 138 FBS college football teams in the 2026 alignment? Choose Casual, Fan or Ball Knower and compare your score on the leaderboard.",
   alternates: {
     canonical: "/games/college-football/fbs-teams"
   },

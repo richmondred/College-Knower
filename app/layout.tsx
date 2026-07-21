@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Analytics } from "@vercel/analytics/next";
 import { CursorBackdrop } from "@/components/CursorBackdrop";
 import "./globals.css";
 
@@ -52,18 +51,17 @@ export default function RootLayout({
               <span>{BRAND.name}</span>
             </Link>
             <nav className="site-nav" aria-label="Primary">
-              <Link href="/games/college-football">College football knowers</Link>
-              <Link href="/games/nfl">NFL knowers</Link>
-              <Link href="/games/english-football">English football knowers</Link>
-              <Link href="/games/european-football">European football knowers</Link>
-              <Link href="/games/world-football">World football knowers</Link>
+              <Link href="/games/college-football">College Football Knowers</Link>
+              <Link href="/games/nfl">NFL Knowers</Link>
+              <Link href="/games/english-football">English Football Knowers</Link>
+              <Link href="/games/european-football">European Football Knowers</Link>
+              <Link href="/games/world-football">World Football Knowers</Link>
               <Link href="/games/college-football/fbs-teams/leaderboard">Leaderboard</Link>
               <Link href="/profile">Profile</Link>
             </nav>
           </header>
           {children}
         </div>
-        <Analytics />
       </body>
     </html>
   );

@@ -15,6 +15,7 @@ type LocalProfile = {
 };
 
 const profileKey = "sportsQuiz:v1:profile";
+const difficultyLabels = new Map(fbsGameConfig.difficulties.map((difficulty) => [difficulty.id, difficulty.label]));
 
 export function ProfileView() {
   const [profile, setProfile] = useState<LocalProfile>({
@@ -155,7 +156,7 @@ export function ProfileView() {
               {history.map((entry) => (
                 <tr key={entry.id} className="border-t border-[var(--color-border)]">
                   <td className="p-2">{new Date(entry.createdAt).toLocaleDateString()}</td>
-                  <td className="p-2 capitalize">{entry.difficulty}</td>
+                  <td className="p-2">{difficultyLabels.get(entry.difficulty) ?? entry.difficulty}</td>
                   <td className="p-2 metric">{entry.score} / {entry.total}</td>
                   <td className="p-2">{formatElapsed(entry.elapsedMs)}</td>
                   <td className="p-2">{entry.completed ? "Completed" : "Incomplete"}</td>

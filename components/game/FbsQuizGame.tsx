@@ -338,7 +338,7 @@ export function FbsQuizGame() {
     }
 
     if (difficulty.id === "hard" && submitted && raw.trim()) {
-      setAssertiveMessage("No exact Hard-mode answer found.");
+      setAssertiveMessage("No exact Ball Knower answer found.");
     }
   }
 
@@ -550,7 +550,7 @@ export function FbsQuizGame() {
           <div className="my-8 grid gap-3 sm:grid-cols-3">
             <Stat label="Teams" value="138" />
             <Stat label="Conferences" value="11" />
-            <Stat label="Difficulty" value="Demanding" />
+            <Stat label="Difficulty" value={difficulty.label} />
           </div>
 
           <div className="difficulty-grid" role="radiogroup" aria-label="Difficulty">
@@ -568,7 +568,7 @@ export function FbsQuizGame() {
                 >
                   <span className="eyebrow">{item.label}</span>
                   <strong className="mt-2 block text-2xl uppercase">
-                    {item.durationMs === null ? "Untimed" : formatClock(item.durationMs)}
+                    {item.durationMs === null ? "Unlimited" : formatClock(item.durationMs)}
                   </strong>
                   <span className="mt-3 block text-sm text-[var(--color-muted)]">
                     {item.id === "easy"
@@ -891,9 +891,9 @@ function ResultLine({ label, value }: { label: string; value: string }) {
 
 function buildShareText(summary: AttemptSummary, difficulty: DifficultyId, elapsedMs: number): string {
   const labels: Record<DifficultyId, string> = {
-    easy: "Easy",
-    medium: "Medium",
-    hard: "Hard"
+    easy: "Casual",
+    medium: "Fan",
+    hard: "Ball Knower"
   };
   const rows = summary.conferenceResults.map((result) => {
     const ratio = result.solved / result.total;

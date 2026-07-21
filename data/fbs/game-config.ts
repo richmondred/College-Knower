@@ -24,7 +24,7 @@ export const fbsGameConfig: GameConfig = {
   difficulties: [
     {
       id: "easy",
-      label: "Easy",
+      label: "Casual",
       durationMs: null,
       autoSubmit: true,
       cascadeMatches: true,
@@ -35,7 +35,7 @@ export const fbsGameConfig: GameConfig = {
     },
     {
       id: "medium",
-      label: "Medium",
+      label: "Fan",
       durationMs: 20 * 60 * 1000,
       autoSubmit: true,
       cascadeMatches: true,
@@ -46,7 +46,7 @@ export const fbsGameConfig: GameConfig = {
     },
     {
       id: "hard",
-      label: "Hard",
+      label: "Ball Knower",
       durationMs: 10 * 60 * 1000,
       autoSubmit: false,
       cascadeMatches: false,

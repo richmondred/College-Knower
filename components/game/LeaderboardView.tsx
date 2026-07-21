@@ -48,9 +48,9 @@ type ApiEntry = {
 type LeaderboardMode = DifficultyId | "overall";
 
 const difficultyLabels: Record<DifficultyId, string> = {
-  easy: "Easy",
-  medium: "Medium",
-  hard: "Hard"
+  easy: "Casual",
+  medium: "Fan",
+  hard: "Ball Knower"
 };
 
 function normaliseEntry(entry: ApiEntry): LeaderboardEntry {
@@ -140,9 +140,9 @@ export function LeaderboardView() {
             value={leaderboardMode}
             onChange={(event) => setLeaderboardMode(event.target.value as LeaderboardMode)}
           >
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
+            <option value="easy">Casual</option>
+            <option value="medium">Fan</option>
+            <option value="hard">Ball Knower</option>
             <option value="overall">Overall</option>
           </select>
         </label>
@@ -178,7 +178,7 @@ export function LeaderboardView() {
       {message ? <p className="mb-4 text-[var(--color-muted)]">{message}</p> : null}
 
       <div className="overflow-x-auto rounded-lg border border-[var(--color-border)]">
-        <table className="w-full min-w-[780px] border-collapse bg-[var(--color-surface)]">
+        <table className="w-full min-w-[700px] border-collapse bg-[var(--color-surface)]">
           <thead>
             <tr className="text-left text-xs uppercase tracking-[0.08em] text-[var(--color-muted)]">
               <th className="p-3">Rank</th>
@@ -188,7 +188,6 @@ export function LeaderboardView() {
               <th className="p-3">Score</th>
               <th className="p-3">Time</th>
               <th className="p-3">Date</th>
-              <th className="p-3">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -204,7 +203,6 @@ export function LeaderboardView() {
                 <td className="p-3 metric">{entry.score} / {entry.total}</td>
                 <td className="p-3">{entry.completionMs === null ? "No time" : formatElapsed(entry.completionMs)}</td>
                 <td className="p-3">{new Date(entry.createdAt).toLocaleDateString()}</td>
-                <td className="p-3">{entry.completed ? "Completed" : "Incomplete"}</td>
               </tr>
             ))}
           </tbody>
