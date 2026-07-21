@@ -327,6 +327,15 @@ button:disabled {
   background: linear-gradient(180deg, rgba(244, 63, 94, 0.16), var(--color-surface));
 }
 
+.knowledge-shell {
+  min-height: calc(100vh - 52px);
+  background:
+    radial-gradient(circle at 15% 6%, var(--quiz-tint), transparent 26rem),
+    radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--color-accent) 13%, transparent), transparent 30rem),
+    radial-gradient(circle at 45% 102%, color-mix(in srgb, var(--color-accent-hover) 18%, transparent), transparent 36rem),
+    linear-gradient(150deg, var(--quiz-bg), var(--color-surface) 48%, var(--quiz-bg));
+}
+
 .knowledge-shell .difficulty-card[data-selected="true"] {
   background: linear-gradient(180deg, var(--quiz-tint), var(--color-surface));
 }
@@ -740,11 +749,19 @@ button:disabled {
 }
 
 .knowledge-grid {
-  width: min(1500px, 100%);
+  width: min(1600px, 100%);
   margin: 0 auto;
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+}
+
+.knowledge-grid[data-layout="compact"] {
+  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
+}
+
+.knowledge-grid[data-layout="mega"] {
+  grid-template-columns: 1fr;
 }
 
 .knowledge-card {
@@ -752,6 +769,10 @@ button:disabled {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: rgba(20, 20, 22, 0.92);
+}
+
+.knowledge-grid[data-layout="compact"] .knowledge-card {
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
 }
 
 .knowledge-card[data-complete="true"] {
@@ -785,6 +806,13 @@ button:disabled {
   list-style: none;
 }
 
+.knowledge-grid[data-layout="mega"] .knowledge-list {
+  display: block;
+  columns: 136px;
+  column-gap: 4px;
+  padding: 0 6px 6px;
+}
+
 .knowledge-slot {
   min-height: 34px;
   display: grid;
@@ -794,6 +822,28 @@ button:disabled {
   padding: 5px 9px;
   border-top: 1px solid rgba(255, 255, 255, 0.045);
   background: rgba(255, 255, 255, 0.025);
+}
+
+.knowledge-grid[data-layout="compact"] .knowledge-slot {
+  min-height: 27px;
+  grid-template-columns: 22px minmax(58px, 0.48fr) minmax(70px, 1fr);
+  gap: 5px;
+  padding: 3px 6px;
+}
+
+.knowledge-grid[data-layout="mega"] .knowledge-slot {
+  break-inside: avoid;
+  min-height: 22px;
+  grid-template-columns: minmax(48px, 0.64fr) minmax(68px, 1fr);
+  gap: 4px;
+  margin-bottom: 2px;
+  padding: 2px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.045);
+  border-radius: var(--radius-sm);
+}
+
+.knowledge-grid[data-layout="mega"] .slot-index {
+  display: none;
 }
 
 .knowledge-slot[data-revealed="true"] {
@@ -818,12 +868,51 @@ button:disabled {
   font-weight: 900;
 }
 
+.knowledge-tone {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  border-radius: 4px;
+  padding: 2px 5px;
+  background: color-mix(in srgb, var(--entry-tone) 22%, transparent);
+  color: color-mix(in srgb, var(--entry-tone) 72%, white);
+  font-size: 0.6rem;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.knowledge-prompt small {
+  display: block;
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--color-muted) 72%, transparent);
+  font-size: 0.56rem;
+  font-weight: 800;
+}
+
+.knowledge-grid[data-layout="compact"] .knowledge-tone,
+.knowledge-grid[data-layout="mega"] .knowledge-tone {
+  padding: 1px 4px;
+  font-size: 0.5rem;
+}
+
+.knowledge-grid[data-layout="mega"] .knowledge-prompt small {
+  font-size: 0.48rem;
+}
+
 .knowledge-answer {
   color: rgba(247, 247, 248, 0.3);
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.knowledge-grid[data-layout="compact"] .knowledge-answer,
+.knowledge-grid[data-layout="mega"] .knowledge-answer {
+  font-size: 0.62rem;
 }
 
 .knowledge-slot[data-revealed="true"] .knowledge-answer {
@@ -834,6 +923,14 @@ button:disabled {
   grid-column: 2 / -1;
   color: rgba(247, 247, 248, 0.48);
   font-size: 0.62rem;
+}
+
+.knowledge-grid[data-layout="compact"] .knowledge-detail {
+  font-size: 0.52rem;
+}
+
+.knowledge-grid[data-layout="mega"] .knowledge-detail {
+  display: none;
 }
 
 .knowledge-missed-grid {

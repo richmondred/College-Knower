@@ -77,6 +77,7 @@ export function KnowledgeQuizGame({ quiz, homeHref }: KnowledgeQuizGameProps) {
   );
 
   const groups = useMemo(() => buildGroups(activeEntries), [activeEntries]);
+  const layout = quiz.layout ?? "cards";
   const solvedSet = useMemo(() => new Set(solvedEntryIds), [solvedEntryIds]);
   const remainingMs = Math.max(0, (deadlineAt ?? now) - now);
   const elapsedMs =
@@ -230,15 +231,21 @@ export function KnowledgeQuizGame({ quiz, homeHref }: KnowledgeQuizGameProps) {
   }
 
   const themeStyle = {
+    "--color-bg": quiz.theme.background,
+    "--color-surface": quiz.theme.surface,
+    "--color-surface-2": quiz.theme.raised,
+    "--color-border": quiz.theme.border,
+    "--color-border-strong": quiz.theme.border,
     "--color-accent": quiz.theme.accent,
     "--color-accent-hover": quiz.theme.accentHover,
     "--color-accent-2": quiz.theme.accentHover,
+    "--quiz-bg": quiz.theme.background,
     "--quiz-tint": quiz.theme.tint
   } as CSSProperties;
 
   if (phase === "intro") {
     return (
-      <main className="game-shell knowledge-shell" style={themeStyle}>
+      <main className="game-shell knowledge-shell" data-quiz-layout={layout} style={themeStyle}>
         <section className="pregame-panel">
           <p className="eyebrow">{quiz.eyebrow}</p>
           <h1 className="display-title">{quiz.title}</h1>
@@ -310,7 +317,7 @@ export function KnowledgeQuizGame({ quiz, homeHref }: KnowledgeQuizGameProps) {
 
   if (phase === "active") {
     return (
-      <main className="game-shell knowledge-shell" style={themeStyle}>
+      <main className="game-shell knowledge-shell" data-quiz-layout={layout} style={themeStyle}>
         <div className="game-sticky-stack">
           <section className="game-header" aria-label="Game status">
             <button className="button ghost" type="button" onClick={() => setShowEndDialog(true)}>
@@ -368,7 +375,12 @@ export function KnowledgeQuizGame({ quiz, homeHref }: KnowledgeQuizGameProps) {
           </section>
         </div>
 
-        <KnowledgeGrid groups={groups} solvedSet={solvedSet} recentEntryIds={recentEntryIds} />
+        <KnowledgeGrid
+          groups={groups}
+          solvedSet={solvedSet}
+          recentEntryIds={recentEntryIds}
+          layout={layout}
+        />
 
         {showEndDialog ? (
           <div className="dialog-backdrop" role="presentation">
@@ -453,14 +465,16 @@ export function KnowledgeQuizGame({ quiz, homeHref }: KnowledgeQuizGameProps) {
 function KnowledgeGrid({
   groups,
   solvedSet,
-  recentEntryIds
+  recentEntryIds,
+  layout
 }: {
   groups: EntryGroup[];
   solvedSet: Set<string>;
   recentEntryIds: Set<string>;
+  layout: NonNullable<KnowledgeQuiz["layout"]>;
 }) {
   return (
-    <section className="knowledge-grid" aria-label="Quiz table">
+    <section className="knowledge-grid" data-layout={layout} aria-label="Quiz table">
       {groups.map((group) => {
         const solved = group.entries.filter((entry) => solvedSet.has(entry.id)).length;
         return (
@@ -478,6 +492,7 @@ function KnowledgeGrid({
             <ol className="knowledge-list">
               {group.entries.map((entry, index) => {
                 const revealed = solvedSet.has(entry.id);
+                const tone = entry.tone || entry.prompt;
                 return (
                   <li
                     key={entry.id}
@@ -486,7 +501,12 @@ function KnowledgeGrid({
                     data-recent={recentEntryIds.has(entry.id)}
                   >
                     <span className="slot-index">{index + 1}</span>
-                    <span className="knowledge-prompt">{entry.prompt}</span>
+                    <span className="knowledge-prompt">
+                      <span className="knowledge-tone" style={toneStyle(tone)}>
+                        {tone}
+                      </span>
+                      {entry.tone ? <small>{entry.prompt}</small> : null}
+                    </span>
                     <span className="knowledge-answer">
                       {revealed ? entry.answer : "Open slot"}
                     </span>
@@ -500,6 +520,28 @@ function KnowledgeGrid({
       })}
     </section>
   );
+}
+
+function toneStyle(tone: string): CSSProperties {
+  const palette = [
+    "#F43F5E",
+    "#38BDF8",
+    "#22C55E",
+    "#F59E0B",
+    "#A78BFA",
+    "#14B8A6",
+    "#F97316",
+    "#84CC16",
+    "#EC4899",
+    "#60A5FA",
+    "#EAB308",
+    "#C084FC"
+  ];
+  let hash = 0;
+  for (const char of tone) {
+    hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  }
+  return { "--entry-tone": palette[hash % palette.length] } as CSSProperties;
 }
 
 function Stat({ label, value, compact = false }: { label: string; value: string; compact?: boolean }) {

@@ -1,0 +1,4243 @@
+{
+  "quizId": "fbs-schools-2026",
+  "datasetVersion": "fbs-2026.1",
+  "season": 2026,
+  "title": "Name Every Current FBS College Football Team",
+  "generatedAt": "2026-07-13T00:00:00.000Z",
+  "conferences": {
+    "acc": {
+      "label": "ACC",
+      "shortLabel": "ACC",
+      "sortOrder": 10,
+      "expectedTeams": 17
+    },
+    "american": {
+      "label": "American",
+      "shortLabel": "AAC",
+      "sortOrder": 20,
+      "expectedTeams": 14
+    },
+    "big12": {
+      "label": "Big 12",
+      "shortLabel": "B12",
+      "sortOrder": 30,
+      "expectedTeams": 16
+    },
+    "big-ten": {
+      "label": "Big Ten",
+      "shortLabel": "B1G",
+      "sortOrder": 40,
+      "expectedTeams": 18
+    },
+    "cusa": {
+      "label": "Conference USA",
+      "shortLabel": "CUSA",
+      "sortOrder": 50,
+      "expectedTeams": 10
+    },
+    "mac": {
+      "label": "MAC",
+      "shortLabel": "MAC",
+      "sortOrder": 60,
+      "expectedTeams": 13
+    },
+    "mountain-west": {
+      "label": "Mountain West",
+      "shortLabel": "MW",
+      "sortOrder": 70,
+      "expectedTeams": 10
+    },
+    "pac12": {
+      "label": "Pac-12",
+      "shortLabel": "P12",
+      "sortOrder": 80,
+      "expectedTeams": 8
+    },
+    "sec": {
+      "label": "SEC",
+      "shortLabel": "SEC",
+      "sortOrder": 90,
+      "expectedTeams": 16
+    },
+    "sun-belt": {
+      "label": "Sun Belt",
+      "shortLabel": "SBC",
+      "sortOrder": 100,
+      "expectedTeams": 14
+    },
+    "independent": {
+      "label": "Independents",
+      "shortLabel": "IND",
+      "sortOrder": 110,
+      "expectedTeams": 2
+    }
+  },
+  "teams": [
+    {
+      "id": "boston-college",
+      "school": "Boston College",
+      "displaySchool": "Boston College",
+      "nickname": "Eagles",
+      "city": "Chestnut Hill",
+      "state": "MA",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Boston College",
+        "BC"
+      ],
+      "easyAliases": [
+        "Boston College",
+        "BC"
+      ],
+      "mediumAliases": [
+        "Boston College",
+        "BC"
+      ],
+      "hardAnswers": [
+        "Boston College",
+        "BC"
+      ]
+    },
+    {
+      "id": "california",
+      "school": "California",
+      "displaySchool": "California",
+      "nickname": "Golden Bears",
+      "city": "Berkeley",
+      "state": "CA",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "California",
+        "Cal",
+        "UC Berkeley"
+      ],
+      "easyAliases": [
+        "California",
+        "Cal",
+        "UC Berkeley"
+      ],
+      "mediumAliases": [
+        "California",
+        "Cal",
+        "UC Berkeley",
+        "Cal"
+      ],
+      "hardAnswers": [
+        "California",
+        "Cal"
+      ]
+    },
+    {
+      "id": "clemson",
+      "school": "Clemson",
+      "displaySchool": "Clemson",
+      "nickname": "Tigers",
+      "city": "Clemson",
+      "state": "SC",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Clemson"
+      ],
+      "easyAliases": [
+        "Clemson"
+      ],
+      "mediumAliases": [
+        "Clemson"
+      ],
+      "hardAnswers": [
+        "Clemson"
+      ]
+    },
+    {
+      "id": "duke",
+      "school": "Duke",
+      "displaySchool": "Duke",
+      "nickname": "Blue Devils",
+      "city": "Durham",
+      "state": "NC",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Duke"
+      ],
+      "easyAliases": [
+        "Duke"
+      ],
+      "mediumAliases": [
+        "Duke"
+      ],
+      "hardAnswers": [
+        "Duke"
+      ]
+    },
+    {
+      "id": "florida-state",
+      "school": "Florida State",
+      "displaySchool": "Florida State",
+      "nickname": "Seminoles",
+      "city": "Tallahassee",
+      "state": "FL",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Florida State",
+        "FSU"
+      ],
+      "easyAliases": [
+        "Florida State",
+        "FSU"
+      ],
+      "mediumAliases": [
+        "Florida State",
+        "FSU"
+      ],
+      "hardAnswers": [
+        "Florida State",
+        "FSU"
+      ],
+      "cascadeGroup": [
+        "florida-family"
+      ]
+    },
+    {
+      "id": "georgia-tech",
+      "school": "Georgia Tech",
+      "displaySchool": "Georgia Tech",
+      "nickname": "Yellow Jackets",
+      "city": "Atlanta",
+      "state": "GA",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Georgia Tech",
+        "Georgia Institute of Technology",
+        "GT"
+      ],
+      "easyAliases": [
+        "Georgia Tech",
+        "Georgia Institute of Technology",
+        "GT"
+      ],
+      "mediumAliases": [
+        "Georgia Tech",
+        "Georgia Institute of Technology",
+        "GT"
+      ],
+      "hardAnswers": [
+        "Georgia Tech",
+        "GT"
+      ],
+      "cascadeGroup": [
+        "georgia-family"
+      ]
+    },
+    {
+      "id": "louisville",
+      "school": "Louisville",
+      "displaySchool": "Louisville",
+      "nickname": "Cardinals",
+      "city": "Louisville",
+      "state": "KY",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Louisville"
+      ],
+      "easyAliases": [
+        "Louisville"
+      ],
+      "mediumAliases": [
+        "Louisville"
+      ],
+      "hardAnswers": [
+        "Louisville"
+      ]
+    },
+    {
+      "id": "miami-fl",
+      "school": "Miami (FL)",
+      "displaySchool": "Miami (FL)",
+      "nickname": "Hurricanes",
+      "city": "Coral Gables",
+      "state": "FL",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Miami (FL)",
+        "Miami FL",
+        "Miami Florida",
+        "University of Miami",
+        "The U"
+      ],
+      "easyAliases": [
+        "Miami (FL)",
+        "Miami FL",
+        "Miami Florida",
+        "University of Miami",
+        "The U"
+      ],
+      "mediumAliases": [
+        "Miami (FL)",
+        "Miami FL",
+        "Miami Florida",
+        "University of Miami",
+        "The U",
+        "Miami FL",
+        "Miami Florida"
+      ],
+      "hardAnswers": [
+        "Miami (FL)",
+        "Miami FL",
+        "Miami Florida"
+      ]
+    },
+    {
+      "id": "nc-state",
+      "school": "NC State",
+      "displaySchool": "NC State",
+      "nickname": "Wolfpack",
+      "city": "Raleigh",
+      "state": "NC",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "NC State",
+        "North Carolina State",
+        "NCSU"
+      ],
+      "easyAliases": [
+        "NC State",
+        "North Carolina State",
+        "NCSU"
+      ],
+      "mediumAliases": [
+        "NC State",
+        "North Carolina State",
+        "NCSU",
+        "North Carolina State"
+      ],
+      "hardAnswers": [
+        "NC State",
+        "North Carolina State",
+        "NCSU"
+      ]
+    },
+    {
+      "id": "north-carolina",
+      "school": "North Carolina",
+      "displaySchool": "North Carolina",
+      "nickname": "Tar Heels",
+      "city": "Chapel Hill",
+      "state": "NC",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "North Carolina",
+        "UNC"
+      ],
+      "easyAliases": [
+        "North Carolina",
+        "UNC"
+      ],
+      "mediumAliases": [
+        "North Carolina",
+        "UNC"
+      ],
+      "hardAnswers": [
+        "North Carolina",
+        "UNC"
+      ]
+    },
+    {
+      "id": "pittsburgh",
+      "school": "Pittsburgh",
+      "displaySchool": "Pittsburgh",
+      "nickname": "Panthers",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Pittsburgh",
+        "Pitt"
+      ],
+      "easyAliases": [
+        "Pittsburgh",
+        "Pitt"
+      ],
+      "mediumAliases": [
+        "Pittsburgh",
+        "Pitt",
+        "Pitt"
+      ],
+      "hardAnswers": [
+        "Pittsburgh",
+        "Pitt"
+      ]
+    },
+    {
+      "id": "smu",
+      "school": "SMU",
+      "displaySchool": "SMU",
+      "nickname": "Mustangs",
+      "city": "Dallas",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "SMU",
+        "Southern Methodist"
+      ],
+      "easyAliases": [
+        "SMU",
+        "Southern Methodist"
+      ],
+      "mediumAliases": [
+        "SMU",
+        "Southern Methodist",
+        "Southern Methodist"
+      ],
+      "hardAnswers": [
+        "SMU",
+        "Southern Methodist",
+        "SMU"
+      ]
+    },
+    {
+      "id": "stanford",
+      "school": "Stanford",
+      "displaySchool": "Stanford",
+      "nickname": "Cardinal",
+      "city": "Stanford",
+      "state": "CA",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Stanford"
+      ],
+      "easyAliases": [
+        "Stanford"
+      ],
+      "mediumAliases": [
+        "Stanford"
+      ],
+      "hardAnswers": [
+        "Stanford"
+      ]
+    },
+    {
+      "id": "syracuse",
+      "school": "Syracuse",
+      "displaySchool": "Syracuse",
+      "nickname": "Orange",
+      "city": "Syracuse",
+      "state": "NY",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Syracuse"
+      ],
+      "easyAliases": [
+        "Syracuse"
+      ],
+      "mediumAliases": [
+        "Syracuse"
+      ],
+      "hardAnswers": [
+        "Syracuse"
+      ]
+    },
+    {
+      "id": "virginia",
+      "school": "Virginia",
+      "displaySchool": "Virginia",
+      "nickname": "Cavaliers",
+      "city": "Charlottesville",
+      "state": "VA",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Virginia",
+        "UVA"
+      ],
+      "easyAliases": [
+        "Virginia",
+        "UVA"
+      ],
+      "mediumAliases": [
+        "Virginia",
+        "UVA"
+      ],
+      "hardAnswers": [
+        "Virginia",
+        "UVA"
+      ]
+    },
+    {
+      "id": "virginia-tech",
+      "school": "Virginia Tech",
+      "displaySchool": "Virginia Tech",
+      "nickname": "Hokies",
+      "city": "Blacksburg",
+      "state": "VA",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Virginia Tech",
+        "VT"
+      ],
+      "easyAliases": [
+        "Virginia Tech",
+        "VT"
+      ],
+      "mediumAliases": [
+        "Virginia Tech",
+        "VT"
+      ],
+      "hardAnswers": [
+        "Virginia Tech",
+        "VT"
+      ]
+    },
+    {
+      "id": "wake-forest",
+      "school": "Wake Forest",
+      "displaySchool": "Wake Forest",
+      "nickname": "Demon Deacons",
+      "city": "Winston-Salem",
+      "state": "NC",
+      "enrollment": null,
+      "conference": "acc",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Wake Forest"
+      ],
+      "easyAliases": [
+        "Wake Forest"
+      ],
+      "mediumAliases": [
+        "Wake Forest"
+      ],
+      "hardAnswers": [
+        "Wake Forest"
+      ]
+    },
+    {
+      "id": "army",
+      "school": "Army",
+      "displaySchool": "Army",
+      "nickname": "Black Knights",
+      "city": "West Point",
+      "state": "NY",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Army",
+        "Army West Point"
+      ],
+      "easyAliases": [
+        "Army",
+        "Army West Point"
+      ],
+      "mediumAliases": [
+        "Army",
+        "Army West Point"
+      ],
+      "hardAnswers": [
+        "Army",
+        "Army West Point"
+      ]
+    },
+    {
+      "id": "charlotte",
+      "school": "Charlotte",
+      "displaySchool": "Charlotte",
+      "nickname": "49ers",
+      "city": "Charlotte",
+      "state": "NC",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Charlotte"
+      ],
+      "easyAliases": [
+        "Charlotte"
+      ],
+      "mediumAliases": [
+        "Charlotte"
+      ],
+      "hardAnswers": [
+        "Charlotte"
+      ]
+    },
+    {
+      "id": "east-carolina",
+      "school": "East Carolina",
+      "displaySchool": "East Carolina",
+      "nickname": "Pirates",
+      "city": "Greenville",
+      "state": "NC",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "East Carolina",
+        "ECU"
+      ],
+      "easyAliases": [
+        "East Carolina",
+        "ECU"
+      ],
+      "mediumAliases": [
+        "East Carolina",
+        "ECU"
+      ],
+      "hardAnswers": [
+        "East Carolina",
+        "ECU"
+      ]
+    },
+    {
+      "id": "florida-atlantic",
+      "school": "Florida Atlantic",
+      "displaySchool": "Florida Atlantic",
+      "nickname": "Owls",
+      "city": "Boca Raton",
+      "state": "FL",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Florida Atlantic",
+        "FAU"
+      ],
+      "easyAliases": [
+        "Florida Atlantic",
+        "FAU"
+      ],
+      "mediumAliases": [
+        "Florida Atlantic",
+        "FAU"
+      ],
+      "hardAnswers": [
+        "Florida Atlantic",
+        "FAU"
+      ],
+      "cascadeGroup": [
+        "florida-family"
+      ]
+    },
+    {
+      "id": "memphis",
+      "school": "Memphis",
+      "displaySchool": "Memphis",
+      "nickname": "Tigers",
+      "city": "Memphis",
+      "state": "TN",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Memphis"
+      ],
+      "easyAliases": [
+        "Memphis"
+      ],
+      "mediumAliases": [
+        "Memphis"
+      ],
+      "hardAnswers": [
+        "Memphis"
+      ]
+    },
+    {
+      "id": "navy",
+      "school": "Navy",
+      "displaySchool": "Navy",
+      "nickname": "Midshipmen",
+      "city": "Annapolis",
+      "state": "MD",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Navy",
+        "Naval Academy"
+      ],
+      "easyAliases": [
+        "Navy",
+        "Naval Academy"
+      ],
+      "mediumAliases": [
+        "Navy",
+        "Naval Academy"
+      ],
+      "hardAnswers": [
+        "Navy",
+        "Naval Academy"
+      ]
+    },
+    {
+      "id": "north-texas",
+      "school": "North Texas",
+      "displaySchool": "North Texas",
+      "nickname": "Mean Green",
+      "city": "Denton",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "North Texas",
+        "UNT"
+      ],
+      "easyAliases": [
+        "North Texas",
+        "UNT"
+      ],
+      "mediumAliases": [
+        "North Texas",
+        "UNT"
+      ],
+      "hardAnswers": [
+        "North Texas",
+        "UNT"
+      ]
+    },
+    {
+      "id": "rice",
+      "school": "Rice",
+      "displaySchool": "Rice",
+      "nickname": "Owls",
+      "city": "Houston",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Rice"
+      ],
+      "easyAliases": [
+        "Rice"
+      ],
+      "mediumAliases": [
+        "Rice"
+      ],
+      "hardAnswers": [
+        "Rice"
+      ]
+    },
+    {
+      "id": "south-florida",
+      "school": "South Florida",
+      "displaySchool": "South Florida",
+      "nickname": "Bulls",
+      "city": "Tampa",
+      "state": "FL",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "South Florida",
+        "USF"
+      ],
+      "easyAliases": [
+        "South Florida",
+        "USF"
+      ],
+      "mediumAliases": [
+        "South Florida",
+        "USF"
+      ],
+      "hardAnswers": [
+        "South Florida",
+        "USF"
+      ]
+    },
+    {
+      "id": "temple",
+      "school": "Temple",
+      "displaySchool": "Temple",
+      "nickname": "Owls",
+      "city": "Philadelphia",
+      "state": "PA",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Temple"
+      ],
+      "easyAliases": [
+        "Temple"
+      ],
+      "mediumAliases": [
+        "Temple"
+      ],
+      "hardAnswers": [
+        "Temple"
+      ]
+    },
+    {
+      "id": "tulane",
+      "school": "Tulane",
+      "displaySchool": "Tulane",
+      "nickname": "Green Wave",
+      "city": "New Orleans",
+      "state": "LA",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Tulane"
+      ],
+      "easyAliases": [
+        "Tulane"
+      ],
+      "mediumAliases": [
+        "Tulane"
+      ],
+      "hardAnswers": [
+        "Tulane"
+      ]
+    },
+    {
+      "id": "tulsa",
+      "school": "Tulsa",
+      "displaySchool": "Tulsa",
+      "nickname": "Golden Hurricane",
+      "city": "Tulsa",
+      "state": "OK",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Tulsa"
+      ],
+      "easyAliases": [
+        "Tulsa"
+      ],
+      "mediumAliases": [
+        "Tulsa"
+      ],
+      "hardAnswers": [
+        "Tulsa"
+      ]
+    },
+    {
+      "id": "uab",
+      "school": "UAB",
+      "displaySchool": "UAB",
+      "nickname": "Blazers",
+      "city": "Birmingham",
+      "state": "AL",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "UAB",
+        "Alabama Birmingham"
+      ],
+      "easyAliases": [
+        "UAB",
+        "Alabama Birmingham"
+      ],
+      "mediumAliases": [
+        "UAB",
+        "Alabama Birmingham",
+        "Alabama Birmingham"
+      ],
+      "hardAnswers": [
+        "UAB",
+        "Alabama Birmingham",
+        "UAB"
+      ]
+    },
+    {
+      "id": "utsa",
+      "school": "UTSA",
+      "displaySchool": "UTSA",
+      "nickname": "Roadrunners",
+      "city": "San Antonio",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "american",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "UTSA",
+        "Texas San Antonio",
+        "UT San Antonio"
+      ],
+      "easyAliases": [
+        "UTSA",
+        "Texas San Antonio",
+        "UT San Antonio"
+      ],
+      "mediumAliases": [
+        "UTSA",
+        "Texas San Antonio",
+        "UT San Antonio",
+        "Texas San Antonio"
+      ],
+      "hardAnswers": [
+        "UTSA",
+        "Texas San Antonio",
+        "UTSA"
+      ]
+    },
+    {
+      "id": "arizona",
+      "school": "Arizona",
+      "displaySchool": "Arizona",
+      "nickname": "Wildcats",
+      "city": "Tucson",
+      "state": "AZ",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Arizona"
+      ],
+      "easyAliases": [
+        "Arizona"
+      ],
+      "mediumAliases": [
+        "Arizona"
+      ],
+      "hardAnswers": [
+        "Arizona"
+      ],
+      "cascadeGroup": [
+        "arizona-family"
+      ]
+    },
+    {
+      "id": "arizona-state",
+      "school": "Arizona State",
+      "displaySchool": "Arizona State",
+      "nickname": "Sun Devils",
+      "city": "Tempe",
+      "state": "AZ",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Arizona State",
+        "ASU"
+      ],
+      "easyAliases": [
+        "Arizona State",
+        "ASU"
+      ],
+      "mediumAliases": [
+        "Arizona State",
+        "ASU"
+      ],
+      "hardAnswers": [
+        "Arizona State",
+        "ASU"
+      ],
+      "cascadeGroup": [
+        "arizona-family"
+      ]
+    },
+    {
+      "id": "baylor",
+      "school": "Baylor",
+      "displaySchool": "Baylor",
+      "nickname": "Bears",
+      "city": "Waco",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Baylor"
+      ],
+      "easyAliases": [
+        "Baylor"
+      ],
+      "mediumAliases": [
+        "Baylor"
+      ],
+      "hardAnswers": [
+        "Baylor"
+      ]
+    },
+    {
+      "id": "byu",
+      "school": "BYU",
+      "displaySchool": "BYU",
+      "nickname": "Cougars",
+      "city": "Provo",
+      "state": "UT",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "BYU",
+        "Brigham Young"
+      ],
+      "easyAliases": [
+        "BYU",
+        "Brigham Young"
+      ],
+      "mediumAliases": [
+        "BYU",
+        "Brigham Young",
+        "Brigham Young"
+      ],
+      "hardAnswers": [
+        "BYU",
+        "Brigham Young",
+        "BYU"
+      ]
+    },
+    {
+      "id": "cincinnati",
+      "school": "Cincinnati",
+      "displaySchool": "Cincinnati",
+      "nickname": "Bearcats",
+      "city": "Cincinnati",
+      "state": "OH",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Cincinnati"
+      ],
+      "easyAliases": [
+        "Cincinnati"
+      ],
+      "mediumAliases": [
+        "Cincinnati"
+      ],
+      "hardAnswers": [
+        "Cincinnati"
+      ]
+    },
+    {
+      "id": "colorado",
+      "school": "Colorado",
+      "displaySchool": "Colorado",
+      "nickname": "Buffaloes",
+      "city": "Boulder",
+      "state": "CO",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Colorado"
+      ],
+      "easyAliases": [
+        "Colorado"
+      ],
+      "mediumAliases": [
+        "Colorado"
+      ],
+      "hardAnswers": [
+        "Colorado"
+      ]
+    },
+    {
+      "id": "houston",
+      "school": "Houston",
+      "displaySchool": "Houston",
+      "nickname": "Cougars",
+      "city": "Houston",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Houston"
+      ],
+      "easyAliases": [
+        "Houston"
+      ],
+      "mediumAliases": [
+        "Houston"
+      ],
+      "hardAnswers": [
+        "Houston"
+      ]
+    },
+    {
+      "id": "iowa-state",
+      "school": "Iowa State",
+      "displaySchool": "Iowa State",
+      "nickname": "Cyclones",
+      "city": "Ames",
+      "state": "IA",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Iowa State",
+        "ISU"
+      ],
+      "easyAliases": [
+        "Iowa State",
+        "ISU"
+      ],
+      "mediumAliases": [
+        "Iowa State",
+        "ISU"
+      ],
+      "hardAnswers": [
+        "Iowa State"
+      ]
+    },
+    {
+      "id": "kansas",
+      "school": "Kansas",
+      "displaySchool": "Kansas",
+      "nickname": "Jayhawks",
+      "city": "Lawrence",
+      "state": "KS",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Kansas",
+        "KU"
+      ],
+      "easyAliases": [
+        "Kansas",
+        "KU"
+      ],
+      "mediumAliases": [
+        "Kansas",
+        "KU"
+      ],
+      "hardAnswers": [
+        "Kansas",
+        "KU"
+      ],
+      "cascadeGroup": [
+        "kansas-family"
+      ]
+    },
+    {
+      "id": "kansas-state",
+      "school": "Kansas State",
+      "displaySchool": "Kansas State",
+      "nickname": "Wildcats",
+      "city": "Manhattan",
+      "state": "KS",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Kansas State",
+        "K State",
+        "K-State",
+        "KSU"
+      ],
+      "easyAliases": [
+        "Kansas State",
+        "K State",
+        "K-State",
+        "KSU"
+      ],
+      "mediumAliases": [
+        "Kansas State",
+        "K State",
+        "K-State",
+        "KSU"
+      ],
+      "hardAnswers": [
+        "Kansas State",
+        "K State",
+        "KSU"
+      ],
+      "cascadeGroup": [
+        "kansas-family"
+      ]
+    },
+    {
+      "id": "oklahoma-state",
+      "school": "Oklahoma State",
+      "displaySchool": "Oklahoma State",
+      "nickname": "Cowboys",
+      "city": "Stillwater",
+      "state": "OK",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Oklahoma State",
+        "OK State",
+        "OSU"
+      ],
+      "easyAliases": [
+        "Oklahoma State",
+        "OK State",
+        "OSU"
+      ],
+      "mediumAliases": [
+        "Oklahoma State",
+        "OK State",
+        "OSU"
+      ],
+      "hardAnswers": [
+        "Oklahoma State"
+      ],
+      "cascadeGroup": [
+        "oklahoma-family"
+      ]
+    },
+    {
+      "id": "tcu",
+      "school": "TCU",
+      "displaySchool": "TCU",
+      "nickname": "Horned Frogs",
+      "city": "Fort Worth",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "TCU",
+        "Texas Christian"
+      ],
+      "easyAliases": [
+        "TCU",
+        "Texas Christian"
+      ],
+      "mediumAliases": [
+        "TCU",
+        "Texas Christian",
+        "Texas Christian"
+      ],
+      "hardAnswers": [
+        "TCU",
+        "Texas Christian",
+        "TCU"
+      ]
+    },
+    {
+      "id": "texas-tech",
+      "school": "Texas Tech",
+      "displaySchool": "Texas Tech",
+      "nickname": "Red Raiders",
+      "city": "Lubbock",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Texas Tech",
+        "TTU"
+      ],
+      "easyAliases": [
+        "Texas Tech",
+        "TTU"
+      ],
+      "mediumAliases": [
+        "Texas Tech",
+        "TTU"
+      ],
+      "hardAnswers": [
+        "Texas Tech",
+        "TTU"
+      ],
+      "cascadeGroup": [
+        "texas-family"
+      ]
+    },
+    {
+      "id": "ucf",
+      "school": "UCF",
+      "displaySchool": "UCF",
+      "nickname": "Knights",
+      "city": "Orlando",
+      "state": "FL",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "UCF",
+        "Central Florida"
+      ],
+      "easyAliases": [
+        "UCF",
+        "Central Florida"
+      ],
+      "mediumAliases": [
+        "UCF",
+        "Central Florida",
+        "Central Florida"
+      ],
+      "hardAnswers": [
+        "UCF",
+        "Central Florida",
+        "UCF"
+      ]
+    },
+    {
+      "id": "utah",
+      "school": "Utah",
+      "displaySchool": "Utah",
+      "nickname": "Utes",
+      "city": "Salt Lake City",
+      "state": "UT",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Utah"
+      ],
+      "easyAliases": [
+        "Utah"
+      ],
+      "mediumAliases": [
+        "Utah"
+      ],
+      "hardAnswers": [
+        "Utah"
+      ]
+    },
+    {
+      "id": "west-virginia",
+      "school": "West Virginia",
+      "displaySchool": "West Virginia",
+      "nickname": "Mountaineers",
+      "city": "Morgantown",
+      "state": "WV",
+      "enrollment": null,
+      "conference": "big12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "West Virginia",
+        "WVU"
+      ],
+      "easyAliases": [
+        "West Virginia",
+        "WVU"
+      ],
+      "mediumAliases": [
+        "West Virginia",
+        "WVU"
+      ],
+      "hardAnswers": [
+        "West Virginia",
+        "WVU"
+      ]
+    },
+    {
+      "id": "illinois",
+      "school": "Illinois",
+      "displaySchool": "Illinois",
+      "nickname": "Fighting Illini",
+      "city": "Champaign",
+      "state": "IL",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Illinois"
+      ],
+      "easyAliases": [
+        "Illinois"
+      ],
+      "mediumAliases": [
+        "Illinois"
+      ],
+      "hardAnswers": [
+        "Illinois"
+      ]
+    },
+    {
+      "id": "indiana",
+      "school": "Indiana",
+      "displaySchool": "Indiana",
+      "nickname": "Hoosiers",
+      "city": "Bloomington",
+      "state": "IN",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Indiana"
+      ],
+      "easyAliases": [
+        "Indiana"
+      ],
+      "mediumAliases": [
+        "Indiana"
+      ],
+      "hardAnswers": [
+        "Indiana"
+      ]
+    },
+    {
+      "id": "iowa",
+      "school": "Iowa",
+      "displaySchool": "Iowa",
+      "nickname": "Hawkeyes",
+      "city": "Iowa City",
+      "state": "IA",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Iowa"
+      ],
+      "easyAliases": [
+        "Iowa"
+      ],
+      "mediumAliases": [
+        "Iowa"
+      ],
+      "hardAnswers": [
+        "Iowa"
+      ]
+    },
+    {
+      "id": "maryland",
+      "school": "Maryland",
+      "displaySchool": "Maryland",
+      "nickname": "Terrapins",
+      "city": "College Park",
+      "state": "MD",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Maryland"
+      ],
+      "easyAliases": [
+        "Maryland"
+      ],
+      "mediumAliases": [
+        "Maryland"
+      ],
+      "hardAnswers": [
+        "Maryland"
+      ]
+    },
+    {
+      "id": "michigan",
+      "school": "Michigan",
+      "displaySchool": "Michigan",
+      "nickname": "Wolverines",
+      "city": "Ann Arbor",
+      "state": "MI",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Michigan"
+      ],
+      "easyAliases": [
+        "Michigan"
+      ],
+      "mediumAliases": [
+        "Michigan"
+      ],
+      "hardAnswers": [
+        "Michigan"
+      ],
+      "cascadeGroup": [
+        "michigan-family"
+      ]
+    },
+    {
+      "id": "michigan-state",
+      "school": "Michigan State",
+      "displaySchool": "Michigan State",
+      "nickname": "Spartans",
+      "city": "East Lansing",
+      "state": "MI",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Michigan State",
+        "MSU"
+      ],
+      "easyAliases": [
+        "Michigan State",
+        "MSU"
+      ],
+      "mediumAliases": [
+        "Michigan State",
+        "MSU"
+      ],
+      "hardAnswers": [
+        "Michigan State"
+      ],
+      "cascadeGroup": [
+        "michigan-family"
+      ]
+    },
+    {
+      "id": "minnesota",
+      "school": "Minnesota",
+      "displaySchool": "Minnesota",
+      "nickname": "Golden Gophers",
+      "city": "Minneapolis",
+      "state": "MN",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Minnesota"
+      ],
+      "easyAliases": [
+        "Minnesota"
+      ],
+      "mediumAliases": [
+        "Minnesota"
+      ],
+      "hardAnswers": [
+        "Minnesota"
+      ]
+    },
+    {
+      "id": "nebraska",
+      "school": "Nebraska",
+      "displaySchool": "Nebraska",
+      "nickname": "Cornhuskers",
+      "city": "Lincoln",
+      "state": "NE",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Nebraska"
+      ],
+      "easyAliases": [
+        "Nebraska"
+      ],
+      "mediumAliases": [
+        "Nebraska"
+      ],
+      "hardAnswers": [
+        "Nebraska"
+      ]
+    },
+    {
+      "id": "northwestern",
+      "school": "Northwestern",
+      "displaySchool": "Northwestern",
+      "nickname": "Wildcats",
+      "city": "Evanston",
+      "state": "IL",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Northwestern"
+      ],
+      "easyAliases": [
+        "Northwestern"
+      ],
+      "mediumAliases": [
+        "Northwestern"
+      ],
+      "hardAnswers": [
+        "Northwestern"
+      ]
+    },
+    {
+      "id": "ohio-state",
+      "school": "Ohio State",
+      "displaySchool": "Ohio State",
+      "nickname": "Buckeyes",
+      "city": "Columbus",
+      "state": "OH",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Ohio State",
+        "OSU Buckeyes"
+      ],
+      "easyAliases": [
+        "Ohio State",
+        "OSU Buckeyes"
+      ],
+      "mediumAliases": [
+        "Ohio State",
+        "OSU Buckeyes"
+      ],
+      "hardAnswers": [
+        "Ohio State"
+      ],
+      "cascadeGroup": [
+        "ohio-family"
+      ]
+    },
+    {
+      "id": "oregon",
+      "school": "Oregon",
+      "displaySchool": "Oregon",
+      "nickname": "Ducks",
+      "city": "Eugene",
+      "state": "OR",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Oregon"
+      ],
+      "easyAliases": [
+        "Oregon"
+      ],
+      "mediumAliases": [
+        "Oregon"
+      ],
+      "hardAnswers": [
+        "Oregon"
+      ],
+      "cascadeGroup": [
+        "oregon-family"
+      ]
+    },
+    {
+      "id": "penn-state",
+      "school": "Penn State",
+      "displaySchool": "Penn State",
+      "nickname": "Nittany Lions",
+      "city": "University Park",
+      "state": "PA",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Penn State",
+        "Pennsylvania State",
+        "PSU"
+      ],
+      "easyAliases": [
+        "Penn State",
+        "Pennsylvania State",
+        "PSU"
+      ],
+      "mediumAliases": [
+        "Penn State",
+        "Pennsylvania State",
+        "PSU"
+      ],
+      "hardAnswers": [
+        "Penn State",
+        "PSU"
+      ]
+    },
+    {
+      "id": "purdue",
+      "school": "Purdue",
+      "displaySchool": "Purdue",
+      "nickname": "Boilermakers",
+      "city": "West Lafayette",
+      "state": "IN",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Purdue"
+      ],
+      "easyAliases": [
+        "Purdue"
+      ],
+      "mediumAliases": [
+        "Purdue"
+      ],
+      "hardAnswers": [
+        "Purdue"
+      ]
+    },
+    {
+      "id": "rutgers",
+      "school": "Rutgers",
+      "displaySchool": "Rutgers",
+      "nickname": "Scarlet Knights",
+      "city": "Piscataway",
+      "state": "NJ",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Rutgers"
+      ],
+      "easyAliases": [
+        "Rutgers"
+      ],
+      "mediumAliases": [
+        "Rutgers"
+      ],
+      "hardAnswers": [
+        "Rutgers"
+      ]
+    },
+    {
+      "id": "ucla",
+      "school": "UCLA",
+      "displaySchool": "UCLA",
+      "nickname": "Bruins",
+      "city": "Los Angeles",
+      "state": "CA",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "UCLA",
+        "California Los Angeles"
+      ],
+      "easyAliases": [
+        "UCLA",
+        "California Los Angeles"
+      ],
+      "mediumAliases": [
+        "UCLA",
+        "California Los Angeles",
+        "California Los Angeles"
+      ],
+      "hardAnswers": [
+        "UCLA",
+        "California Los Angeles",
+        "UCLA"
+      ]
+    },
+    {
+      "id": "usc",
+      "school": "USC",
+      "displaySchool": "USC",
+      "nickname": "Trojans",
+      "city": "Los Angeles",
+      "state": "CA",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "USC",
+        "Southern California"
+      ],
+      "easyAliases": [
+        "USC",
+        "Southern California"
+      ],
+      "mediumAliases": [
+        "USC",
+        "Southern California",
+        "Southern California"
+      ],
+      "hardAnswers": [
+        "USC",
+        "Southern California",
+        "USC"
+      ]
+    },
+    {
+      "id": "washington",
+      "school": "Washington",
+      "displaySchool": "Washington",
+      "nickname": "Huskies",
+      "city": "Seattle",
+      "state": "WA",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Washington",
+        "UW"
+      ],
+      "easyAliases": [
+        "Washington",
+        "UW"
+      ],
+      "mediumAliases": [
+        "Washington",
+        "UW"
+      ],
+      "hardAnswers": [
+        "Washington"
+      ],
+      "cascadeGroup": [
+        "washington-family"
+      ]
+    },
+    {
+      "id": "wisconsin",
+      "school": "Wisconsin",
+      "displaySchool": "Wisconsin",
+      "nickname": "Badgers",
+      "city": "Madison",
+      "state": "WI",
+      "enrollment": null,
+      "conference": "big-ten",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Wisconsin"
+      ],
+      "easyAliases": [
+        "Wisconsin"
+      ],
+      "mediumAliases": [
+        "Wisconsin"
+      ],
+      "hardAnswers": [
+        "Wisconsin"
+      ]
+    },
+    {
+      "id": "delaware",
+      "school": "Delaware",
+      "displaySchool": "Delaware",
+      "nickname": "Blue Hens",
+      "city": "Newark",
+      "state": "DE",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Delaware"
+      ],
+      "easyAliases": [
+        "Delaware"
+      ],
+      "mediumAliases": [
+        "Delaware"
+      ],
+      "hardAnswers": [
+        "Delaware"
+      ]
+    },
+    {
+      "id": "fiu",
+      "school": "FIU",
+      "displaySchool": "FIU",
+      "nickname": "Panthers",
+      "city": "Miami",
+      "state": "FL",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "FIU",
+        "Florida International"
+      ],
+      "easyAliases": [
+        "FIU",
+        "Florida International"
+      ],
+      "mediumAliases": [
+        "FIU",
+        "Florida International",
+        "Florida International"
+      ],
+      "hardAnswers": [
+        "FIU",
+        "Florida International",
+        "FIU"
+      ]
+    },
+    {
+      "id": "jacksonville-state",
+      "school": "Jacksonville State",
+      "displaySchool": "Jacksonville State",
+      "nickname": "Gamecocks",
+      "city": "Jacksonville",
+      "state": "AL",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Jacksonville State",
+        "Jax State",
+        "JSU"
+      ],
+      "easyAliases": [
+        "Jacksonville State",
+        "Jax State",
+        "JSU"
+      ],
+      "mediumAliases": [
+        "Jacksonville State",
+        "Jax State",
+        "JSU"
+      ],
+      "hardAnswers": [
+        "Jacksonville State"
+      ]
+    },
+    {
+      "id": "kennesaw-state",
+      "school": "Kennesaw State",
+      "displaySchool": "Kennesaw State",
+      "nickname": "Owls",
+      "city": "Kennesaw",
+      "state": "GA",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Kennesaw State",
+        "KSU Owls"
+      ],
+      "easyAliases": [
+        "Kennesaw State",
+        "KSU Owls"
+      ],
+      "mediumAliases": [
+        "Kennesaw State",
+        "KSU Owls"
+      ],
+      "hardAnswers": [
+        "Kennesaw State"
+      ]
+    },
+    {
+      "id": "liberty",
+      "school": "Liberty",
+      "displaySchool": "Liberty",
+      "nickname": "Flames",
+      "city": "Lynchburg",
+      "state": "VA",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Liberty"
+      ],
+      "easyAliases": [
+        "Liberty"
+      ],
+      "mediumAliases": [
+        "Liberty"
+      ],
+      "hardAnswers": [
+        "Liberty"
+      ]
+    },
+    {
+      "id": "middle-tennessee",
+      "school": "Middle Tennessee",
+      "displaySchool": "Middle Tennessee",
+      "nickname": "Blue Raiders",
+      "city": "Murfreesboro",
+      "state": "TN",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Middle Tennessee",
+        "MTSU",
+        "Middle Tennessee State"
+      ],
+      "easyAliases": [
+        "Middle Tennessee",
+        "MTSU",
+        "Middle Tennessee State"
+      ],
+      "mediumAliases": [
+        "Middle Tennessee",
+        "MTSU",
+        "Middle Tennessee State",
+        "Middle Tennessee State"
+      ],
+      "hardAnswers": [
+        "Middle Tennessee",
+        "Middle Tennessee State",
+        "MTSU"
+      ]
+    },
+    {
+      "id": "missouri-state",
+      "school": "Missouri State",
+      "displaySchool": "Missouri State",
+      "nickname": "Bears",
+      "city": "Springfield",
+      "state": "MO",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Missouri State"
+      ],
+      "easyAliases": [
+        "Missouri State"
+      ],
+      "mediumAliases": [
+        "Missouri State"
+      ],
+      "hardAnswers": [
+        "Missouri State"
+      ]
+    },
+    {
+      "id": "new-mexico-state",
+      "school": "New Mexico State",
+      "displaySchool": "New Mexico State",
+      "nickname": "Aggies",
+      "city": "Las Cruces",
+      "state": "NM",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "New Mexico State",
+        "NMSU"
+      ],
+      "easyAliases": [
+        "New Mexico State",
+        "NMSU"
+      ],
+      "mediumAliases": [
+        "New Mexico State",
+        "NMSU"
+      ],
+      "hardAnswers": [
+        "New Mexico State"
+      ],
+      "cascadeGroup": [
+        "new-mexico-family"
+      ]
+    },
+    {
+      "id": "sam-houston",
+      "school": "Sam Houston",
+      "displaySchool": "Sam Houston",
+      "nickname": "Bearkats",
+      "city": "Huntsville",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Sam Houston",
+        "Sam Houston State",
+        "SHSU"
+      ],
+      "easyAliases": [
+        "Sam Houston",
+        "Sam Houston State",
+        "SHSU"
+      ],
+      "mediumAliases": [
+        "Sam Houston",
+        "Sam Houston State",
+        "SHSU",
+        "Sam Houston State"
+      ],
+      "hardAnswers": [
+        "Sam Houston",
+        "Sam Houston State",
+        "SHSU"
+      ]
+    },
+    {
+      "id": "western-kentucky",
+      "school": "Western Kentucky",
+      "displaySchool": "Western Kentucky",
+      "nickname": "Hilltoppers",
+      "city": "Bowling Green",
+      "state": "KY",
+      "enrollment": null,
+      "conference": "cusa",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Western Kentucky",
+        "WKU"
+      ],
+      "easyAliases": [
+        "Western Kentucky",
+        "WKU"
+      ],
+      "mediumAliases": [
+        "Western Kentucky",
+        "WKU"
+      ],
+      "hardAnswers": [
+        "Western Kentucky",
+        "WKU"
+      ]
+    },
+    {
+      "id": "akron",
+      "school": "Akron",
+      "displaySchool": "Akron",
+      "nickname": "Zips",
+      "city": "Akron",
+      "state": "OH",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Akron"
+      ],
+      "easyAliases": [
+        "Akron"
+      ],
+      "mediumAliases": [
+        "Akron"
+      ],
+      "hardAnswers": [
+        "Akron"
+      ]
+    },
+    {
+      "id": "ball-state",
+      "school": "Ball State",
+      "displaySchool": "Ball State",
+      "nickname": "Cardinals",
+      "city": "Muncie",
+      "state": "IN",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Ball State"
+      ],
+      "easyAliases": [
+        "Ball State"
+      ],
+      "mediumAliases": [
+        "Ball State"
+      ],
+      "hardAnswers": [
+        "Ball State"
+      ]
+    },
+    {
+      "id": "bowling-green",
+      "school": "Bowling Green",
+      "displaySchool": "Bowling Green",
+      "nickname": "Falcons",
+      "city": "Bowling Green",
+      "state": "OH",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Bowling Green",
+        "BGSU"
+      ],
+      "easyAliases": [
+        "Bowling Green",
+        "BGSU"
+      ],
+      "mediumAliases": [
+        "Bowling Green",
+        "BGSU"
+      ],
+      "hardAnswers": [
+        "Bowling Green",
+        "BGSU"
+      ]
+    },
+    {
+      "id": "buffalo",
+      "school": "Buffalo",
+      "displaySchool": "Buffalo",
+      "nickname": "Bulls",
+      "city": "Buffalo",
+      "state": "NY",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Buffalo"
+      ],
+      "easyAliases": [
+        "Buffalo"
+      ],
+      "mediumAliases": [
+        "Buffalo"
+      ],
+      "hardAnswers": [
+        "Buffalo"
+      ]
+    },
+    {
+      "id": "central-michigan",
+      "school": "Central Michigan",
+      "displaySchool": "Central Michigan",
+      "nickname": "Chippewas",
+      "city": "Mount Pleasant",
+      "state": "MI",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Central Michigan",
+        "CMU"
+      ],
+      "easyAliases": [
+        "Central Michigan",
+        "CMU"
+      ],
+      "mediumAliases": [
+        "Central Michigan",
+        "CMU"
+      ],
+      "hardAnswers": [
+        "Central Michigan"
+      ]
+    },
+    {
+      "id": "eastern-michigan",
+      "school": "Eastern Michigan",
+      "displaySchool": "Eastern Michigan",
+      "nickname": "Eagles",
+      "city": "Ypsilanti",
+      "state": "MI",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Eastern Michigan",
+        "EMU"
+      ],
+      "easyAliases": [
+        "Eastern Michigan",
+        "EMU"
+      ],
+      "mediumAliases": [
+        "Eastern Michigan",
+        "EMU"
+      ],
+      "hardAnswers": [
+        "Eastern Michigan"
+      ]
+    },
+    {
+      "id": "kent-state",
+      "school": "Kent State",
+      "displaySchool": "Kent State",
+      "nickname": "Golden Flashes",
+      "city": "Kent",
+      "state": "OH",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Kent State"
+      ],
+      "easyAliases": [
+        "Kent State"
+      ],
+      "mediumAliases": [
+        "Kent State"
+      ],
+      "hardAnswers": [
+        "Kent State"
+      ]
+    },
+    {
+      "id": "massachusetts",
+      "school": "Massachusetts",
+      "displaySchool": "Massachusetts",
+      "nickname": "Minutemen",
+      "city": "Amherst",
+      "state": "MA",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Massachusetts",
+        "UMass",
+        "U Mass"
+      ],
+      "easyAliases": [
+        "Massachusetts",
+        "UMass",
+        "U Mass"
+      ],
+      "mediumAliases": [
+        "Massachusetts",
+        "UMass",
+        "U Mass",
+        "UMass"
+      ],
+      "hardAnswers": [
+        "Massachusetts",
+        "UMass"
+      ],
+      "sourceNotes": [
+        "MAC 2026 standings/source material list Sacramento State and Massachusetts in the MAC."
+      ]
+    },
+    {
+      "id": "miami-oh",
+      "school": "Miami (OH)",
+      "displaySchool": "Miami (OH)",
+      "nickname": "RedHawks",
+      "city": "Oxford",
+      "state": "OH",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Miami (OH)",
+        "Miami OH",
+        "Miami Ohio"
+      ],
+      "easyAliases": [
+        "Miami (OH)",
+        "Miami OH",
+        "Miami Ohio"
+      ],
+      "mediumAliases": [
+        "Miami (OH)",
+        "Miami OH",
+        "Miami Ohio",
+        "Miami OH",
+        "Miami Ohio"
+      ],
+      "hardAnswers": [
+        "Miami (OH)",
+        "Miami OH",
+        "Miami Ohio"
+      ]
+    },
+    {
+      "id": "ohio",
+      "school": "Ohio",
+      "displaySchool": "Ohio",
+      "nickname": "Bobcats",
+      "city": "Athens",
+      "state": "OH",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Ohio"
+      ],
+      "easyAliases": [
+        "Ohio"
+      ],
+      "mediumAliases": [
+        "Ohio"
+      ],
+      "hardAnswers": [
+        "Ohio"
+      ],
+      "cascadeGroup": [
+        "ohio-family"
+      ]
+    },
+    {
+      "id": "sacramento-state",
+      "school": "Sacramento State",
+      "displaySchool": "Sacramento State",
+      "nickname": "Hornets",
+      "city": "Sacramento",
+      "state": "CA",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Sacramento State",
+        "Sac State"
+      ],
+      "easyAliases": [
+        "Sacramento State",
+        "Sac State"
+      ],
+      "mediumAliases": [
+        "Sacramento State",
+        "Sac State",
+        "Sac State"
+      ],
+      "hardAnswers": [
+        "Sacramento State",
+        "Sac State"
+      ],
+      "sourceNotes": [
+        "MAC 2026 standings/source material list Sacramento State and Massachusetts in the MAC."
+      ]
+    },
+    {
+      "id": "toledo",
+      "school": "Toledo",
+      "displaySchool": "Toledo",
+      "nickname": "Rockets",
+      "city": "Toledo",
+      "state": "OH",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Toledo"
+      ],
+      "easyAliases": [
+        "Toledo"
+      ],
+      "mediumAliases": [
+        "Toledo"
+      ],
+      "hardAnswers": [
+        "Toledo"
+      ]
+    },
+    {
+      "id": "western-michigan",
+      "school": "Western Michigan",
+      "displaySchool": "Western Michigan",
+      "nickname": "Broncos",
+      "city": "Kalamazoo",
+      "state": "MI",
+      "enrollment": null,
+      "conference": "mac",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Western Michigan",
+        "WMU"
+      ],
+      "easyAliases": [
+        "Western Michigan",
+        "WMU"
+      ],
+      "mediumAliases": [
+        "Western Michigan",
+        "WMU"
+      ],
+      "hardAnswers": [
+        "Western Michigan"
+      ]
+    },
+    {
+      "id": "air-force",
+      "school": "Air Force",
+      "displaySchool": "Air Force",
+      "nickname": "Falcons",
+      "city": "Colorado Springs",
+      "state": "CO",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Air Force",
+        "AFA"
+      ],
+      "easyAliases": [
+        "Air Force",
+        "AFA"
+      ],
+      "mediumAliases": [
+        "Air Force",
+        "AFA"
+      ],
+      "hardAnswers": [
+        "Air Force"
+      ]
+    },
+    {
+      "id": "hawaii",
+      "school": "Hawaii",
+      "displaySchool": "Hawaii",
+      "nickname": "Rainbow Warriors",
+      "city": "Honolulu",
+      "state": "HI",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Hawaii",
+        "Hawai'i",
+        "Hawaiʻi",
+        "Hawai‘i"
+      ],
+      "easyAliases": [
+        "Hawaii",
+        "Hawai'i",
+        "Hawaiʻi",
+        "Hawai‘i"
+      ],
+      "mediumAliases": [
+        "Hawaii",
+        "Hawai'i",
+        "Hawaiʻi",
+        "Hawai‘i",
+        "Hawai'i",
+        "Hawaiʻi"
+      ],
+      "hardAnswers": [
+        "Hawaii",
+        "Hawai'i",
+        "Hawaiʻi"
+      ]
+    },
+    {
+      "id": "nevada",
+      "school": "Nevada",
+      "displaySchool": "Nevada",
+      "nickname": "Wolf Pack",
+      "city": "Reno",
+      "state": "NV",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Nevada"
+      ],
+      "easyAliases": [
+        "Nevada"
+      ],
+      "mediumAliases": [
+        "Nevada"
+      ],
+      "hardAnswers": [
+        "Nevada"
+      ]
+    },
+    {
+      "id": "new-mexico",
+      "school": "New Mexico",
+      "displaySchool": "New Mexico",
+      "nickname": "Lobos",
+      "city": "Albuquerque",
+      "state": "NM",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "New Mexico",
+        "UNM"
+      ],
+      "easyAliases": [
+        "New Mexico",
+        "UNM"
+      ],
+      "mediumAliases": [
+        "New Mexico",
+        "UNM"
+      ],
+      "hardAnswers": [
+        "New Mexico"
+      ],
+      "cascadeGroup": [
+        "new-mexico-family"
+      ]
+    },
+    {
+      "id": "north-dakota-state",
+      "school": "North Dakota State",
+      "displaySchool": "North Dakota State",
+      "nickname": "Bison",
+      "city": "Fargo",
+      "state": "ND",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "North Dakota State",
+        "NDSU"
+      ],
+      "easyAliases": [
+        "North Dakota State",
+        "NDSU"
+      ],
+      "mediumAliases": [
+        "North Dakota State",
+        "NDSU",
+        "NDSU"
+      ],
+      "hardAnswers": [
+        "North Dakota State",
+        "NDSU"
+      ],
+      "sourceNotes": [
+        "Mountain West 2026 standings/source material list UTEP, North Dakota State and Northern Illinois in the Mountain West."
+      ]
+    },
+    {
+      "id": "northern-illinois",
+      "school": "Northern Illinois",
+      "displaySchool": "Northern Illinois",
+      "nickname": "Huskies",
+      "city": "DeKalb",
+      "state": "IL",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Northern Illinois",
+        "NIU"
+      ],
+      "easyAliases": [
+        "Northern Illinois",
+        "NIU"
+      ],
+      "mediumAliases": [
+        "Northern Illinois",
+        "NIU",
+        "NIU"
+      ],
+      "hardAnswers": [
+        "Northern Illinois",
+        "NIU"
+      ],
+      "sourceNotes": [
+        "Mountain West 2026 standings/source material list UTEP, North Dakota State and Northern Illinois in the Mountain West."
+      ]
+    },
+    {
+      "id": "san-jose-state",
+      "school": "San Jose State",
+      "displaySchool": "San Jose State",
+      "nickname": "Spartans",
+      "city": "San Jose",
+      "state": "CA",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "San Jose State",
+        "San José State",
+        "SJSU"
+      ],
+      "easyAliases": [
+        "San Jose State",
+        "San José State",
+        "SJSU"
+      ],
+      "mediumAliases": [
+        "San Jose State",
+        "San José State",
+        "SJSU",
+        "San José State"
+      ],
+      "hardAnswers": [
+        "San Jose State",
+        "SJSU"
+      ]
+    },
+    {
+      "id": "unlv",
+      "school": "UNLV",
+      "displaySchool": "UNLV",
+      "nickname": "Rebels",
+      "city": "Las Vegas",
+      "state": "NV",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "UNLV",
+        "Nevada Las Vegas"
+      ],
+      "easyAliases": [
+        "UNLV",
+        "Nevada Las Vegas"
+      ],
+      "mediumAliases": [
+        "UNLV",
+        "Nevada Las Vegas",
+        "Nevada Las Vegas"
+      ],
+      "hardAnswers": [
+        "UNLV",
+        "Nevada Las Vegas",
+        "UNLV"
+      ]
+    },
+    {
+      "id": "utep",
+      "school": "UTEP",
+      "displaySchool": "UTEP",
+      "nickname": "Miners",
+      "city": "El Paso",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "UTEP",
+        "Texas El Paso",
+        "UT El Paso"
+      ],
+      "easyAliases": [
+        "UTEP",
+        "Texas El Paso",
+        "UT El Paso"
+      ],
+      "mediumAliases": [
+        "UTEP",
+        "Texas El Paso",
+        "UT El Paso",
+        "Texas El Paso"
+      ],
+      "hardAnswers": [
+        "UTEP",
+        "Texas El Paso",
+        "UTEP"
+      ],
+      "sourceNotes": [
+        "Mountain West 2026 standings/source material list UTEP, North Dakota State and Northern Illinois in the Mountain West."
+      ]
+    },
+    {
+      "id": "wyoming",
+      "school": "Wyoming",
+      "displaySchool": "Wyoming",
+      "nickname": "Cowboys",
+      "city": "Laramie",
+      "state": "WY",
+      "enrollment": null,
+      "conference": "mountain-west",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Wyoming"
+      ],
+      "easyAliases": [
+        "Wyoming"
+      ],
+      "mediumAliases": [
+        "Wyoming"
+      ],
+      "hardAnswers": [
+        "Wyoming"
+      ]
+    },
+    {
+      "id": "boise-state",
+      "school": "Boise State",
+      "displaySchool": "Boise State",
+      "nickname": "Broncos",
+      "city": "Boise",
+      "state": "ID",
+      "enrollment": null,
+      "conference": "pac12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Boise State"
+      ],
+      "easyAliases": [
+        "Boise State"
+      ],
+      "mediumAliases": [
+        "Boise State"
+      ],
+      "hardAnswers": [
+        "Boise State"
+      ]
+    },
+    {
+      "id": "colorado-state",
+      "school": "Colorado State",
+      "displaySchool": "Colorado State",
+      "nickname": "Rams",
+      "city": "Fort Collins",
+      "state": "CO",
+      "enrollment": null,
+      "conference": "pac12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Colorado State",
+        "CSU Rams"
+      ],
+      "easyAliases": [
+        "Colorado State",
+        "CSU Rams"
+      ],
+      "mediumAliases": [
+        "Colorado State",
+        "CSU Rams"
+      ],
+      "hardAnswers": [
+        "Colorado State"
+      ]
+    },
+    {
+      "id": "fresno-state",
+      "school": "Fresno State",
+      "displaySchool": "Fresno State",
+      "nickname": "Bulldogs",
+      "city": "Fresno",
+      "state": "CA",
+      "enrollment": null,
+      "conference": "pac12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Fresno State"
+      ],
+      "easyAliases": [
+        "Fresno State"
+      ],
+      "mediumAliases": [
+        "Fresno State"
+      ],
+      "hardAnswers": [
+        "Fresno State"
+      ]
+    },
+    {
+      "id": "oregon-state",
+      "school": "Oregon State",
+      "displaySchool": "Oregon State",
+      "nickname": "Beavers",
+      "city": "Corvallis",
+      "state": "OR",
+      "enrollment": null,
+      "conference": "pac12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Oregon State"
+      ],
+      "easyAliases": [
+        "Oregon State"
+      ],
+      "mediumAliases": [
+        "Oregon State"
+      ],
+      "hardAnswers": [
+        "Oregon State"
+      ],
+      "cascadeGroup": [
+        "oregon-family"
+      ]
+    },
+    {
+      "id": "san-diego-state",
+      "school": "San Diego State",
+      "displaySchool": "San Diego State",
+      "nickname": "Aztecs",
+      "city": "San Diego",
+      "state": "CA",
+      "enrollment": null,
+      "conference": "pac12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "San Diego State",
+        "SDSU"
+      ],
+      "easyAliases": [
+        "San Diego State",
+        "SDSU"
+      ],
+      "mediumAliases": [
+        "San Diego State",
+        "SDSU"
+      ],
+      "hardAnswers": [
+        "San Diego State",
+        "SDSU"
+      ]
+    },
+    {
+      "id": "texas-state",
+      "school": "Texas State",
+      "displaySchool": "Texas State",
+      "nickname": "Bobcats",
+      "city": "San Marcos",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "pac12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Texas State",
+        "TXST"
+      ],
+      "easyAliases": [
+        "Texas State",
+        "TXST"
+      ],
+      "mediumAliases": [
+        "Texas State",
+        "TXST"
+      ],
+      "hardAnswers": [
+        "Texas State"
+      ],
+      "cascadeGroup": [
+        "texas-family"
+      ],
+      "sourceNotes": [
+        "2026 source material treats Texas State as the Pac-12's eighth football-playing member."
+      ]
+    },
+    {
+      "id": "utah-state",
+      "school": "Utah State",
+      "displaySchool": "Utah State",
+      "nickname": "Aggies",
+      "city": "Logan",
+      "state": "UT",
+      "enrollment": null,
+      "conference": "pac12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Utah State",
+        "USU"
+      ],
+      "easyAliases": [
+        "Utah State",
+        "USU"
+      ],
+      "mediumAliases": [
+        "Utah State",
+        "USU"
+      ],
+      "hardAnswers": [
+        "Utah State"
+      ]
+    },
+    {
+      "id": "washington-state",
+      "school": "Washington State",
+      "displaySchool": "Washington State",
+      "nickname": "Cougars",
+      "city": "Pullman",
+      "state": "WA",
+      "enrollment": null,
+      "conference": "pac12",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Washington State",
+        "Wazzu",
+        "WSU"
+      ],
+      "easyAliases": [
+        "Washington State",
+        "Wazzu",
+        "WSU"
+      ],
+      "mediumAliases": [
+        "Washington State",
+        "Wazzu",
+        "WSU"
+      ],
+      "hardAnswers": [
+        "Washington State",
+        "WSU"
+      ],
+      "cascadeGroup": [
+        "washington-family"
+      ]
+    },
+    {
+      "id": "alabama",
+      "school": "Alabama",
+      "displaySchool": "Alabama",
+      "nickname": "Crimson Tide",
+      "city": "Tuscaloosa",
+      "state": "AL",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Alabama"
+      ],
+      "easyAliases": [
+        "Alabama"
+      ],
+      "mediumAliases": [
+        "Alabama"
+      ],
+      "hardAnswers": [
+        "Alabama"
+      ]
+    },
+    {
+      "id": "arkansas",
+      "school": "Arkansas",
+      "displaySchool": "Arkansas",
+      "nickname": "Razorbacks",
+      "city": "Fayetteville",
+      "state": "AR",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Arkansas"
+      ],
+      "easyAliases": [
+        "Arkansas"
+      ],
+      "mediumAliases": [
+        "Arkansas"
+      ],
+      "hardAnswers": [
+        "Arkansas"
+      ],
+      "cascadeGroup": [
+        "arkansas-family"
+      ]
+    },
+    {
+      "id": "auburn",
+      "school": "Auburn",
+      "displaySchool": "Auburn",
+      "nickname": "Tigers",
+      "city": "Auburn",
+      "state": "AL",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Auburn"
+      ],
+      "easyAliases": [
+        "Auburn"
+      ],
+      "mediumAliases": [
+        "Auburn"
+      ],
+      "hardAnswers": [
+        "Auburn"
+      ]
+    },
+    {
+      "id": "florida",
+      "school": "Florida",
+      "displaySchool": "Florida",
+      "nickname": "Gators",
+      "city": "Gainesville",
+      "state": "FL",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Florida"
+      ],
+      "easyAliases": [
+        "Florida"
+      ],
+      "mediumAliases": [
+        "Florida"
+      ],
+      "hardAnswers": [
+        "Florida"
+      ],
+      "cascadeGroup": [
+        "florida-family"
+      ]
+    },
+    {
+      "id": "georgia",
+      "school": "Georgia",
+      "displaySchool": "Georgia",
+      "nickname": "Bulldogs",
+      "city": "Athens",
+      "state": "GA",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Georgia",
+        "UGA"
+      ],
+      "easyAliases": [
+        "Georgia",
+        "UGA"
+      ],
+      "mediumAliases": [
+        "Georgia",
+        "UGA"
+      ],
+      "hardAnswers": [
+        "Georgia"
+      ],
+      "cascadeGroup": [
+        "georgia-family"
+      ]
+    },
+    {
+      "id": "kentucky",
+      "school": "Kentucky",
+      "displaySchool": "Kentucky",
+      "nickname": "Wildcats",
+      "city": "Lexington",
+      "state": "KY",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Kentucky"
+      ],
+      "easyAliases": [
+        "Kentucky"
+      ],
+      "mediumAliases": [
+        "Kentucky"
+      ],
+      "hardAnswers": [
+        "Kentucky"
+      ]
+    },
+    {
+      "id": "lsu",
+      "school": "LSU",
+      "displaySchool": "LSU",
+      "nickname": "Tigers",
+      "city": "Baton Rouge",
+      "state": "LA",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "LSU",
+        "Louisiana State"
+      ],
+      "easyAliases": [
+        "LSU",
+        "Louisiana State"
+      ],
+      "mediumAliases": [
+        "LSU",
+        "Louisiana State",
+        "Louisiana State"
+      ],
+      "hardAnswers": [
+        "LSU",
+        "Louisiana State",
+        "LSU"
+      ]
+    },
+    {
+      "id": "mississippi-state",
+      "school": "Mississippi State",
+      "displaySchool": "Mississippi State",
+      "nickname": "Bulldogs",
+      "city": "Starkville",
+      "state": "MS",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Mississippi State",
+        "MS State"
+      ],
+      "easyAliases": [
+        "Mississippi State",
+        "MS State"
+      ],
+      "mediumAliases": [
+        "Mississippi State",
+        "MS State"
+      ],
+      "hardAnswers": [
+        "Mississippi State"
+      ],
+      "cascadeGroup": [
+        "mississippi-family"
+      ]
+    },
+    {
+      "id": "missouri",
+      "school": "Missouri",
+      "displaySchool": "Missouri",
+      "nickname": "Tigers",
+      "city": "Columbia",
+      "state": "MO",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Missouri",
+        "Mizzou"
+      ],
+      "easyAliases": [
+        "Missouri",
+        "Mizzou"
+      ],
+      "mediumAliases": [
+        "Missouri",
+        "Mizzou",
+        "Mizzou"
+      ],
+      "hardAnswers": [
+        "Missouri",
+        "Mizzou"
+      ]
+    },
+    {
+      "id": "oklahoma",
+      "school": "Oklahoma",
+      "displaySchool": "Oklahoma",
+      "nickname": "Sooners",
+      "city": "Norman",
+      "state": "OK",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Oklahoma"
+      ],
+      "easyAliases": [
+        "Oklahoma"
+      ],
+      "mediumAliases": [
+        "Oklahoma"
+      ],
+      "hardAnswers": [
+        "Oklahoma"
+      ],
+      "cascadeGroup": [
+        "oklahoma-family"
+      ]
+    },
+    {
+      "id": "ole-miss",
+      "school": "Ole Miss",
+      "displaySchool": "Ole Miss",
+      "nickname": "Rebels",
+      "city": "Oxford",
+      "state": "MS",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Ole Miss",
+        "Mississippi"
+      ],
+      "easyAliases": [
+        "Ole Miss",
+        "Mississippi"
+      ],
+      "mediumAliases": [
+        "Ole Miss",
+        "Mississippi",
+        "Mississippi"
+      ],
+      "hardAnswers": [
+        "Ole Miss",
+        "Mississippi"
+      ],
+      "cascadeGroup": [
+        "mississippi-family"
+      ]
+    },
+    {
+      "id": "south-carolina",
+      "school": "South Carolina",
+      "displaySchool": "South Carolina",
+      "nickname": "Gamecocks",
+      "city": "Columbia",
+      "state": "SC",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "South Carolina",
+        "SCAR"
+      ],
+      "easyAliases": [
+        "South Carolina",
+        "SCAR"
+      ],
+      "mediumAliases": [
+        "South Carolina",
+        "SCAR"
+      ],
+      "hardAnswers": [
+        "South Carolina"
+      ]
+    },
+    {
+      "id": "tennessee",
+      "school": "Tennessee",
+      "displaySchool": "Tennessee",
+      "nickname": "Volunteers",
+      "city": "Knoxville",
+      "state": "TN",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Tennessee"
+      ],
+      "easyAliases": [
+        "Tennessee"
+      ],
+      "mediumAliases": [
+        "Tennessee"
+      ],
+      "hardAnswers": [
+        "Tennessee"
+      ]
+    },
+    {
+      "id": "texas",
+      "school": "Texas",
+      "displaySchool": "Texas",
+      "nickname": "Longhorns",
+      "city": "Austin",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Texas"
+      ],
+      "easyAliases": [
+        "Texas"
+      ],
+      "mediumAliases": [
+        "Texas"
+      ],
+      "hardAnswers": [
+        "Texas"
+      ],
+      "cascadeGroup": [
+        "texas-family"
+      ]
+    },
+    {
+      "id": "texas-am",
+      "school": "Texas A&M",
+      "displaySchool": "Texas A&M",
+      "nickname": "Aggies",
+      "city": "College Station",
+      "state": "TX",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Texas A&M",
+        "Texas AM",
+        "Texas A and M",
+        "TAMU"
+      ],
+      "easyAliases": [
+        "Texas A&M",
+        "Texas AM",
+        "Texas A and M",
+        "TAMU"
+      ],
+      "mediumAliases": [
+        "Texas A&M",
+        "Texas AM",
+        "Texas A and M",
+        "TAMU",
+        "Texas AM",
+        "Texas A and M",
+        "TAMU"
+      ],
+      "hardAnswers": [
+        "Texas A&M",
+        "Texas AM",
+        "Texas A and M",
+        "TAMU"
+      ],
+      "cascadeGroup": [
+        "texas-family"
+      ]
+    },
+    {
+      "id": "vanderbilt",
+      "school": "Vanderbilt",
+      "displaySchool": "Vanderbilt",
+      "nickname": "Commodores",
+      "city": "Nashville",
+      "state": "TN",
+      "enrollment": null,
+      "conference": "sec",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Vanderbilt"
+      ],
+      "easyAliases": [
+        "Vanderbilt"
+      ],
+      "mediumAliases": [
+        "Vanderbilt"
+      ],
+      "hardAnswers": [
+        "Vanderbilt"
+      ]
+    },
+    {
+      "id": "appalachian-state",
+      "school": "Appalachian State",
+      "displaySchool": "Appalachian State",
+      "nickname": "Mountaineers",
+      "city": "Boone",
+      "state": "NC",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Appalachian State",
+        "App State",
+        "Appalachian"
+      ],
+      "easyAliases": [
+        "Appalachian State",
+        "App State",
+        "Appalachian"
+      ],
+      "mediumAliases": [
+        "Appalachian State",
+        "App State",
+        "Appalachian",
+        "App State"
+      ],
+      "hardAnswers": [
+        "Appalachian State",
+        "App State"
+      ]
+    },
+    {
+      "id": "arkansas-state",
+      "school": "Arkansas State",
+      "displaySchool": "Arkansas State",
+      "nickname": "Red Wolves",
+      "city": "Jonesboro",
+      "state": "AR",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Arkansas State",
+        "A State"
+      ],
+      "easyAliases": [
+        "Arkansas State",
+        "A State"
+      ],
+      "mediumAliases": [
+        "Arkansas State",
+        "A State"
+      ],
+      "hardAnswers": [
+        "Arkansas State"
+      ],
+      "cascadeGroup": [
+        "arkansas-family"
+      ]
+    },
+    {
+      "id": "coastal-carolina",
+      "school": "Coastal Carolina",
+      "displaySchool": "Coastal Carolina",
+      "nickname": "Chanticleers",
+      "city": "Conway",
+      "state": "SC",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Coastal Carolina"
+      ],
+      "easyAliases": [
+        "Coastal Carolina"
+      ],
+      "mediumAliases": [
+        "Coastal Carolina"
+      ],
+      "hardAnswers": [
+        "Coastal Carolina"
+      ]
+    },
+    {
+      "id": "georgia-southern",
+      "school": "Georgia Southern",
+      "displaySchool": "Georgia Southern",
+      "nickname": "Eagles",
+      "city": "Statesboro",
+      "state": "GA",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Georgia Southern"
+      ],
+      "easyAliases": [
+        "Georgia Southern"
+      ],
+      "mediumAliases": [
+        "Georgia Southern"
+      ],
+      "hardAnswers": [
+        "Georgia Southern"
+      ],
+      "cascadeGroup": [
+        "georgia-family"
+      ]
+    },
+    {
+      "id": "georgia-state",
+      "school": "Georgia State",
+      "displaySchool": "Georgia State",
+      "nickname": "Panthers",
+      "city": "Atlanta",
+      "state": "GA",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Georgia State"
+      ],
+      "easyAliases": [
+        "Georgia State"
+      ],
+      "mediumAliases": [
+        "Georgia State"
+      ],
+      "hardAnswers": [
+        "Georgia State"
+      ],
+      "cascadeGroup": [
+        "georgia-family"
+      ]
+    },
+    {
+      "id": "james-madison",
+      "school": "James Madison",
+      "displaySchool": "James Madison",
+      "nickname": "Dukes",
+      "city": "Harrisonburg",
+      "state": "VA",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "James Madison",
+        "JMU"
+      ],
+      "easyAliases": [
+        "James Madison",
+        "JMU"
+      ],
+      "mediumAliases": [
+        "James Madison",
+        "JMU"
+      ],
+      "hardAnswers": [
+        "James Madison",
+        "JMU"
+      ]
+    },
+    {
+      "id": "louisiana",
+      "school": "Louisiana",
+      "displaySchool": "Louisiana",
+      "nickname": "Ragin' Cajuns",
+      "city": "Lafayette",
+      "state": "LA",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Louisiana",
+        "Louisiana Lafayette",
+        "Louisiana-Lafayette",
+        "UL Lafayette",
+        "ULL"
+      ],
+      "easyAliases": [
+        "Louisiana",
+        "Louisiana Lafayette",
+        "Louisiana-Lafayette",
+        "UL Lafayette",
+        "ULL"
+      ],
+      "mediumAliases": [
+        "Louisiana",
+        "Louisiana Lafayette",
+        "Louisiana-Lafayette",
+        "UL Lafayette",
+        "ULL",
+        "Louisiana Lafayette",
+        "UL Lafayette"
+      ],
+      "hardAnswers": [
+        "Louisiana",
+        "Louisiana Lafayette"
+      ],
+      "cascadeGroup": [
+        "louisiana-family"
+      ]
+    },
+    {
+      "id": "louisiana-tech",
+      "school": "Louisiana Tech",
+      "displaySchool": "Louisiana Tech",
+      "nickname": "Bulldogs",
+      "city": "Ruston",
+      "state": "LA",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Louisiana Tech",
+        "LA Tech",
+        "La Tech"
+      ],
+      "easyAliases": [
+        "Louisiana Tech",
+        "LA Tech",
+        "La Tech"
+      ],
+      "mediumAliases": [
+        "Louisiana Tech",
+        "LA Tech",
+        "La Tech",
+        "LA Tech"
+      ],
+      "hardAnswers": [
+        "Louisiana Tech",
+        "LA Tech"
+      ],
+      "cascadeGroup": [
+        "louisiana-family"
+      ],
+      "sourceNotes": [
+        "Louisiana Tech athletics release, March 13, 2026: 2026 schedule includes eight Sun Belt games and frames the season as a Sun Belt return."
+      ]
+    },
+    {
+      "id": "marshall",
+      "school": "Marshall",
+      "displaySchool": "Marshall",
+      "nickname": "Thundering Herd",
+      "city": "Huntington",
+      "state": "WV",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Marshall"
+      ],
+      "easyAliases": [
+        "Marshall"
+      ],
+      "mediumAliases": [
+        "Marshall"
+      ],
+      "hardAnswers": [
+        "Marshall"
+      ]
+    },
+    {
+      "id": "old-dominion",
+      "school": "Old Dominion",
+      "displaySchool": "Old Dominion",
+      "nickname": "Monarchs",
+      "city": "Norfolk",
+      "state": "VA",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Old Dominion",
+        "ODU"
+      ],
+      "easyAliases": [
+        "Old Dominion",
+        "ODU"
+      ],
+      "mediumAliases": [
+        "Old Dominion",
+        "ODU"
+      ],
+      "hardAnswers": [
+        "Old Dominion",
+        "ODU"
+      ]
+    },
+    {
+      "id": "south-alabama",
+      "school": "South Alabama",
+      "displaySchool": "South Alabama",
+      "nickname": "Jaguars",
+      "city": "Mobile",
+      "state": "AL",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "South Alabama",
+        "USA Jaguars"
+      ],
+      "easyAliases": [
+        "South Alabama",
+        "USA Jaguars"
+      ],
+      "mediumAliases": [
+        "South Alabama",
+        "USA Jaguars"
+      ],
+      "hardAnswers": [
+        "South Alabama"
+      ]
+    },
+    {
+      "id": "southern-miss",
+      "school": "Southern Miss",
+      "displaySchool": "Southern Miss",
+      "nickname": "Golden Eagles",
+      "city": "Hattiesburg",
+      "state": "MS",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Southern Miss",
+        "Southern Mississippi",
+        "USM"
+      ],
+      "easyAliases": [
+        "Southern Miss",
+        "Southern Mississippi",
+        "USM"
+      ],
+      "mediumAliases": [
+        "Southern Miss",
+        "Southern Mississippi",
+        "USM",
+        "Southern Mississippi"
+      ],
+      "hardAnswers": [
+        "Southern Miss",
+        "Southern Mississippi",
+        "USM"
+      ]
+    },
+    {
+      "id": "troy",
+      "school": "Troy",
+      "displaySchool": "Troy",
+      "nickname": "Trojans",
+      "city": "Troy",
+      "state": "AL",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Troy"
+      ],
+      "easyAliases": [
+        "Troy"
+      ],
+      "mediumAliases": [
+        "Troy"
+      ],
+      "hardAnswers": [
+        "Troy"
+      ]
+    },
+    {
+      "id": "ulm",
+      "school": "ULM",
+      "displaySchool": "ULM",
+      "nickname": "Warhawks",
+      "city": "Monroe",
+      "state": "LA",
+      "enrollment": null,
+      "conference": "sun-belt",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "ULM",
+        "Louisiana Monroe",
+        "Louisiana-Monroe",
+        "UL Monroe"
+      ],
+      "easyAliases": [
+        "ULM",
+        "Louisiana Monroe",
+        "Louisiana-Monroe",
+        "UL Monroe"
+      ],
+      "mediumAliases": [
+        "ULM",
+        "Louisiana Monroe",
+        "Louisiana-Monroe",
+        "UL Monroe",
+        "Louisiana Monroe"
+      ],
+      "hardAnswers": [
+        "ULM",
+        "Louisiana Monroe",
+        "ULM"
+      ]
+    },
+    {
+      "id": "notre-dame",
+      "school": "Notre Dame",
+      "displaySchool": "Notre Dame",
+      "nickname": "Fighting Irish",
+      "city": "Notre Dame",
+      "state": "IN",
+      "enrollment": null,
+      "conference": "independent",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "Notre Dame",
+        "ND"
+      ],
+      "easyAliases": [
+        "Notre Dame",
+        "ND"
+      ],
+      "mediumAliases": [
+        "Notre Dame",
+        "ND"
+      ],
+      "hardAnswers": [
+        "Notre Dame"
+      ]
+    },
+    {
+      "id": "uconn",
+      "school": "UConn",
+      "displaySchool": "UConn",
+      "nickname": "Huskies",
+      "city": "Storrs",
+      "state": "CT",
+      "enrollment": null,
+      "conference": "independent",
+      "formerConferences": [],
+      "firstFootballYear": null,
+      "joinedFbs": null,
+      "season": 2026,
+      "aliases": [
+        "UConn",
+        "Connecticut",
+        "U Conn"
+      ],
+      "easyAliases": [
+        "UConn",
+        "Connecticut",
+        "U Conn"
+      ],
+      "mediumAliases": [
+        "UConn",
+        "Connecticut",
+        "U Conn",
+        "Connecticut"
+      ],
+      "hardAnswers": [
+        "UConn",
+        "Connecticut",
+        "UConn"
+      ]
+    }
+  ]
+}
