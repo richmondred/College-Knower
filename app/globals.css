@@ -1443,3 +1443,266 @@ button:disabled {
     display: none;
   }
 }
+
+/* Dark liquid chrome pass */
+:root {
+  --color-bg: #030508;
+  --color-surface: rgba(10, 14, 19, 0.82);
+  --color-surface-2: rgba(18, 25, 34, 0.88);
+  --color-text: #f4fbff;
+  --color-muted: #9fb1c3;
+  --color-border: rgba(157, 207, 255, 0.2);
+  --color-border-strong: rgba(202, 235, 255, 0.32);
+  --color-accent: #56d8ff;
+  --color-accent-hover: #b8f7ff;
+  --color-accent-2: #a995ff;
+  --color-success: #58f0a7;
+  --color-warning: #ffd166;
+  --color-danger: #ff5c8a;
+  --chrome-shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    linear-gradient(118deg, rgba(255, 255, 255, 0.1) 0 9%, transparent 18% 42%, rgba(146, 226, 255, 0.08) 53%, transparent 72%),
+    conic-gradient(from 236deg at 55% 22%, rgba(238, 252, 255, 0.22), rgba(42, 211, 255, 0.12), rgba(2, 4, 8, 0.92), rgba(150, 106, 255, 0.17), rgba(238, 252, 255, 0.18)),
+    radial-gradient(ellipse at 10% 6%, rgba(120, 220, 255, 0.2), transparent 32rem),
+    radial-gradient(ellipse at 86% 11%, rgba(173, 132, 255, 0.18), transparent 34rem),
+    radial-gradient(ellipse at 48% 100%, rgba(40, 51, 70, 0.72), transparent 44rem),
+    linear-gradient(138deg, #020306 0%, #07111c 28%, #05070b 48%, #0a1422 72%, #030408 100%);
+}
+
+body::before {
+  opacity: 0.18;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(0deg, rgba(157, 207, 255, 0.035) 0 1px, transparent 1px 36px),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.84' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+}
+
+body::after {
+  border-color: rgba(205, 243, 255, 0.22);
+  background:
+    radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.24), transparent 26%),
+    radial-gradient(circle, rgba(86, 211, 255, 0.2), rgba(170, 124, 255, 0.12) 52%, transparent 72%);
+  mix-blend-mode: screen;
+}
+
+.shell::before {
+  background:
+    linear-gradient(112deg, transparent 0 10%, rgba(255, 255, 255, 0.12) 15%, rgba(0, 185, 255, 0.08) 19%, transparent 29% 43%, rgba(255, 255, 255, 0.1) 50%, rgba(151, 120, 255, 0.08) 55%, transparent 68%),
+    linear-gradient(28deg, transparent 0 18%, rgba(255, 255, 255, 0.1) 25%, transparent 36% 70%, rgba(120, 197, 255, 0.08) 79%, transparent 88%);
+  opacity: 0.92;
+}
+
+.site-header,
+.game-header {
+  border-color: rgba(202, 235, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(22, 30, 40, 0.88), rgba(5, 8, 13, 0.72)),
+    color-mix(in srgb, var(--color-surface) 84%, transparent);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.brand-mark span {
+  background: linear-gradient(105deg, #f8fdff, #81e7ff 34%, #ffffff 48%, #b3a2ff 62%, #eafaff);
+  background-clip: text;
+  color: transparent;
+}
+
+.site-nav a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+.section-band,
+.coffee-button,
+.button,
+.difficulty-card,
+.time-limit-panel,
+.runner-toggle,
+.score-tile,
+.answer-rack,
+.conference-card,
+.dialog-panel,
+.knowledge-card,
+.knowledge-missed-group,
+.leaderboard-context span,
+.leaderboard-context strong {
+  border-color: var(--color-border);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(58, 79, 104, 0.14) 42%, rgba(255, 255, 255, 0.04)),
+    var(--color-surface);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.11);
+}
+
+.button.primary,
+.time-preset[data-selected="true"],
+.difficulty-card[data-selected="true"],
+.knowledge-shell .difficulty-card[data-selected="true"] {
+  border-color: color-mix(in srgb, var(--color-accent) 54%, var(--color-border));
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), color-mix(in srgb, var(--color-accent) 28%, rgba(8, 13, 20, 0.92)) 42%, color-mix(in srgb, var(--color-accent-2) 20%, rgba(8, 13, 20, 0.92))),
+    var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.button.primary:hover {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), color-mix(in srgb, var(--color-accent-hover) 32%, rgba(8, 13, 20, 0.92)) 42%, color-mix(in srgb, var(--color-accent-2) 24%, rgba(8, 13, 20, 0.92))),
+    var(--color-surface-2);
+}
+
+.button.ghost {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.knowledge-shell {
+  background:
+    linear-gradient(112deg, rgba(255, 255, 255, 0.1) 0 9%, transparent 22% 43%, rgba(255, 255, 255, 0.06) 54%, transparent 70%),
+    radial-gradient(ellipse at 14% 5%, var(--quiz-tint), transparent 30rem),
+    radial-gradient(ellipse at 84% 16%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 34rem),
+    radial-gradient(ellipse at 44% 102%, color-mix(in srgb, var(--color-accent-hover) 10%, transparent), transparent 40rem),
+    linear-gradient(142deg, #020306 0%, #07111c 46%, #030508 100%);
+}
+
+.time-preset,
+.custom-time-grid input,
+.answer-input {
+  border-color: var(--color-border-strong);
+  background: rgba(3, 5, 8, 0.78);
+  color: var(--color-text);
+}
+
+.answer-input::placeholder {
+  color: rgba(244, 251, 255, 0.36);
+}
+
+.answer-rack[data-correct="true"] {
+  border-color: var(--color-success);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(40, 175, 116, 0.22)),
+    var(--color-surface);
+}
+
+.answer-rack[data-correct="true"] .answer-input {
+  background: rgba(7, 35, 23, 0.82);
+}
+
+.team-slot,
+.knowledge-slot {
+  border-color: rgba(157, 207, 255, 0.12);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.team-slot[data-revealed="true"],
+.knowledge-slot[data-revealed="true"] {
+  background: rgba(88, 240, 167, 0.11);
+}
+
+.team-slot[data-hinted="true"],
+.knowledge-slot[data-selectable="true"]:hover,
+.knowledge-slot[data-selected="true"] {
+  background: color-mix(in srgb, var(--color-accent) 14%, rgba(255, 255, 255, 0.05));
+}
+
+.slot-index,
+.knowledge-answer {
+  color: rgba(244, 251, 255, 0.38);
+}
+
+.hinted-clue,
+.knowledge-detail {
+  color: rgba(244, 251, 255, 0.52) !important;
+}
+
+.empty-slot {
+  color: rgba(244, 251, 255, 0.34) !important;
+}
+
+.team-slot[data-hinted="true"] .slot-copy span {
+  color: rgba(244, 251, 255, 0.4);
+}
+
+.knowledge-tone {
+  color: color-mix(in srgb, var(--entry-tone) 38%, #f4fbff);
+}
+
+.knowledge-grid[data-density="dense"] .knowledge-slot,
+.knowledge-grid[data-density="ultra"] .knowledge-slot {
+  overflow: hidden;
+}
+
+.knowledge-grid[data-density="dense"] .knowledge-answer,
+.knowledge-grid[data-density="ultra"] .knowledge-answer,
+.knowledge-grid[data-layout="compact"] .knowledge-answer,
+.knowledge-grid[data-layout="mega"] .knowledge-answer,
+.slot-copy strong,
+.slot-copy span {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.knowledge-grid[data-density="dense"] .knowledge-prompt,
+.knowledge-grid[data-density="ultra"] .knowledge-prompt,
+.knowledge-grid[data-density="dense"] .knowledge-tone,
+.knowledge-grid[data-density="ultra"] .knowledge-tone {
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.knowledge-grid[data-density="ultra"] .knowledge-answer {
+  color: rgba(244, 251, 255, 0.42);
+}
+
+.knowledge-slot[data-revealed="true"] .knowledge-answer,
+.team-slot[data-revealed="true"] .slot-copy strong {
+  color: var(--color-text);
+}
+
+.game-shell.knowledge-shell .knowledge-grid,
+.game-shell.knowledge-shell .knowledge-grid[data-layout="compact"],
+.game-shell.knowledge-shell .knowledge-grid[data-layout="mega"],
+.game-shell.knowledge-shell .knowledge-grid[data-density="dense"],
+.game-shell.knowledge-shell .knowledge-grid[data-density="ultra"] {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.dialog-backdrop {
+  background: rgba(1, 2, 4, 0.68);
+}
+
+@media (max-width: 720px) {
+  .knowledge-grid[data-density="ultra"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .knowledge-grid[data-density="ultra"] .knowledge-card,
+  .knowledge-grid[data-density="ultra"] .knowledge-card[data-group-size="massive"],
+  .knowledge-grid[data-density="ultra"] .knowledge-card[data-group-size="large"],
+  .knowledge-grid[data-density="ultra"] .knowledge-card[data-group-size="medium"],
+  .knowledge-grid[data-density="ultra"] .knowledge-card[data-group-size="small"] {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 390px) {
+  .knowledge-grid[data-density="ultra"] .knowledge-list {
+    grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+  }
+}
