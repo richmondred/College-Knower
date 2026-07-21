@@ -7,6 +7,7 @@ import { flushSync } from "react-dom";
 import { fbs2026Dataset } from "@/data/fbs/fbs-2026.1";
 import { fbsGameConfig } from "@/data/fbs/game-config";
 import type { ConferenceId, DifficultyId } from "@/data/fbs/types";
+import type { TimePreset } from "@/data/knowledge/types";
 import { compareLeaderboardEntries, type LeaderboardEntry } from "@/lib/quiz/leaderboard";
 import { difficultyById, findTeam, resolveAnswer } from "@/lib/quiz/matcher";
 import { validateCity, validateDisplayName } from "@/lib/quiz/profile";
@@ -33,6 +34,7 @@ import {
   type ActiveAttemptState
 } from "@/lib/quiz/timer";
 import { ConferenceGrid } from "./ConferenceGrid";
+import { resolveTimeLimitMs, TimeLimitPicker } from "./TimeLimitPicker";
 
 type Phase = "intro" | "active" | "results";
 type FinishStatus = "completed" | "expired" | "ended";
@@ -56,6 +58,10 @@ export function FbsQuizGame() {
     () => difficultyById(gameConfig.difficulties, difficultyId),
     [difficultyId]
   );
+  const [timePreset, setTimePreset] = useState<TimePreset>("600");
+  const [customMinutes, setCustomMinutes] = useState(10);
+  const [customSeconds, setCustomSeconds] = useState(0);
+  const selectedTimeLimitMs = resolveTimeLimitMs(timePreset, customMinutes, customSeconds);
   const [attempt, setAttempt] = useState<ActiveAttemptState | null>(null);
   const [savedAttempt, setSavedAttempt] = useState<ActiveAttemptState | null>(null);
   const [serverBacked, setServerBacked] = useState(false);
@@ -240,7 +246,8 @@ export function FbsQuizGame() {
       return;
     }
 
-    const localAttempt = createLocalAttempt(difficulty, gameConfig.id, gameConfig.datasetVersion);
+    const runtimeDifficulty = { ...difficulty, durationMs: selectedTimeLimitMs };
+    const localAttempt = createLocalAttempt(runtimeDifficulty, gameConfig.id, gameConfig.datasetVersion);
     try {
       const response = await fetch("/api/attempts/start", {
         method: "POST",
@@ -257,7 +264,12 @@ export function FbsQuizGame() {
           attempt?: Partial<ActiveAttemptState>;
         };
         setServerBacked(payload.serverBacked);
-        setAttempt({ ...localAttempt, ...payload.attempt });
+        setAttempt({
+          ...localAttempt,
+          ...payload.attempt,
+          startedAt: localAttempt.startedAt,
+          deadlineAt: localAttempt.deadlineAt
+        });
       } else {
         setServerBacked(false);
         setAttempt(localAttempt);
@@ -550,7 +562,7 @@ export function FbsQuizGame() {
           <div className="my-8 grid gap-3 sm:grid-cols-3">
             <Stat label="Teams" value="138" />
             <Stat label="Conferences" value="11" />
-            <Stat label="Difficulty" value={difficulty.label} />
+            <Stat label="Time" value={formatClock(selectedTimeLimitMs)} />
           </div>
 
           <div className="difficulty-grid" role="radiogroup" aria-label="Difficulty">
@@ -566,16 +578,16 @@ export function FbsQuizGame() {
                   aria-checked={item.id === difficultyId}
                   onClick={() => setDifficultyId(item.id)}
                 >
-                  <span className="eyebrow">{item.label}</span>
+                  <span className="eyebrow">mode</span>
                   <strong className="mt-2 block text-2xl uppercase">
-                    {item.durationMs === null ? "Unlimited" : formatClock(item.durationMs)}
+                    {item.label}
                   </strong>
                   <span className="mt-3 block text-sm text-[var(--color-muted)]">
                     {item.id === "easy"
-                      ? "Unlimited time, 20 nickname clues, broad aliases and saved runs."
+                      ? "20 nickname clues, broad aliases and saved runs."
                       : item.id === "medium"
-                        ? "20-minute board, 10 nickname clues and standard aliases."
-                        : "10-minute board, no clues, strict answers after Enter."}
+                        ? "10 nickname clues and standard aliases."
+                        : "No clues, strict answers after Enter."}
                   </span>
                   <span className="mt-4 block text-sm">
                     Personal best:{" "}
@@ -585,6 +597,15 @@ export function FbsQuizGame() {
               );
             })}
           </div>
+
+          <TimeLimitPicker
+            preset={timePreset}
+            minutes={customMinutes}
+            seconds={customSeconds}
+            onPresetChange={setTimePreset}
+            onMinutesChange={setCustomMinutes}
+            onSecondsChange={setCustomSeconds}
+          />
 
           <div className="mt-6 flex flex-wrap gap-3">
             <button className="button primary" type="button" onClick={() => startGame(false)}>
@@ -621,7 +642,7 @@ export function FbsQuizGame() {
               <Stat label="Difficulty" value={difficulty.label} compact />
               <Stat label="Score" value={`${attempt.solvedTeamIds.length} / ${dataset.teams.length}`} compact />
               <Stat label="Remaining" value={`${dataset.teams.length - attempt.solvedTeamIds.length}`} compact />
-              <Stat label={difficulty.durationMs === null ? "Elapsed" : "Timer"} value={difficulty.durationMs === null ? formatElapsed(elapsedMs) : formatClock(remainingMs)} compact />
+              <Stat label="Timer" value={formatClock(remainingMs)} compact />
             </div>
             <button className="button" type="button" onClick={() => setShowEndDialog(true)}>
               End Game

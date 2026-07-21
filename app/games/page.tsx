@@ -10,27 +10,27 @@ const categories = [
   {
     href: "/games/college-football",
     title: "College football knowers",
-    description: "All teams quiz is live now."
+    description: "All teams, past champions and Heisman quizzes."
   },
   {
     href: "/games/nfl",
     title: "NFL knowers",
-    description: "coming soon hehe"
+    description: "All teams, Super Bowl champions and MVP quizzes."
   },
   {
     href: "/games/english-football",
     title: "English football knowers",
-    description: "coming soon hehe"
+    description: "Pyramid clubs and English past champions."
   },
   {
     href: "/games/european-football",
     title: "European football knowers",
-    description: "coming soon hehe"
+    description: "European club challenge from the workbook."
   },
   {
     href: "/games/world-football",
     title: "World football knowers",
-    description: "coming soon hehe"
+    description: "The ultimate world clubs challenge."
   }
 ];
 

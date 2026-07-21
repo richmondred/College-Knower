@@ -1,4 +1,4 @@
-import { ArrowRight, Clock, Trophy } from "lucide-react";
+import { ArrowRight, Trophy } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -17,16 +17,16 @@ const quizzes = [
   {
     href: "/games/college-football/past-champions",
     title: "Past champions quiz",
-    description: "coming soon hehe",
-    status: "Soon",
-    icon: Clock
+    description: "Name national champion selections across college football history.",
+    status: "Live",
+    icon: Trophy
   },
   {
     href: "/games/college-football/heisman-winners",
     title: "Heisman winners quiz",
-    description: "coming soon hehe",
-    status: "Soon",
-    icon: Clock
+    description: "Name Heisman winners, with optional runners-up.",
+    status: "Live",
+    icon: Trophy
   }
 ];
 
@@ -36,7 +36,7 @@ export default function CollegeFootballPage() {
       <p className="eyebrow">college football knowers</p>
       <h1 className="display-title">College football knowers.</h1>
       <p className="lead">
-        Start with the full FBS teams quiz. The champions and Heisman games are parked here as clean placeholders.
+        Start with the full FBS teams quiz, then test the champions and Heisman lists from the supplied files.
       </p>
       <div className="mt-8 grid gap-4 lg:grid-cols-3">
         {quizzes.map((quiz) => {

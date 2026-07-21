@@ -1,13 +1,11 @@
-export const metadata = {
-  title: "Heisman Winners Quiz",
-  description: "College football Heisman winners quiz is coming soon."
-};
+import { KnowledgeQuizGame } from "@/components/game/KnowledgeQuizGame";
+import { getKnowledgeQuiz } from "@/data/knowledge/quiz-data";
 
 export default function HeismanWinnersPage() {
-  return (
-    <main className="page">
-      <p className="eyebrow">Heisman winners quiz</p>
-      <h1 className="display-title">coming soon hehe</h1>
-    </main>
-  );
+  return <KnowledgeQuizGame quiz={getKnowledgeQuiz("cfb-heisman-winners")} homeHref="/games/college-football" />;
 }
+
+export const metadata = {
+  title: "Heisman Winners Quiz",
+  description: "Name Heisman winners, with optional runners-up."
+};
