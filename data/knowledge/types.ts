@@ -4,10 +4,6 @@ export type KnowledgeQuizTheme = {
   accent: string;
   accentHover: string;
   tint: string;
-  background: string;
-  surface: string;
-  raised: string;
-  border: string;
 };
 
 export type KnowledgeQuizMode = {
@@ -26,7 +22,6 @@ export type KnowledgeQuizEntry = {
   aliases: string[];
   group: string;
   detail?: string;
-  tone?: string;
   role?: "winner" | "runner-up" | "third" | "team" | "club";
   runnerUp?: boolean;
 };
@@ -39,7 +34,6 @@ export type KnowledgeQuiz = {
   answerLabel: string;
   placeholder: string;
   theme: KnowledgeQuizTheme;
-  layout?: "cards" | "compact" | "mega";
   modes: KnowledgeQuizMode[];
   entries: KnowledgeQuizEntry[];
   runnerUpToggle?: {

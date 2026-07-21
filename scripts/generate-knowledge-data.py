@@ -26,51 +26,11 @@ SOURCE_FILES = {
 }
 
 THEMES = {
-    "cfb": {
-        "accent": "#F43F5E",
-        "accentHover": "#FB7185",
-        "tint": "rgba(244, 63, 94, 0.18)",
-        "background": "#080809",
-        "surface": "#141416",
-        "raised": "#202024",
-        "border": "#303036",
-    },
-    "nfl": {
-        "accent": "#22C55E",
-        "accentHover": "#4ADE80",
-        "tint": "rgba(34, 197, 94, 0.18)",
-        "background": "#06110B",
-        "surface": "#0E1D14",
-        "raised": "#173222",
-        "border": "#28553A",
-    },
-    "english": {
-        "accent": "#38BDF8",
-        "accentHover": "#7DD3FC",
-        "tint": "rgba(56, 189, 248, 0.18)",
-        "background": "#061018",
-        "surface": "#0D1B26",
-        "raised": "#142B3A",
-        "border": "#24475B",
-    },
-    "europe": {
-        "accent": "#A78BFA",
-        "accentHover": "#C4B5FD",
-        "tint": "rgba(167, 139, 250, 0.18)",
-        "background": "#0D0818",
-        "surface": "#171127",
-        "raised": "#261B3D",
-        "border": "#443163",
-    },
-    "world": {
-        "accent": "#F59E0B",
-        "accentHover": "#FBBF24",
-        "tint": "rgba(245, 158, 11, 0.18)",
-        "background": "#120D04",
-        "surface": "#1F1708",
-        "raised": "#33250C",
-        "border": "#5A4216",
-    },
+    "cfb": {"accent": "#F43F5E", "accentHover": "#FB7185", "tint": "rgba(244, 63, 94, 0.18)"},
+    "nfl": {"accent": "#22C55E", "accentHover": "#4ADE80", "tint": "rgba(34, 197, 94, 0.16)"},
+    "english": {"accent": "#38BDF8", "accentHover": "#7DD3FC", "tint": "rgba(56, 189, 248, 0.15)"},
+    "europe": {"accent": "#A78BFA", "accentHover": "#C4B5FD", "tint": "rgba(167, 139, 250, 0.15)"},
+    "world": {"accent": "#F59E0B", "accentHover": "#FBBF24", "tint": "rgba(245, 158, 11, 0.16)"},
 }
 
 
@@ -122,7 +82,6 @@ def entry(
     aliases: list[str],
     group: str,
     detail: str = "",
-    tone: str = "",
     role: str = "team",
     runner_up: bool = False,
 ) -> dict[str, Any]:
@@ -144,7 +103,6 @@ def entry(
         "aliases": clean_aliases,
         "group": group,
         "detail": detail,
-        "tone": tone,
         "role": role,
         "runnerUp": runner_up,
     }
@@ -382,40 +340,6 @@ def build_heisman() -> dict[str, Any]:
 def build_nfl_teams() -> dict[str, Any]:
     lines = [line for line in text_from_rtf(SOURCE_FILES["nfl_teams"]) if not line.startswith("Times-")]
     teams = [line for line in lines if re.match(r"^[A-Z0-9]", line)][:32]
-    divisions = {
-        "Buffalo Bills": "AFC East",
-        "Miami Dolphins": "AFC East",
-        "New England Patriots": "AFC East",
-        "New York Jets": "AFC East",
-        "Baltimore Ravens": "AFC North",
-        "Cincinnati Bengals": "AFC North",
-        "Cleveland Browns": "AFC North",
-        "Pittsburgh Steelers": "AFC North",
-        "Houston Texans": "AFC South",
-        "Indianapolis Colts": "AFC South",
-        "Jacksonville Jaguars": "AFC South",
-        "Tennessee Titans": "AFC South",
-        "Denver Broncos": "AFC West",
-        "Kansas City Chiefs": "AFC West",
-        "Las Vegas Raiders": "AFC West",
-        "Los Angeles Chargers": "AFC West",
-        "Dallas Cowboys": "NFC East",
-        "New York Giants": "NFC East",
-        "Philadelphia Eagles": "NFC East",
-        "Washington Commanders": "NFC East",
-        "Chicago Bears": "NFC North",
-        "Detroit Lions": "NFC North",
-        "Green Bay Packers": "NFC North",
-        "Minnesota Vikings": "NFC North",
-        "Atlanta Falcons": "NFC South",
-        "Carolina Panthers": "NFC South",
-        "New Orleans Saints": "NFC South",
-        "Tampa Bay Buccaneers": "NFC South",
-        "Arizona Cardinals": "NFC West",
-        "Los Angeles Rams": "NFC West",
-        "San Francisco 49ers": "NFC West",
-        "Seattle Seahawks": "NFC West",
-    }
     entries: list[dict[str, Any]] = []
     for team in teams:
         nickname = team.split()[-1]
@@ -430,22 +354,11 @@ def build_nfl_teams() -> dict[str, Any]:
                 prompt="NFL team",
                 answer=team,
                 aliases=aliases,
-                group=divisions[team],
-                detail="",
+                group=team[0].upper(),
+                detail=nickname,
                 role="team",
             )
         )
-    division_order = [
-        "AFC East",
-        "AFC North",
-        "AFC South",
-        "AFC West",
-        "NFC East",
-        "NFC North",
-        "NFC South",
-        "NFC West",
-    ]
-    entries.sort(key=lambda item: (division_order.index(item["group"]), item["answer"]))
     return {
         "id": "nfl-all-teams",
         "title": "NFL All Teams Quiz",
@@ -454,7 +367,6 @@ def build_nfl_teams() -> dict[str, Any]:
         "answerLabel": "Type an NFL team",
         "placeholder": "Type a team...",
         "theme": THEMES["nfl"],
-        "layout": "compact",
         "modes": [
             {
                 "id": "casual",
@@ -611,9 +523,8 @@ def build_english_champions() -> dict[str, Any]:
                     prompt=f"{season} Champion",
                     answer=champion,
                     aliases=[champion],
-                    group="English Top Flight",
+                    group=current_group,
                     detail="Champion",
-                    tone="Champion",
                     role="winner",
                 )
             )
@@ -625,9 +536,8 @@ def build_english_champions() -> dict[str, Any]:
                         prompt=f"{season} Runner-up",
                         answer=runner_up,
                         aliases=[runner_up],
-                        group="English Top Flight",
+                        group=current_group,
                         detail="Runner-up",
-                        tone="Runner-up",
                         role="runner-up",
                         runner_up=True,
                     )
@@ -644,7 +554,6 @@ def build_english_champions() -> dict[str, Any]:
         "answerLabel": "Type a club",
         "placeholder": "Type a club...",
         "theme": THEMES["english"],
-        "layout": "mega",
         "modes": [
             {
                 "id": "easy",
@@ -717,14 +626,13 @@ def build_english_teams() -> dict[str, Any]:
                 prompt=f"Tier {tier}",
                 answer=club,
                 aliases=[club],
-                group="English Pyramid",
-                detail=f"Tier {tier} · {division}" if division and division != league else f"Tier {tier}",
-                tone=league,
+                group=f"Tier {tier}",
+                detail=f"{league} · {division}" if division and division != league else league,
                 role="club",
             )
         )
     add_unique_short_club_aliases(entries)
-    entries.sort(key=lambda item: (item["tone"], item["detail"], item["answer"]))
+    entries.sort(key=lambda item: (int(item["group"].split()[-1]), item["detail"], item["answer"]))
     return {
         "id": "english-all-teams",
         "title": "English Football Teams Quiz",
@@ -733,7 +641,6 @@ def build_english_teams() -> dict[str, Any]:
         "answerLabel": "Type a club",
         "placeholder": "Type a club...",
         "theme": THEMES["english"],
-        "layout": "mega",
         "modes": [
             {
                 "id": "top4",
@@ -789,7 +696,6 @@ def build_europe_teams() -> dict[str, Any]:
                 aliases=[club],
                 group=association,
                 detail=f"{league} · {division}" if division and division != league else league,
-                tone=f"Tier {tier}",
                 role="club",
             )
         )
@@ -803,7 +709,6 @@ def build_europe_teams() -> dict[str, Any]:
         "answerLabel": "Type a club",
         "placeholder": "Type a club...",
         "theme": THEMES["europe"],
-        "layout": "compact",
         "modes": [
             {
                 "id": "top5-first",
@@ -860,7 +765,6 @@ def build_world_clubs() -> dict[str, Any]:
                 aliases=[club],
                 group=confederation,
                 detail=f"{league} · {division}" if division and division != league else league,
-                tone=association,
                 role="club",
             )
         )
@@ -874,7 +778,6 @@ def build_world_clubs() -> dict[str, Any]:
         "answerLabel": "Type a club",
         "placeholder": "Type a club...",
         "theme": THEMES["world"],
-        "layout": "mega",
         "modes": [
             {
                 "id": "ultimate",
