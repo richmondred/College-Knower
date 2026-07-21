@@ -911,7 +911,7 @@ function KnowledgeGrid({
                   >
                     <span className="slot-index">{index + 1}</span>
                     <span className="knowledge-prompt">
-                      <span className="knowledge-tone" style={toneStyle(tone)}>
+                      <span className="knowledge-tone" style={toneStyle()}>
                         {tone}
                       </span>
                       {entry.tone ? <small>{entry.prompt}</small> : null}
@@ -950,26 +950,8 @@ function scrollElementIntoViewIfNeeded(selector: string) {
   }
 }
 
-function toneStyle(tone: string): CSSProperties {
-  const palette = [
-    "#F43F5E",
-    "#38BDF8",
-    "#22C55E",
-    "#F59E0B",
-    "#A78BFA",
-    "#14B8A6",
-    "#F97316",
-    "#84CC16",
-    "#EC4899",
-    "#60A5FA",
-    "#EAB308",
-    "#C084FC"
-  ];
-  let hash = 0;
-  for (const char of tone) {
-    hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
-  }
-  return { "--entry-tone": palette[hash % palette.length] } as CSSProperties;
+function toneStyle(): CSSProperties {
+  return { "--entry-tone": "#8EA0B4" } as CSSProperties;
 }
 
 function Stat({ label, value, compact = false }: { label: string; value: string; compact?: boolean }) {

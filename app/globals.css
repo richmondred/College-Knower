@@ -1706,3 +1706,251 @@ body::after {
     grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
   }
 }
+
+/* Clean UI audit pass: remove grain, glass haze, and low-contrast colour noise. */
+:root {
+  --color-bg: #070a0f;
+  --color-surface: #10161f;
+  --color-surface-2: #151d28;
+  --color-text: #f5f7fb;
+  --color-muted: #9ba8b7;
+  --color-border: #273241;
+  --color-border-strong: #364456;
+  --color-accent: #74b8ff;
+  --color-accent-hover: #a6d2ff;
+  --color-accent-2: #a6d2ff;
+  --color-success: #56d08e;
+  --color-warning: #e7b75f;
+  --color-danger: #f0718a;
+  --chrome-shadow: none;
+}
+
+html,
+body {
+  color-scheme: dark;
+  background: var(--color-bg) !important;
+}
+
+body::before,
+body::after,
+.shell::before {
+  display: none !important;
+}
+
+.shell,
+.knowledge-shell,
+.game-shell,
+.page,
+.section-band {
+  background: var(--color-bg) !important;
+}
+
+.site-header,
+.game-header {
+  border-color: var(--color-border) !important;
+  background: #0b1119 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.brand-mark span {
+  background: none !important;
+  color: var(--color-text) !important;
+  text-shadow: none !important;
+}
+
+.site-nav {
+  color: var(--color-muted);
+}
+
+.site-nav a:hover {
+  color: var(--color-text);
+  background: #151d28 !important;
+  box-shadow: none !important;
+}
+
+.display-title,
+.metric,
+.conference-count,
+.slot-copy strong,
+.knowledge-card-header strong,
+.knowledge-slot[data-revealed="true"] .knowledge-answer,
+.team-slot[data-revealed="true"] .slot-copy strong {
+  color: var(--color-text) !important;
+}
+
+.lead,
+.answer-meta,
+.slot-copy span,
+.knowledge-prompt,
+.knowledge-detail,
+.conference-name,
+.score-tile span {
+  color: var(--color-muted) !important;
+}
+
+.button,
+.coffee-button,
+.difficulty-card,
+.time-limit-panel,
+.runner-toggle,
+.score-tile,
+.answer-rack,
+.conference-card,
+.dialog-panel,
+.knowledge-card,
+.knowledge-missed-group,
+.leaderboard-context span,
+.leaderboard-context strong,
+.profile-panel,
+.leaderboard-panel,
+.legal-panel,
+.pregame-panel,
+.results-panel {
+  border-color: var(--color-border) !important;
+  background: var(--color-surface) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.button.primary,
+.time-preset[data-selected="true"],
+.difficulty-card[data-selected="true"],
+.knowledge-shell .difficulty-card[data-selected="true"] {
+  border-color: var(--color-accent) !important;
+  background: #16283a !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+}
+
+.button:hover,
+.button.primary:hover {
+  border-color: var(--color-accent-hover) !important;
+  background: #1a2d42 !important;
+  box-shadow: none !important;
+}
+
+.time-preset,
+.custom-time-grid input,
+.answer-input,
+select.answer-input {
+  border-color: var(--color-border-strong) !important;
+  background: #080d13 !important;
+  color: var(--color-text) !important;
+  box-shadow: none !important;
+}
+
+.answer-input::placeholder {
+  color: #697789 !important;
+}
+
+.answer-rack[data-correct="true"],
+.answer-rack[data-correct="true"] .answer-input,
+.team-slot[data-revealed="true"],
+.knowledge-slot[data-revealed="true"] {
+  border-color: color-mix(in srgb, var(--color-success) 54%, var(--color-border)) !important;
+  background: rgba(86, 208, 142, 0.14) !important;
+}
+
+.conference-card[data-complete="true"],
+.knowledge-card[data-complete="true"] {
+  border-color: color-mix(in srgb, var(--color-success) 50%, var(--color-border)) !important;
+}
+
+.team-slot,
+.knowledge-slot {
+  border-color: #1d2734 !important;
+  background: #0b1118 !important;
+}
+
+.team-slot[data-hinted="true"],
+.knowledge-slot[data-selectable="true"]:hover,
+.knowledge-slot[data-selected="true"] {
+  border-color: var(--color-accent) !important;
+  background: #101f30 !important;
+}
+
+.conference-short,
+.knowledge-card-header strong {
+  color: var(--color-accent-hover) !important;
+}
+
+.conference-progress {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent) 0 var(--progress),
+    #1f2a38 var(--progress) 100%
+  ) !important;
+}
+
+.knowledge-tone {
+  border: 1px solid #2a3544 !important;
+  background: #151d28 !important;
+  color: #b4c0cf !important;
+  box-shadow: none !important;
+}
+
+.slot-index,
+.knowledge-answer,
+.empty-slot {
+  color: #6f7c8d !important;
+}
+
+.hinted-clue {
+  color: #8996a6 !important;
+}
+
+.knowledge-grid[data-density="ultra"] .knowledge-list,
+.knowledge-grid[data-density="ultra"][data-layout="mega"] .knowledge-list,
+.knowledge-grid[data-density="ultra"][data-layout="compact"] .knowledge-list {
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)) !important;
+  gap: 3px !important;
+  padding: 6px !important;
+}
+
+.knowledge-grid[data-density="ultra"] .knowledge-slot {
+  min-height: 24px !important;
+  padding: 3px 6px !important;
+}
+
+.knowledge-grid[data-density="ultra"] .knowledge-tone {
+  font-size: 0.5rem !important;
+}
+
+.knowledge-grid[data-density="ultra"] .knowledge-answer {
+  color: #7e8b9b !important;
+  font-size: 0.58rem !important;
+}
+
+.knowledge-grid[data-density="dense"] .knowledge-answer,
+.knowledge-grid[data-layout="compact"] .knowledge-answer,
+.knowledge-grid[data-layout="mega"] .knowledge-answer {
+  color: #7e8b9b !important;
+}
+
+.knowledge-grid[data-density="dense"] .knowledge-slot,
+.knowledge-grid[data-layout="compact"] .knowledge-slot {
+  min-height: 28px !important;
+}
+
+.game-shell.knowledge-shell .knowledge-grid,
+.game-shell.knowledge-shell .knowledge-grid[data-layout="compact"],
+.game-shell.knowledge-shell .knowledge-grid[data-layout="mega"],
+.game-shell.knowledge-shell .knowledge-grid[data-density="dense"],
+.game-shell.knowledge-shell .knowledge-grid[data-density="ultra"] {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+}
+
+@media (max-width: 720px) {
+  .knowledge-grid[data-density="ultra"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .knowledge-grid[data-density="ultra"] .knowledge-list,
+  .knowledge-grid[data-density="ultra"][data-layout="mega"] .knowledge-list,
+  .knowledge-grid[data-density="ultra"][data-layout="compact"] .knowledge-list {
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)) !important;
+  }
+}
